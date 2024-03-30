@@ -21,7 +21,7 @@ public class Server {
 
     // method to start the service with IrrigationSystemServiceImpl() service
     public void startIrrigationSystemServer(int port) throws IOException{
-        server = ServerBuilder.forPort(port).addService(new IrrigationsSystemServiceImpl()).build().start();
+        server = ServerBuilder.forPort(port).addService(new IrrigationSystemServiceImpl()).build().start();
         System.out.println("Server started, listening to Irrigation System on port " + port);
     }
 
@@ -48,7 +48,7 @@ public class Server {
     // MobilePhoneService Implementation
     public class MobilePhoneServiceImpl extends MobilePhoneServiceGrpc.MobilePhoneServiceImplBase{
         // Server streaming RPC
-        // Mobile Phone send one request for info update, then receives a response from the server ever 5 seconds, until press 'Q' to quit.    @Override
+        // Mobile Phone send one request for info update, then receives a response from the server every 5 seconds, until press 'Q' to quit.    @Override
         public void mobilePhoneService1(SmartAgricultureProto.MobilePhoneRequest request, StreamObserver<SmartAgricultureProto.MobilePhoneResponse> responseObserver) {
             // receive request Message from Mobile Phone
             String requestMessage = request.getRequestMessage();
@@ -109,10 +109,42 @@ public class Server {
 
     //SoilSensorService Implementation
     public class SoilSensorServiceImpl extends SoilSensorServiceGrpc.SoilSensorServiceImplBase{
+        @Override
+        public StreamObserver<SmartAgricultureProto.SoilSensorRequest> soilSensor(StreamObserver<SmartAgricultureProto.SoilSensorResponse> responseObserver) {
+            // return a new StreamObserver to handle incoming requests from Soil Sensor
+            return new StreamObserver<SmartAgricultureProto.SoilSensorRequest>() {
+
+                // handle each incoming request from the Soil Sensor
+                @Override
+                public void onNext(SmartAgricultureProto.SoilSensorRequest soilSensorRequest) {
+                    System.out.println("Received Soil Sensor information: ");
+                    System.out.println(soilSensorRequest.getSoilInfo() + " at " + LocalDateTime.now());
+                }
+
+                // handle errors that may occur during Soil Sensor Streaming
+                @Override
+                public void onError(Throwable t) {
+                    System.err.println("Error in Soil Sensor streaming: " + t.getMessage());
+                }
+
+                // Handle the completion of Soil Sensor streaming
+                @Override
+                public void onCompleted() {
+                    // print a message indicating the completion of Soil Sensor streaming
+                    System.out.println("Soil Sensor streaming completed.");
+                    // construct a response message
+                    SmartAgricultureProto.SoilSensorResponse response = SmartAgricultureProto.SoilSensorResponse.newBuilder()
+                            .setServerMessage("Soil Sensor information received successfully").build();
+                    // Send the response back to the Soil Sensor
+                    responseObserver.onNext(response);
+                    responseObserver.onCompleted();
+                }
+            };
+        }
     }
 
     //IrrigationSystemService Implementation
-    public class IrrigationsSystemServiceImpl extends IrrigationSystemServiceGrpc.IrrigationSystemServiceImplBase{
+    public class IrrigationSystemServiceImpl extends IrrigationSystemServiceGrpc.IrrigationSystemServiceImplBase{
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
