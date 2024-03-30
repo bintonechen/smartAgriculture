@@ -47,6 +47,64 @@ public class Server {
 
     // MobilePhoneService Implementation
     public class MobilePhoneServiceImpl extends MobilePhoneServiceGrpc.MobilePhoneServiceImplBase{
+        // Server streaming RPC
+        // Mobile Phone send one request for info update, then receives a response from the server ever 5 seconds, until press 'Q' to quit.    @Override
+        public void mobilePhoneService1(SmartAgricultureProto.MobilePhoneRequest request, StreamObserver<SmartAgricultureProto.MobilePhoneResponse> responseObserver) {
+            // receive request Message from Mobile Phone
+            String requestMessage = request.getRequestMessage();
+            System.out.println("Received request from the Mobile Phone: " + requestMessage);
+
+            // define a streaming task
+            Runnable streamingTask = () -> {
+                try {
+                    // continuously send messages until the thread is interrupted
+                    while (!Thread.currentThread().isInterrupted()) {
+                        // construct a response message for the Mobile Phone
+                        String responseMessage = "The Soil Sensor is on, and the Irrigation System is on, at current time: " + LocalDateTime.now();
+                        // create a response object with the message
+                        SmartAgricultureProto.MobilePhoneResponse response = SmartAgricultureProto.MobilePhoneResponse.newBuilder()
+                                .setResponseMessage(responseMessage).build();
+
+                        // send the response to the client
+                        responseObserver.onNext(response);
+
+                        // send the response to the Mobile Phone every 5 seconds
+                        Thread.sleep(5000);
+                    }
+                } catch (InterruptedException e) {
+                    // handle interruption by interrupting the thread and completing the response
+                    Thread.currentThread().interrupt();
+                    // log the interruption
+                    System.err.println("Server info update response interrupted: " + e.getMessage());
+                } finally {
+                    // complete the response
+                    responseObserver.onCompleted();
+                }
+            };
+
+            // start the streaming task in a new thread
+            Thread streamingThread = new Thread(streamingTask);
+            streamingThread.start();
+        }
+
+        // Unary RPC
+        // Mobile Phone sends the user ID to the server, then receives one response from the server.    @Override
+        public void mobilePhoneService2(SmartAgricultureProto.MobilePhoneRequest request, StreamObserver<SmartAgricultureProto.MobilePhoneResponse> responseObserver) {
+            // get the user ID from the request
+            String userID = request.getRequestMessage();
+            // log the received User ID
+            System.out.println("Received User ID: " + userID + " from the Mobile Phone");
+            // create a response message representing successful login
+            String message = "User ID: " + userID + " has been successfully logged in.";
+            // build the response object
+            SmartAgricultureProto.MobilePhoneResponse response = SmartAgricultureProto.MobilePhoneResponse.newBuilder()
+                    .setResponseMessage(message).build();
+
+            // send the response to the Mobile Phone
+            responseObserver.onNext(response);
+            // complete the response
+            responseObserver.onCompleted();
+        }
     }
 
     //SoilSensorService Implementation
