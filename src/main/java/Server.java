@@ -132,12 +132,16 @@ public class Server {
                 public void onCompleted() {
                     // print a message indicating the completion of Soil Sensor streaming
                     System.out.println("Soil Sensor streaming completed.");
-                    // construct a response message
-                    SmartAgricultureProto.SoilSensorResponse response = SmartAgricultureProto.SoilSensorResponse.newBuilder()
-                            .setServerMessage("Soil Sensor information received successfully").build();
-                    // Send the response back to the Soil Sensor
-                    responseObserver.onNext(response);
-                    responseObserver.onCompleted();
+                    try {
+                        // construct a response message
+                        SmartAgricultureProto.SoilSensorResponse response = SmartAgricultureProto.SoilSensorResponse.newBuilder()
+                                .setServerMessage("Soil Sensor information received successfully").build();
+                        // Send the response back to the Soil Sensor
+                        responseObserver.onNext(response);
+                        responseObserver.onCompleted();
+                    } catch (Exception e){
+                        System.err.println("Error sending final response to the Soil Sensor: " + e.getMessage());
+                    }
                 }
             };
         }
@@ -145,6 +149,42 @@ public class Server {
 
     //IrrigationSystemService Implementation
     public class IrrigationSystemServiceImpl extends IrrigationSystemServiceGrpc.IrrigationSystemServiceImplBase{
+        @Override
+        public StreamObserver<SmartAgricultureProto.IrrigationSystemRequest> irrigationSystem(StreamObserver<SmartAgricultureProto.IrrigationSystemResponse> responseObserver) {
+            return new StreamObserver<SmartAgricultureProto.IrrigationSystemRequest>() {
+
+                // handle each incoming request from the Irrigation System
+                @Override
+                public void onNext(SmartAgricultureProto.IrrigationSystemRequest irrigationSystemRequest) {
+                    System.out.println("Received Irrigation System request: ");
+                    System.out.println(irrigationSystemRequest.getFlowRate());
+                    System.out.println(irrigationSystemRequest.getSoilMoisture() + " at " + LocalDateTime.now());
+                }
+
+                @Override
+                public void onError(Throwable t) {
+                    System.err.println("Error in Irrigation System streaming: " + t.getMessage());
+                }
+
+                @Override
+                public void onCompleted() {
+                    // print a message indicating the completion of Soil Sensor streaming
+                    System.out.println("Irrigation System request streaming completed.");
+
+                    try {
+                        // construct a response message
+                        SmartAgricultureProto.IrrigationSystemResponse response = SmartAgricultureProto.IrrigationSystemResponse.newBuilder()
+                                .setInstruction("Irrigation System streaming requests received succefully.").build();
+
+                        // Send the response back to the Soil Sensor
+                        responseObserver.onNext(response);
+                        responseObserver.onCompleted();
+                    } catch (Exception e){
+                        System.err.println("Error sending final response to the Irrigation System: " + e.getMessage());
+                    }
+                }
+            };
+        }
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {

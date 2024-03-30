@@ -13,13 +13,13 @@ public class MobilePhone {
     // declare and create a channel
     private ManagedChannel channel;
 
-    // Constructor
+    // constructor
     public MobilePhone(String host, int port){
         this.channel = ManagedChannelBuilder.forAddress(host, port)
                 .usePlaintext().build();
     }
 
-    //Server streaming RPC
+    // server streaming RPC
     public void mobilePhoneService1(String requestMessage){
 
         // create a request message
@@ -53,6 +53,7 @@ public class MobilePhone {
 
         // send the request and handle responses;
         stub.mobilePhoneService1(request, responseStreamObserver);
+
     }
 
     //Unary RPC
