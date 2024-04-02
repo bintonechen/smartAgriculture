@@ -23,17 +23,17 @@ service MobilePhoneService{
 
 /* messages between the Soil Sensor and the server */
 message SoilSensorRequest{
-  string soilInfo = 1; // three messages: temperature, nutrition, and pHLevel
+  string soilInfo = 1; // messages about temperature, nutrition, and pHLevel
 }
 
 message SoilSensorResponse{
-  string serverMessage = 1; //
+  string serverMessage = 1; // receive confirmation
 }
 
 /* messages between the Irrigation System and the server */
 message IrrigationSystemRequest{
-  string soilMoisture = 1; // 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-  string flowRate = 2; // 'Low Flow', or 'High Flow'
+  string soilMoisture = 1; // Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
+  string flowRate = 2; // Water flow rate: 'Low Flow', or 'High Flow'.
 }
 
 message IrrigationSystemResponse{

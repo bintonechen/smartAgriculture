@@ -23,7 +23,7 @@ public class SoilSensor {
     public void soilSensorService(){
 
         try {
-            // create a gRPC client streaming stub  
+            // create a gRPC stub for client streaming RPC
             SoilSensorServiceGrpc.SoilSensorServiceStub stub = SoilSensorServiceGrpc.newStub(channel);
 
             // create the StreamObserver to handle responses from the server
@@ -36,6 +36,7 @@ public class SoilSensor {
 
                 @Override
                 public void onError(Throwable t) {
+                    // handle errors from the server
                     System.err.println("Error occurred while receiving responses from the server: " + t.getMessage());
                 }
 
@@ -47,7 +48,7 @@ public class SoilSensor {
             });
 
 
-            // send requests to the server
+            // create four request messages and send to the server separately
             String request;
             for (int i = 0; i < 4; i++) {
                 if (i == 0) {
@@ -60,17 +61,17 @@ public class SoilSensor {
                     request = "Soil Sensor information update completed ";
                 }
 
+                // create the request object with the request message
                 SmartAgricultureProto.SoilSensorRequest.Builder builder = SmartAgricultureProto.SoilSensorRequest.newBuilder();
                 builder.setSoilInfo(request + "at " + LocalDateTime.now());
                 SmartAgricultureProto.SoilSensorRequest soilSensorRequest = builder.build();
 
-                // send each request to the server with 2 second apart  
+                // send each request to the server with 2 seconds apart
                 requestStreamObserver.onNext(soilSensorRequest);
                 Thread.sleep(2000);
             }
 
             requestStreamObserver.onCompleted();
-
 
 
         } catch (InterruptedException e){

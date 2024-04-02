@@ -19,14 +19,14 @@ public class MobilePhone {
                 .usePlaintext().build();
     }
 
-    // server streaming RPC
+    // Server streaming RPC
     public void mobilePhoneService1(String requestMessage){
 
-        // create a request message
+        // create a request message for Soil Sensor and Irrigation System update
         SmartAgricultureProto.MobilePhoneRequest request = SmartAgricultureProto.MobilePhoneRequest
                 .newBuilder().setRequestMessage(requestMessage).build();
 
-        // create a gRPC server streaming stub for the server streaming RPC
+        // create a gRPC stub for the server streaming RPC
         MobilePhoneServiceGrpc.MobilePhoneServiceStub stub = MobilePhoneServiceGrpc.newStub(channel);
 
         // create a stream observer to handle responses from the server
@@ -34,20 +34,20 @@ public class MobilePhone {
                 = new StreamObserver<SmartAgricultureProto.MobilePhoneResponse>() {
             @Override
             public void onNext(SmartAgricultureProto.MobilePhoneResponse mobilePhoneResponse) {
-                // handle each response from the server
+                // print each response from the server
                 System.out.println("Received response from server: " + mobilePhoneResponse.getResponseMessage());
             }
 
             @Override
             public void onError(Throwable t) {
                 // handle errors from the server
-                System.err.println("Error from sever: " + t.getMessage());
+                System.err.println("Error from server: " + t.getMessage());
             }
 
             @Override
             public void onCompleted() {
-                // handle completion of sever streaming
-                System.out.println("Server streaming completed");
+                // print completion message when the response is completed
+                System.out.println("Server streaming responses completed.");
             }
         };
 
@@ -56,20 +56,20 @@ public class MobilePhone {
 
     }
 
-    //Unary RPC
+    // Unary RPC
     public void mobilePhoneService2(String userID){
         try {
-            // create a request with a user ID
+            // create a request message with a user ID
             SmartAgricultureProto.MobilePhoneRequest request = SmartAgricultureProto.MobilePhoneRequest
                     .newBuilder().setRequestMessage(userID).build();
 
             // create a gRPC blocking stub for the unary RPC
             MobilePhoneServiceGrpc.MobilePhoneServiceBlockingStub blockingStub = MobilePhoneServiceGrpc.newBlockingStub(channel);
 
-            // send the request and receive the response
+            // send the request and receive one response
             SmartAgricultureProto.MobilePhoneResponse responseMessage = blockingStub.mobilePhoneService2(request);
             System.out.println("Mobile Phone Service 2 response from server: " + responseMessage);
-            System.out.println("Mobile Phone Service 2 request completed.");
+            System.out.println("Mobile Phone Service 2 response completed."); // once received one response message, the response from the server is completed.
         } catch (Exception e){
             // log the exception
             System.err.println("An error occurred in Mobile Phone Service 2: " + e.getMessage());
@@ -84,7 +84,7 @@ public class MobilePhone {
 
         // invoke the unary RPC and the server streaming RPC
         mobilePhone.mobilePhoneService2("A001");
-        mobilePhone.mobilePhoneService1("Request for server update.");
+        mobilePhone.mobilePhoneService1("Request for Soil Sensor and Irrigation System update.");
 
         // read input from the user to quit
         Scanner scanner = new Scanner(System.in);

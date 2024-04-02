@@ -32,7 +32,7 @@ public class IrrigationSystem {
                     = new StreamObserver<SmartAgricultureProto.IrrigationSystemResponse>() {
                 @Override
                 public void onNext(SmartAgricultureProto.IrrigationSystemResponse irrigationSystemResponse) {
-                    // handle each response from the server
+                    // print the response from the server
                     System.out.println("Received response from server: " + irrigationSystemResponse.getInstruction());
                 }
 
@@ -44,14 +44,15 @@ public class IrrigationSystem {
 
                 @Override
                 public void onCompleted() {
-                    // handle completion of sever streaming
-                    System.out.println("Server streaming completed");
+                    // print completion message when the response is completed
+                    System.out.println("Server streaming responses completed.");
                 }
             };
 
             // create a request observer for Irrigation System streaming
             StreamObserver<SmartAgricultureProto.IrrigationSystemRequest> requestStreamObserver = stub.irrigationSystem(responseStreamObserver);
 
+            // create three request messages and send to the server separately
             for (int i = 0; i < 3; i++) {
 
                 String soilMoistureMessage = "The Moisture Level: ";
@@ -68,16 +69,15 @@ public class IrrigationSystem {
                     flowRateMessage += "Very Low Flow ";
                 }
 
-
+                // create the request object with the request message
                 SmartAgricultureProto.IrrigationSystemRequest.Builder builder = SmartAgricultureProto.IrrigationSystemRequest.newBuilder();
                 builder.setFlowRate(flowRateMessage);
                 builder.setSoilMoisture(soilMoistureMessage);
                 SmartAgricultureProto.IrrigationSystemRequest irrigationSystemRequest = builder.build();
 
-                // send each request to the server with 2 second apart
+                // send each request to the server with 2 seconds apart
                 requestStreamObserver.onNext(irrigationSystemRequest);
                 Thread.sleep(2000);
-
             }
 
             requestStreamObserver.onCompleted();
@@ -105,7 +105,6 @@ public class IrrigationSystem {
                 break;
             }
         }
-
     }
 
     public void shutdown (){
