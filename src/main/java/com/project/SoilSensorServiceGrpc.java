@@ -6,7 +6,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.62.2)",
-    comments = "Source: smartAgriculture.proto")
+    comments = "Source: soilSensor.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class SoilSensorServiceGrpc {
 
@@ -15,29 +15,29 @@ public final class SoilSensorServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "SoilSensorService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.project.SmartAgricultureProto.SoilSensorRequest,
-      com.project.SmartAgricultureProto.SoilSensorResponse> getSoilSensorMethod;
+  private static volatile io.grpc.MethodDescriptor<com.project.SoilSensorProto.SoilSensorRequest,
+      com.project.SoilSensorProto.SoilSensorResponse> getSoilSensorMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "soilSensor",
-      requestType = com.project.SmartAgricultureProto.SoilSensorRequest.class,
-      responseType = com.project.SmartAgricultureProto.SoilSensorResponse.class,
+      requestType = com.project.SoilSensorProto.SoilSensorRequest.class,
+      responseType = com.project.SoilSensorProto.SoilSensorResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<com.project.SmartAgricultureProto.SoilSensorRequest,
-      com.project.SmartAgricultureProto.SoilSensorResponse> getSoilSensorMethod() {
-    io.grpc.MethodDescriptor<com.project.SmartAgricultureProto.SoilSensorRequest, com.project.SmartAgricultureProto.SoilSensorResponse> getSoilSensorMethod;
+  public static io.grpc.MethodDescriptor<com.project.SoilSensorProto.SoilSensorRequest,
+      com.project.SoilSensorProto.SoilSensorResponse> getSoilSensorMethod() {
+    io.grpc.MethodDescriptor<com.project.SoilSensorProto.SoilSensorRequest, com.project.SoilSensorProto.SoilSensorResponse> getSoilSensorMethod;
     if ((getSoilSensorMethod = SoilSensorServiceGrpc.getSoilSensorMethod) == null) {
       synchronized (SoilSensorServiceGrpc.class) {
         if ((getSoilSensorMethod = SoilSensorServiceGrpc.getSoilSensorMethod) == null) {
           SoilSensorServiceGrpc.getSoilSensorMethod = getSoilSensorMethod =
-              io.grpc.MethodDescriptor.<com.project.SmartAgricultureProto.SoilSensorRequest, com.project.SmartAgricultureProto.SoilSensorResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.project.SoilSensorProto.SoilSensorRequest, com.project.SoilSensorProto.SoilSensorResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "soilSensor"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.SmartAgricultureProto.SoilSensorRequest.getDefaultInstance()))
+                  com.project.SoilSensorProto.SoilSensorRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.SmartAgricultureProto.SoilSensorResponse.getDefaultInstance()))
+                  com.project.SoilSensorProto.SoilSensorResponse.getDefaultInstance()))
               .setSchemaDescriptor(new SoilSensorServiceMethodDescriptorSupplier("soilSensor"))
               .build();
         }
@@ -99,8 +99,8 @@ public final class SoilSensorServiceGrpc {
      * Client streaming RPC
      * </pre>
      */
-    default io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.SoilSensorRequest> soilSensor(
-        io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.SoilSensorResponse> responseObserver) {
+    default io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorRequest> soilSensor(
+        io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSoilSensorMethod(), responseObserver);
     }
   }
@@ -137,8 +137,8 @@ public final class SoilSensorServiceGrpc {
      * Client streaming RPC
      * </pre>
      */
-    public io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.SoilSensorRequest> soilSensor(
-        io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.SoilSensorResponse> responseObserver) {
+    public io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorRequest> soilSensor(
+        io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getSoilSensorMethod(), getCallOptions()), responseObserver);
     }
@@ -209,7 +209,7 @@ public final class SoilSensorServiceGrpc {
       switch (methodId) {
         case METHODID_SOIL_SENSOR:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.soilSensor(
-              (io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.SoilSensorResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -222,8 +222,8 @@ public final class SoilSensorServiceGrpc {
           getSoilSensorMethod(),
           io.grpc.stub.ServerCalls.asyncClientStreamingCall(
             new MethodHandlers<
-              com.project.SmartAgricultureProto.SoilSensorRequest,
-              com.project.SmartAgricultureProto.SoilSensorResponse>(
+              com.project.SoilSensorProto.SoilSensorRequest,
+              com.project.SoilSensorProto.SoilSensorResponse>(
                 service, METHODID_SOIL_SENSOR)))
         .build();
   }
@@ -234,7 +234,7 @@ public final class SoilSensorServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.project.SmartAgricultureProto.getDescriptor();
+      return com.project.SoilSensorProto.getDescriptor();
     }
 
     @java.lang.Override

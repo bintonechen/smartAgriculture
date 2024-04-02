@@ -1,0 +1,18 @@
+syntax ="proto3";
+
+option java_multiple_files = false;
+option java_package = "com.project";
+option java_outer_classname = "SoilSensorProto";
+
+service SoilSensorService{
+  // Client streaming RPC
+  rpc soilSensor(stream SoilSensorRequest) returns (SoilSensorResponse){}
+}
+
+message SoilSensorRequest{
+  string soilInfo = 1; // messages about temperature, nutrition, and pHLevel
+}
+
+message SoilSensorResponse{
+  string serverMessage = 1; // receive confirmation
+}

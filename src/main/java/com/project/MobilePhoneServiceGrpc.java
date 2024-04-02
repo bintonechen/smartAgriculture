@@ -6,7 +6,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.62.2)",
-    comments = "Source: smartAgriculture.proto")
+    comments = "Source: mobilePhone.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class MobilePhoneServiceGrpc {
 
@@ -15,29 +15,29 @@ public final class MobilePhoneServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "MobilePhoneService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.project.SmartAgricultureProto.MobilePhoneRequest,
-      com.project.SmartAgricultureProto.MobilePhoneResponse> getMobilePhoneService1Method;
+  private static volatile io.grpc.MethodDescriptor<com.project.MobilePhoneProto.MobilePhoneRequest,
+      com.project.MobilePhoneProto.MobilePhoneResponse> getMobilePhoneService1Method;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "mobilePhoneService1",
-      requestType = com.project.SmartAgricultureProto.MobilePhoneRequest.class,
-      responseType = com.project.SmartAgricultureProto.MobilePhoneResponse.class,
+      requestType = com.project.MobilePhoneProto.MobilePhoneRequest.class,
+      responseType = com.project.MobilePhoneProto.MobilePhoneResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<com.project.SmartAgricultureProto.MobilePhoneRequest,
-      com.project.SmartAgricultureProto.MobilePhoneResponse> getMobilePhoneService1Method() {
-    io.grpc.MethodDescriptor<com.project.SmartAgricultureProto.MobilePhoneRequest, com.project.SmartAgricultureProto.MobilePhoneResponse> getMobilePhoneService1Method;
+  public static io.grpc.MethodDescriptor<com.project.MobilePhoneProto.MobilePhoneRequest,
+      com.project.MobilePhoneProto.MobilePhoneResponse> getMobilePhoneService1Method() {
+    io.grpc.MethodDescriptor<com.project.MobilePhoneProto.MobilePhoneRequest, com.project.MobilePhoneProto.MobilePhoneResponse> getMobilePhoneService1Method;
     if ((getMobilePhoneService1Method = MobilePhoneServiceGrpc.getMobilePhoneService1Method) == null) {
       synchronized (MobilePhoneServiceGrpc.class) {
         if ((getMobilePhoneService1Method = MobilePhoneServiceGrpc.getMobilePhoneService1Method) == null) {
           MobilePhoneServiceGrpc.getMobilePhoneService1Method = getMobilePhoneService1Method =
-              io.grpc.MethodDescriptor.<com.project.SmartAgricultureProto.MobilePhoneRequest, com.project.SmartAgricultureProto.MobilePhoneResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.project.MobilePhoneProto.MobilePhoneRequest, com.project.MobilePhoneProto.MobilePhoneResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "mobilePhoneService1"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.SmartAgricultureProto.MobilePhoneRequest.getDefaultInstance()))
+                  com.project.MobilePhoneProto.MobilePhoneRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.SmartAgricultureProto.MobilePhoneResponse.getDefaultInstance()))
+                  com.project.MobilePhoneProto.MobilePhoneResponse.getDefaultInstance()))
               .setSchemaDescriptor(new MobilePhoneServiceMethodDescriptorSupplier("mobilePhoneService1"))
               .build();
         }
@@ -46,29 +46,29 @@ public final class MobilePhoneServiceGrpc {
     return getMobilePhoneService1Method;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.project.SmartAgricultureProto.MobilePhoneRequest,
-      com.project.SmartAgricultureProto.MobilePhoneResponse> getMobilePhoneService2Method;
+  private static volatile io.grpc.MethodDescriptor<com.project.MobilePhoneProto.MobilePhoneRequest,
+      com.project.MobilePhoneProto.MobilePhoneResponse> getMobilePhoneService2Method;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "mobilePhoneService2",
-      requestType = com.project.SmartAgricultureProto.MobilePhoneRequest.class,
-      responseType = com.project.SmartAgricultureProto.MobilePhoneResponse.class,
+      requestType = com.project.MobilePhoneProto.MobilePhoneRequest.class,
+      responseType = com.project.MobilePhoneProto.MobilePhoneResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.project.SmartAgricultureProto.MobilePhoneRequest,
-      com.project.SmartAgricultureProto.MobilePhoneResponse> getMobilePhoneService2Method() {
-    io.grpc.MethodDescriptor<com.project.SmartAgricultureProto.MobilePhoneRequest, com.project.SmartAgricultureProto.MobilePhoneResponse> getMobilePhoneService2Method;
+  public static io.grpc.MethodDescriptor<com.project.MobilePhoneProto.MobilePhoneRequest,
+      com.project.MobilePhoneProto.MobilePhoneResponse> getMobilePhoneService2Method() {
+    io.grpc.MethodDescriptor<com.project.MobilePhoneProto.MobilePhoneRequest, com.project.MobilePhoneProto.MobilePhoneResponse> getMobilePhoneService2Method;
     if ((getMobilePhoneService2Method = MobilePhoneServiceGrpc.getMobilePhoneService2Method) == null) {
       synchronized (MobilePhoneServiceGrpc.class) {
         if ((getMobilePhoneService2Method = MobilePhoneServiceGrpc.getMobilePhoneService2Method) == null) {
           MobilePhoneServiceGrpc.getMobilePhoneService2Method = getMobilePhoneService2Method =
-              io.grpc.MethodDescriptor.<com.project.SmartAgricultureProto.MobilePhoneRequest, com.project.SmartAgricultureProto.MobilePhoneResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.project.MobilePhoneProto.MobilePhoneRequest, com.project.MobilePhoneProto.MobilePhoneResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "mobilePhoneService2"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.SmartAgricultureProto.MobilePhoneRequest.getDefaultInstance()))
+                  com.project.MobilePhoneProto.MobilePhoneRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.SmartAgricultureProto.MobilePhoneResponse.getDefaultInstance()))
+                  com.project.MobilePhoneProto.MobilePhoneResponse.getDefaultInstance()))
               .setSchemaDescriptor(new MobilePhoneServiceMethodDescriptorSupplier("mobilePhoneService2"))
               .build();
         }
@@ -127,21 +127,21 @@ public final class MobilePhoneServiceGrpc {
 
     /**
      * <pre>
-     *Server streaming RPC
+     * Server streaming RPC
      * </pre>
      */
-    default void mobilePhoneService1(com.project.SmartAgricultureProto.MobilePhoneRequest request,
-        io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.MobilePhoneResponse> responseObserver) {
+    default void mobilePhoneService1(com.project.MobilePhoneProto.MobilePhoneRequest request,
+        io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.MobilePhoneResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getMobilePhoneService1Method(), responseObserver);
     }
 
     /**
      * <pre>
-     *Unary RPC
+     * Unary RPC
      * </pre>
      */
-    default void mobilePhoneService2(com.project.SmartAgricultureProto.MobilePhoneRequest request,
-        io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.MobilePhoneResponse> responseObserver) {
+    default void mobilePhoneService2(com.project.MobilePhoneProto.MobilePhoneRequest request,
+        io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.MobilePhoneResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getMobilePhoneService2Method(), responseObserver);
     }
   }
@@ -175,22 +175,22 @@ public final class MobilePhoneServiceGrpc {
 
     /**
      * <pre>
-     *Server streaming RPC
+     * Server streaming RPC
      * </pre>
      */
-    public void mobilePhoneService1(com.project.SmartAgricultureProto.MobilePhoneRequest request,
-        io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.MobilePhoneResponse> responseObserver) {
+    public void mobilePhoneService1(com.project.MobilePhoneProto.MobilePhoneRequest request,
+        io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.MobilePhoneResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getMobilePhoneService1Method(), getCallOptions()), request, responseObserver);
     }
 
     /**
      * <pre>
-     *Unary RPC
+     * Unary RPC
      * </pre>
      */
-    public void mobilePhoneService2(com.project.SmartAgricultureProto.MobilePhoneRequest request,
-        io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.MobilePhoneResponse> responseObserver) {
+    public void mobilePhoneService2(com.project.MobilePhoneProto.MobilePhoneRequest request,
+        io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.MobilePhoneResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getMobilePhoneService2Method(), getCallOptions()), request, responseObserver);
     }
@@ -214,21 +214,21 @@ public final class MobilePhoneServiceGrpc {
 
     /**
      * <pre>
-     *Server streaming RPC
+     * Server streaming RPC
      * </pre>
      */
-    public java.util.Iterator<com.project.SmartAgricultureProto.MobilePhoneResponse> mobilePhoneService1(
-        com.project.SmartAgricultureProto.MobilePhoneRequest request) {
+    public java.util.Iterator<com.project.MobilePhoneProto.MobilePhoneResponse> mobilePhoneService1(
+        com.project.MobilePhoneProto.MobilePhoneRequest request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getMobilePhoneService1Method(), getCallOptions(), request);
     }
 
     /**
      * <pre>
-     *Unary RPC
+     * Unary RPC
      * </pre>
      */
-    public com.project.SmartAgricultureProto.MobilePhoneResponse mobilePhoneService2(com.project.SmartAgricultureProto.MobilePhoneRequest request) {
+    public com.project.MobilePhoneProto.MobilePhoneResponse mobilePhoneService2(com.project.MobilePhoneProto.MobilePhoneRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getMobilePhoneService2Method(), getCallOptions(), request);
     }
@@ -252,11 +252,11 @@ public final class MobilePhoneServiceGrpc {
 
     /**
      * <pre>
-     *Unary RPC
+     * Unary RPC
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.project.SmartAgricultureProto.MobilePhoneResponse> mobilePhoneService2(
-        com.project.SmartAgricultureProto.MobilePhoneRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.project.MobilePhoneProto.MobilePhoneResponse> mobilePhoneService2(
+        com.project.MobilePhoneProto.MobilePhoneRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getMobilePhoneService2Method(), getCallOptions()), request);
     }
@@ -283,12 +283,12 @@ public final class MobilePhoneServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_MOBILE_PHONE_SERVICE1:
-          serviceImpl.mobilePhoneService1((com.project.SmartAgricultureProto.MobilePhoneRequest) request,
-              (io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.MobilePhoneResponse>) responseObserver);
+          serviceImpl.mobilePhoneService1((com.project.MobilePhoneProto.MobilePhoneRequest) request,
+              (io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.MobilePhoneResponse>) responseObserver);
           break;
         case METHODID_MOBILE_PHONE_SERVICE2:
-          serviceImpl.mobilePhoneService2((com.project.SmartAgricultureProto.MobilePhoneRequest) request,
-              (io.grpc.stub.StreamObserver<com.project.SmartAgricultureProto.MobilePhoneResponse>) responseObserver);
+          serviceImpl.mobilePhoneService2((com.project.MobilePhoneProto.MobilePhoneRequest) request,
+              (io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.MobilePhoneResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -312,15 +312,15 @@ public final class MobilePhoneServiceGrpc {
           getMobilePhoneService1Method(),
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
-              com.project.SmartAgricultureProto.MobilePhoneRequest,
-              com.project.SmartAgricultureProto.MobilePhoneResponse>(
+              com.project.MobilePhoneProto.MobilePhoneRequest,
+              com.project.MobilePhoneProto.MobilePhoneResponse>(
                 service, METHODID_MOBILE_PHONE_SERVICE1)))
         .addMethod(
           getMobilePhoneService2Method(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.project.SmartAgricultureProto.MobilePhoneRequest,
-              com.project.SmartAgricultureProto.MobilePhoneResponse>(
+              com.project.MobilePhoneProto.MobilePhoneRequest,
+              com.project.MobilePhoneProto.MobilePhoneResponse>(
                 service, METHODID_MOBILE_PHONE_SERVICE2)))
         .build();
   }
@@ -331,7 +331,7 @@ public final class MobilePhoneServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.project.SmartAgricultureProto.getDescriptor();
+      return com.project.MobilePhoneProto.getDescriptor();
     }
 
     @java.lang.Override

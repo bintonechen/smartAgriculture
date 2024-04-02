@@ -1,10 +1,9 @@
 import com.project.MobilePhoneServiceGrpc;
-import com.project.SmartAgricultureProto;
+import com.project.MobilePhoneProto;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -23,17 +22,17 @@ public class MobilePhone {
     public void mobilePhoneService1(String requestMessage){
 
         // create a request message for Soil Sensor and Irrigation System update
-        SmartAgricultureProto.MobilePhoneRequest request = SmartAgricultureProto.MobilePhoneRequest
+        MobilePhoneProto.MobilePhoneRequest request = MobilePhoneProto.MobilePhoneRequest
                 .newBuilder().setRequestMessage(requestMessage).build();
 
         // create a gRPC stub for the server streaming RPC
         MobilePhoneServiceGrpc.MobilePhoneServiceStub stub = MobilePhoneServiceGrpc.newStub(channel);
 
         // create a stream observer to handle responses from the server
-        StreamObserver<SmartAgricultureProto.MobilePhoneResponse> responseStreamObserver
-                = new StreamObserver<SmartAgricultureProto.MobilePhoneResponse>() {
+        StreamObserver<MobilePhoneProto.MobilePhoneResponse> responseStreamObserver
+                = new StreamObserver<MobilePhoneProto.MobilePhoneResponse>() {
             @Override
-            public void onNext(SmartAgricultureProto.MobilePhoneResponse mobilePhoneResponse) {
+            public void onNext(MobilePhoneProto.MobilePhoneResponse mobilePhoneResponse) {
                 // print each response from the server
                 System.out.println("Received response from server: " + mobilePhoneResponse.getResponseMessage());
             }
@@ -60,14 +59,14 @@ public class MobilePhone {
     public void mobilePhoneService2(String userID){
         try {
             // create a request message with a user ID
-            SmartAgricultureProto.MobilePhoneRequest request = SmartAgricultureProto.MobilePhoneRequest
+            MobilePhoneProto.MobilePhoneRequest request = MobilePhoneProto.MobilePhoneRequest
                     .newBuilder().setRequestMessage(userID).build();
 
             // create a gRPC blocking stub for the unary RPC
             MobilePhoneServiceGrpc.MobilePhoneServiceBlockingStub blockingStub = MobilePhoneServiceGrpc.newBlockingStub(channel);
 
             // send the request and receive one response
-            SmartAgricultureProto.MobilePhoneResponse responseMessage = blockingStub.mobilePhoneService2(request);
+            MobilePhoneProto.MobilePhoneResponse responseMessage = blockingStub.mobilePhoneService2(request);
             System.out.println("Mobile Phone Service 2 response from server: " + responseMessage);
             System.out.println("Mobile Phone Service 2 response completed."); // once received one response message, the response from the server is completed.
         } catch (Exception e){

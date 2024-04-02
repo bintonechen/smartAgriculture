@@ -1,11 +1,9 @@
 import com.project.IrrigationSystemServiceGrpc;
-import com.project.MobilePhoneServiceGrpc;
-import com.project.SmartAgricultureProto;
+import com.project.IrrigationSystemProto;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -28,10 +26,10 @@ public class IrrigationSystem {
             IrrigationSystemServiceGrpc.IrrigationSystemServiceStub stub = IrrigationSystemServiceGrpc.newStub(channel);
 
             // create a stream observer to handle responses from the server
-            StreamObserver<SmartAgricultureProto.IrrigationSystemResponse> responseStreamObserver
-                    = new StreamObserver<SmartAgricultureProto.IrrigationSystemResponse>() {
+            StreamObserver<IrrigationSystemProto.IrrigationSystemResponse> responseStreamObserver
+                    = new StreamObserver<IrrigationSystemProto.IrrigationSystemResponse>() {
                 @Override
-                public void onNext(SmartAgricultureProto.IrrigationSystemResponse irrigationSystemResponse) {
+                public void onNext(IrrigationSystemProto.IrrigationSystemResponse irrigationSystemResponse) {
                     // print the response from the server
                     System.out.println("Received response from server: " + irrigationSystemResponse.getInstruction());
                 }
@@ -50,7 +48,7 @@ public class IrrigationSystem {
             };
 
             // create a request observer for Irrigation System streaming
-            StreamObserver<SmartAgricultureProto.IrrigationSystemRequest> requestStreamObserver = stub.irrigationSystem(responseStreamObserver);
+            StreamObserver<IrrigationSystemProto.IrrigationSystemRequest> requestStreamObserver = stub.irrigationSystem(responseStreamObserver);
 
             // create three request messages and send to the server separately
             for (int i = 0; i < 3; i++) {
@@ -70,10 +68,10 @@ public class IrrigationSystem {
                 }
 
                 // create the request object with the request message
-                SmartAgricultureProto.IrrigationSystemRequest.Builder builder = SmartAgricultureProto.IrrigationSystemRequest.newBuilder();
+                IrrigationSystemProto.IrrigationSystemRequest.Builder builder = IrrigationSystemProto.IrrigationSystemRequest.newBuilder();
                 builder.setFlowRate(flowRateMessage);
                 builder.setSoilMoisture(soilMoistureMessage);
-                SmartAgricultureProto.IrrigationSystemRequest irrigationSystemRequest = builder.build();
+                IrrigationSystemProto.IrrigationSystemRequest irrigationSystemRequest = builder.build();
 
                 // send each request to the server with 2 seconds apart
                 requestStreamObserver.onNext(irrigationSystemRequest);

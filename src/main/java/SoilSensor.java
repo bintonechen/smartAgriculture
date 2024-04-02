@@ -1,5 +1,4 @@
-import com.project.MobilePhoneServiceGrpc;
-import com.project.SmartAgricultureProto;
+import com.project.SoilSensorProto;
 import com.project.SoilSensorServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -27,9 +26,9 @@ public class SoilSensor {
             SoilSensorServiceGrpc.SoilSensorServiceStub stub = SoilSensorServiceGrpc.newStub(channel);
 
             // create the StreamObserver to handle responses from the server
-            StreamObserver<SmartAgricultureProto.SoilSensorRequest> requestStreamObserver = stub.soilSensor(new StreamObserver<SmartAgricultureProto.SoilSensorResponse>() {
+            StreamObserver<SoilSensorProto.SoilSensorRequest> requestStreamObserver = stub.soilSensor(new StreamObserver<SoilSensorProto.SoilSensorResponse>() {
                 @Override
-                public void onNext(SmartAgricultureProto.SoilSensorResponse soilSensorResponse) {
+                public void onNext(SoilSensorProto.SoilSensorResponse soilSensorResponse) {
                     // print the response from the server
                     System.out.println("Server response: " + soilSensorResponse.getServerMessage());
                 }
@@ -62,9 +61,9 @@ public class SoilSensor {
                 }
 
                 // create the request object with the request message
-                SmartAgricultureProto.SoilSensorRequest.Builder builder = SmartAgricultureProto.SoilSensorRequest.newBuilder();
+                SoilSensorProto.SoilSensorRequest.Builder builder = SoilSensorProto.SoilSensorRequest.newBuilder();
                 builder.setSoilInfo(request + "at " + LocalDateTime.now());
-                SmartAgricultureProto.SoilSensorRequest soilSensorRequest = builder.build();
+                SoilSensorProto.SoilSensorRequest soilSensorRequest = builder.build();
 
                 // send each request to the server with 2 seconds apart
                 requestStreamObserver.onNext(soilSensorRequest);

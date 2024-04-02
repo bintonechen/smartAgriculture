@@ -1,0 +1,20 @@
+syntax ="proto3";
+
+option java_multiple_files = false;
+option java_package = "com.project";
+option java_outer_classname = "MobilePhoneProto";
+
+service MobilePhoneService{
+  // Server streaming RPC
+  rpc mobilePhoneService1(MobilePhoneRequest) returns (stream MobilePhoneResponse){}
+  // Unary RPC
+  rpc mobilePhoneService2(MobilePhoneRequest) returns (MobilePhoneResponse){}
+}
+
+message MobilePhoneRequest{
+  string requestMessage = 1;
+}
+
+message MobilePhoneResponse{
+  string responseMessage = 1;
+}

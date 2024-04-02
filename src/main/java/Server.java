@@ -1,7 +1,10 @@
 import com.project.IrrigationSystemServiceGrpc;
 import com.project.MobilePhoneServiceGrpc;
-import com.project.SmartAgricultureProto;
+import com.project.SoilSensorProto;
+import com.project.MobilePhoneProto;
+import com.project.IrrigationSystemProto;
 import com.project.SoilSensorServiceGrpc;
+
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
@@ -10,7 +13,6 @@ import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 public class Server {
-
     private io.grpc.Server server;
 
     // method to start the service with SoilSensorServiceImpl() service
@@ -50,7 +52,7 @@ public class Server {
         // Server streaming RPC
         // Mobile Phone send one request for info update, then receives a response from the server every 5 seconds, until press 'Q' to quit.
         @Override
-        public void mobilePhoneService1(SmartAgricultureProto.MobilePhoneRequest request, StreamObserver<SmartAgricultureProto.MobilePhoneResponse> responseObserver) {
+        public void mobilePhoneService1(MobilePhoneProto.MobilePhoneRequest request, StreamObserver<MobilePhoneProto.MobilePhoneResponse> responseObserver) {
             // receive one request message from Mobile Phone
             String requestMessage = request.getRequestMessage();
             System.out.println("Received request from the Mobile Phone: " + requestMessage);
@@ -63,7 +65,7 @@ public class Server {
                         // create a response message for the mobile phone
                         String responseMessage = "The Soil Sensor is on, and the Irrigation System is on, at current time: " + LocalDateTime.now();
                         // build the response object
-                        SmartAgricultureProto.MobilePhoneResponse response = SmartAgricultureProto.MobilePhoneResponse.newBuilder()
+                        MobilePhoneProto.MobilePhoneResponse response = MobilePhoneProto.MobilePhoneResponse.newBuilder()
                                 .setResponseMessage(responseMessage).build();
 
                         // send the response to the Mobile Phone
@@ -91,7 +93,7 @@ public class Server {
         // Unary RPC
         // Mobile Phone sends the user ID to the server, then receives one login confirmation response from the server.
         @Override
-        public void mobilePhoneService2(SmartAgricultureProto.MobilePhoneRequest request, StreamObserver<SmartAgricultureProto.MobilePhoneResponse> responseObserver) {
+        public void mobilePhoneService2(MobilePhoneProto.MobilePhoneRequest request, StreamObserver<MobilePhoneProto.MobilePhoneResponse> responseObserver) {
             // get the user ID from the request
             String userID = request.getRequestMessage();
             // log the received User ID
@@ -99,7 +101,7 @@ public class Server {
             // create a response message representing successful login
             String message = "User ID: " + userID + " has been successfully logged in.";
             // build the response object
-            SmartAgricultureProto.MobilePhoneResponse response = SmartAgricultureProto.MobilePhoneResponse.newBuilder()
+            MobilePhoneProto.MobilePhoneResponse response = MobilePhoneProto.MobilePhoneResponse.newBuilder()
                     .setResponseMessage(message).build();
 
             // send the response to the Mobile Phone
@@ -113,13 +115,13 @@ public class Server {
     public class SoilSensorServiceImpl extends SoilSensorServiceGrpc.SoilSensorServiceImplBase{
         // Client streaming RPC
         @Override
-        public StreamObserver<SmartAgricultureProto.SoilSensorRequest> soilSensor(StreamObserver<SmartAgricultureProto.SoilSensorResponse> responseObserver) {
+        public StreamObserver<SoilSensorProto.SoilSensorRequest> soilSensor(StreamObserver<SoilSensorProto.SoilSensorResponse> responseObserver) {
             // return a new StreamObserver to handle incoming requests from Soil Sensor
-            return new StreamObserver<SmartAgricultureProto.SoilSensorRequest>() {
+            return new StreamObserver<SoilSensorProto.SoilSensorRequest>() {
 
                 // print each incoming request from the Soil Sensor
                 @Override
-                public void onNext(SmartAgricultureProto.SoilSensorRequest soilSensorRequest) {
+                public void onNext(SoilSensorProto.SoilSensorRequest soilSensorRequest) {
                     System.out.println("Received Soil Sensor information: ");
                     System.out.println(soilSensorRequest.getSoilInfo() + " at " + LocalDateTime.now());
                 }
@@ -137,7 +139,7 @@ public class Server {
                     System.out.println("Soil Sensor streaming completed.");
                     try {
                         // create a response message and build a response object
-                        SmartAgricultureProto.SoilSensorResponse response = SmartAgricultureProto.SoilSensorResponse.newBuilder()
+                        SoilSensorProto.SoilSensorResponse response = SoilSensorProto.SoilSensorResponse.newBuilder()
                                 .setServerMessage("Soil Sensor information received successfully").build();
                         // Send the response back to the Soil Sensor
                         responseObserver.onNext(response);
@@ -154,12 +156,12 @@ public class Server {
     public class IrrigationSystemServiceImpl extends IrrigationSystemServiceGrpc.IrrigationSystemServiceImplBase{
         // Bidirectional streaming RPC
         @Override
-        public StreamObserver<SmartAgricultureProto.IrrigationSystemRequest> irrigationSystem(StreamObserver<SmartAgricultureProto.IrrigationSystemResponse> responseObserver) {
-            return new StreamObserver<SmartAgricultureProto.IrrigationSystemRequest>() {
+        public StreamObserver<IrrigationSystemProto.IrrigationSystemRequest> irrigationSystem(StreamObserver<IrrigationSystemProto.IrrigationSystemResponse> responseObserver) {
+            return new StreamObserver<IrrigationSystemProto.IrrigationSystemRequest>() {
 
                 // print each incoming request from the Irrigation System
                 @Override
-                public void onNext(SmartAgricultureProto.IrrigationSystemRequest irrigationSystemRequest) {
+                public void onNext(IrrigationSystemProto.IrrigationSystemRequest irrigationSystemRequest) {
                     System.out.println("Received Irrigation System request: ");
                     System.out.println(irrigationSystemRequest.getFlowRate());
                     System.out.println(irrigationSystemRequest.getSoilMoisture() + " at " + LocalDateTime.now());
@@ -179,7 +181,7 @@ public class Server {
 
                     try {
                         // create a response message and build a response object
-                        SmartAgricultureProto.IrrigationSystemResponse response = SmartAgricultureProto.IrrigationSystemResponse.newBuilder()
+                        IrrigationSystemProto.IrrigationSystemResponse response = IrrigationSystemProto.IrrigationSystemResponse.newBuilder()
                                 .setInstruction("Irrigation System streaming requests received successfully.").build();
 
                         // Send the response back to the Irrigation System
@@ -227,4 +229,6 @@ public class Server {
         irrigationSystemServer.blockUntilServerShutdown();
         mobilePhoneServer.blockUntilServerShutdown();
     }
+
+
 }

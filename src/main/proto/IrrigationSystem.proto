@@ -1,0 +1,19 @@
+syntax ="proto3";
+
+option java_multiple_files = false;
+option java_package = "com.project";
+option java_outer_classname = "IrrigationSystemProto";
+
+service IrrigationSystemService{
+  // Bidirectional streaming RPC
+  rpc irrigationSystem(stream IrrigationSystemRequest) returns (stream IrrigationSystemResponse){}
+}
+
+message IrrigationSystemRequest{
+  string soilMoisture = 1; // Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
+  string flowRate = 2; // Water flow rate: 'Low Flow', or 'High Flow'.
+}
+
+message IrrigationSystemResponse{
+  string instruction = 1;
+}
