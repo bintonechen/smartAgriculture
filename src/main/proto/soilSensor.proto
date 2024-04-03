@@ -16,3 +16,4 @@ message SoilSensorRequest{
 message SoilSensorResponse{
   string serverMessage = 1; // receive confirmation
 }
+

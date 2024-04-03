@@ -1,3 +1,5 @@
+import com.ecwid.consul.v1.ConsulClient;
+import com.ecwid.consul.v1.agent.model.NewService;
 import com.project.IrrigationSystemServiceGrpc;
 import com.project.MobilePhoneServiceGrpc;
 import com.project.SoilSensorProto;
@@ -8,29 +10,49 @@ import com.project.SoilSensorServiceGrpc;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.time.LocalDateTime;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class Server {
     private io.grpc.Server server;
 
+    // method to start the service with services
+//    public void start(int port) throws Exception {
+//        server = ServerBuilder.forPort(port).addService(new SoilSensorServiceImpl()).addService(new MobilePhoneServiceImpl())
+//                .addService(new IrrigationSystemServiceImpl()).build().start();
+//        System.out.println("Server started, listening to Soil Sensor, Irrigation System, and Mobile Phone on port " + port);
+//
+//        // Register server to Consul
+//        registerToConsul();
+//    }
+
     // method to start the service with SoilSensorServiceImpl() service
     public void startSoilSensorServer(int port) throws IOException {
         server = ServerBuilder.forPort(port).addService(new SoilSensorServiceImpl()).build().start();
         System.out.println("Server started, listening to Soil Sensor on port " + port);
+
+        registerToConsul("soil.sensor.service", port, "soilSensorServiceID");
     }
 
     // method to start the service with IrrigationSystemServiceImpl() service
     public void startIrrigationSystemServer(int port) throws IOException{
         server = ServerBuilder.forPort(port).addService(new IrrigationSystemServiceImpl()).build().start();
         System.out.println("Server started, listening to Irrigation System on port " + port);
+
+        registerToConsul("irrigation.system.service", port, "irrigationSystemID");
     }
 
     // method to start the service with MobilePhoneServiceImpl() service
     public void startMobilePhoneServer(int port) throws IOException{
         server = ServerBuilder.forPort(port).addService(new MobilePhoneServiceImpl()).build().start();
         System.out.println("Server started, listening to Mobile Phone on port " + port);
+
+        registerToConsul("mobile.phone.service", port, "mobilePhoneID");
     }
 
     // block until the server shuts down
@@ -45,6 +67,26 @@ public class Server {
         if(server !=null){
             server.shutdown().awaitTermination(30, TimeUnit.SECONDS);
         }
+    }
+
+    public void registerToConsul(String serviceName, int servicePort, String serviceID){
+        System.out.println("Registering server to Consul...");
+
+        // Create a Consul client
+        ConsulClient consulClient = new ConsulClient("localhost", 8500);
+
+        // Define service details
+        NewService newService = new NewService();
+        newService.setName(serviceName);
+        newService.setAddress("localhost");
+        newService.setPort(servicePort);
+        newService.setId(serviceID);
+
+        // Register service with Consul
+        consulClient.agentServiceRegister(newService);
+
+        // Print registration success message
+        System.out.println(serviceName + " server registered to Consul successfully");
     }
 
     // MobilePhoneService Implementation
@@ -211,16 +253,21 @@ public class Server {
         // add a shutdown hook for graceful shutdown
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             // print a message indicting the start of the shutdown process
-            System.out.println("Shutting down gRPC servers");
+            System.err.println("*** shutting down gRPC servers");
             try {
                 soilSensorServer.stopServer();
                 irrigationSystemServer.stopServer();;
                 mobilePhoneServer.stopServer();
+
+                // print a message indicating successful shutdown
+                System.err.println("*** All gRPC servers successfully shut down ***");
+
             } catch (InterruptedException e) {
                 // if an InterruptedException occurs during shutdown, interrupt the current thread
                 Thread.currentThread().interrupt();
                 e.printStackTrace(System.err);
-
+                // print an error message
+                System.err.println("*** Error occurred during shutdown: " + e.getMessage() + " ***");
             }
         }));
 
