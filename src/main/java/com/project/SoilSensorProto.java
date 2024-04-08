@@ -15,111 +15,94 @@ public final class SoilSensorProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface SoilSensorRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SoilSensorRequest)
+  public interface SoilInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SoilInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <pre>
-     * messages about temperature, nutrition, and pHLevel
-     * </pre>
-     *
-     * <code>string soilInfo = 1;</code>
-     * @return The soilInfo.
+     * <code>int32 moistureLevel = 1;</code>
+     * @return The moistureLevel.
      */
-    java.lang.String getSoilInfo();
+    int getMoistureLevel();
+
     /**
-     * <pre>
-     * messages about temperature, nutrition, and pHLevel
-     * </pre>
-     *
-     * <code>string soilInfo = 1;</code>
-     * @return The bytes for soilInfo.
+     * <code>int32 phLevel = 2;</code>
+     * @return The phLevel.
      */
-    com.google.protobuf.ByteString
-        getSoilInfoBytes();
+    int getPhLevel();
+
+    /**
+     * <code>int32 soilTemperature = 3;</code>
+     * @return The soilTemperature.
+     */
+    int getSoilTemperature();
   }
   /**
-   * Protobuf type {@code SoilSensorRequest}
+   * Protobuf type {@code SoilInfo}
    */
-  public static final class SoilSensorRequest extends
+  public static final class SoilInfo extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:SoilSensorRequest)
-      SoilSensorRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:SoilInfo)
+      SoilInfoOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use SoilSensorRequest.newBuilder() to construct.
-    private SoilSensorRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SoilInfo.newBuilder() to construct.
+    private SoilInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private SoilSensorRequest() {
-      soilInfo_ = "";
+    private SoilInfo() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new SoilSensorRequest();
+      return new SoilInfo();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.project.SoilSensorProto.internal_static_SoilSensorRequest_descriptor;
+      return com.project.SoilSensorProto.internal_static_SoilInfo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.project.SoilSensorProto.internal_static_SoilSensorRequest_fieldAccessorTable
+      return com.project.SoilSensorProto.internal_static_SoilInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.project.SoilSensorProto.SoilSensorRequest.class, com.project.SoilSensorProto.SoilSensorRequest.Builder.class);
+              com.project.SoilSensorProto.SoilInfo.class, com.project.SoilSensorProto.SoilInfo.Builder.class);
     }
 
-    public static final int SOILINFO_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object soilInfo_ = "";
+    public static final int MOISTURELEVEL_FIELD_NUMBER = 1;
+    private int moistureLevel_ = 0;
     /**
-     * <pre>
-     * messages about temperature, nutrition, and pHLevel
-     * </pre>
-     *
-     * <code>string soilInfo = 1;</code>
-     * @return The soilInfo.
+     * <code>int32 moistureLevel = 1;</code>
+     * @return The moistureLevel.
      */
     @java.lang.Override
-    public java.lang.String getSoilInfo() {
-      java.lang.Object ref = soilInfo_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        soilInfo_ = s;
-        return s;
-      }
+    public int getMoistureLevel() {
+      return moistureLevel_;
     }
+
+    public static final int PHLEVEL_FIELD_NUMBER = 2;
+    private int phLevel_ = 0;
     /**
-     * <pre>
-     * messages about temperature, nutrition, and pHLevel
-     * </pre>
-     *
-     * <code>string soilInfo = 1;</code>
-     * @return The bytes for soilInfo.
+     * <code>int32 phLevel = 2;</code>
+     * @return The phLevel.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getSoilInfoBytes() {
-      java.lang.Object ref = soilInfo_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        soilInfo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getPhLevel() {
+      return phLevel_;
+    }
+
+    public static final int SOILTEMPERATURE_FIELD_NUMBER = 3;
+    private int soilTemperature_ = 0;
+    /**
+     * <code>int32 soilTemperature = 3;</code>
+     * @return The soilTemperature.
+     */
+    @java.lang.Override
+    public int getSoilTemperature() {
+      return soilTemperature_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -136,8 +119,14 @@ public final class SoilSensorProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(soilInfo_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, soilInfo_);
+      if (moistureLevel_ != 0) {
+        output.writeInt32(1, moistureLevel_);
+      }
+      if (phLevel_ != 0) {
+        output.writeInt32(2, phLevel_);
+      }
+      if (soilTemperature_ != 0) {
+        output.writeInt32(3, soilTemperature_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -148,8 +137,17 @@ public final class SoilSensorProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(soilInfo_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, soilInfo_);
+      if (moistureLevel_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, moistureLevel_);
+      }
+      if (phLevel_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, phLevel_);
+      }
+      if (soilTemperature_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, soilTemperature_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -161,13 +159,17 @@ public final class SoilSensorProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.project.SoilSensorProto.SoilSensorRequest)) {
+      if (!(obj instanceof com.project.SoilSensorProto.SoilInfo)) {
         return super.equals(obj);
       }
-      com.project.SoilSensorProto.SoilSensorRequest other = (com.project.SoilSensorProto.SoilSensorRequest) obj;
+      com.project.SoilSensorProto.SoilInfo other = (com.project.SoilSensorProto.SoilInfo) obj;
 
-      if (!getSoilInfo()
-          .equals(other.getSoilInfo())) return false;
+      if (getMoistureLevel()
+          != other.getMoistureLevel()) return false;
+      if (getPhLevel()
+          != other.getPhLevel()) return false;
+      if (getSoilTemperature()
+          != other.getSoilTemperature()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -179,51 +181,55 @@ public final class SoilSensorProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SOILINFO_FIELD_NUMBER;
-      hash = (53 * hash) + getSoilInfo().hashCode();
+      hash = (37 * hash) + MOISTURELEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getMoistureLevel();
+      hash = (37 * hash) + PHLEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getPhLevel();
+      hash = (37 * hash) + SOILTEMPERATURE_FIELD_NUMBER;
+      hash = (53 * hash) + getSoilTemperature();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(byte[] data)
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(java.io.InputStream input)
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -231,26 +237,26 @@ public final class SoilSensorProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.project.SoilSensorProto.SoilSensorRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.project.SoilSensorProto.SoilInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.project.SoilSensorProto.SoilSensorRequest parseDelimitedFrom(
+    public static com.project.SoilSensorProto.SoilInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.SoilSensorProto.SoilSensorRequest parseFrom(
+    public static com.project.SoilSensorProto.SoilInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -263,7 +269,7 @@ public final class SoilSensorProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.project.SoilSensorProto.SoilSensorRequest prototype) {
+    public static Builder newBuilder(com.project.SoilSensorProto.SoilInfo prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -279,26 +285,26 @@ public final class SoilSensorProto {
       return builder;
     }
     /**
-     * Protobuf type {@code SoilSensorRequest}
+     * Protobuf type {@code SoilInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:SoilSensorRequest)
-        com.project.SoilSensorProto.SoilSensorRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:SoilInfo)
+        com.project.SoilSensorProto.SoilInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.project.SoilSensorProto.internal_static_SoilSensorRequest_descriptor;
+        return com.project.SoilSensorProto.internal_static_SoilInfo_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.project.SoilSensorProto.internal_static_SoilSensorRequest_fieldAccessorTable
+        return com.project.SoilSensorProto.internal_static_SoilInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.project.SoilSensorProto.SoilSensorRequest.class, com.project.SoilSensorProto.SoilSensorRequest.Builder.class);
+                com.project.SoilSensorProto.SoilInfo.class, com.project.SoilSensorProto.SoilInfo.Builder.class);
       }
 
-      // Construct using com.project.SoilSensorProto.SoilSensorRequest.newBuilder()
+      // Construct using com.project.SoilSensorProto.SoilInfo.newBuilder()
       private Builder() {
 
       }
@@ -312,24 +318,26 @@ public final class SoilSensorProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        soilInfo_ = "";
+        moistureLevel_ = 0;
+        phLevel_ = 0;
+        soilTemperature_ = 0;
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.project.SoilSensorProto.internal_static_SoilSensorRequest_descriptor;
+        return com.project.SoilSensorProto.internal_static_SoilInfo_descriptor;
       }
 
       @java.lang.Override
-      public com.project.SoilSensorProto.SoilSensorRequest getDefaultInstanceForType() {
-        return com.project.SoilSensorProto.SoilSensorRequest.getDefaultInstance();
+      public com.project.SoilSensorProto.SoilInfo getDefaultInstanceForType() {
+        return com.project.SoilSensorProto.SoilInfo.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.project.SoilSensorProto.SoilSensorRequest build() {
-        com.project.SoilSensorProto.SoilSensorRequest result = buildPartial();
+      public com.project.SoilSensorProto.SoilInfo build() {
+        com.project.SoilSensorProto.SoilInfo result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -337,17 +345,23 @@ public final class SoilSensorProto {
       }
 
       @java.lang.Override
-      public com.project.SoilSensorProto.SoilSensorRequest buildPartial() {
-        com.project.SoilSensorProto.SoilSensorRequest result = new com.project.SoilSensorProto.SoilSensorRequest(this);
+      public com.project.SoilSensorProto.SoilInfo buildPartial() {
+        com.project.SoilSensorProto.SoilInfo result = new com.project.SoilSensorProto.SoilInfo(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.project.SoilSensorProto.SoilSensorRequest result) {
+      private void buildPartial0(com.project.SoilSensorProto.SoilInfo result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.soilInfo_ = soilInfo_;
+          result.moistureLevel_ = moistureLevel_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.phLevel_ = phLevel_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.soilTemperature_ = soilTemperature_;
         }
       }
 
@@ -385,20 +399,24 @@ public final class SoilSensorProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.project.SoilSensorProto.SoilSensorRequest) {
-          return mergeFrom((com.project.SoilSensorProto.SoilSensorRequest)other);
+        if (other instanceof com.project.SoilSensorProto.SoilInfo) {
+          return mergeFrom((com.project.SoilSensorProto.SoilInfo)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.project.SoilSensorProto.SoilSensorRequest other) {
-        if (other == com.project.SoilSensorProto.SoilSensorRequest.getDefaultInstance()) return this;
-        if (!other.getSoilInfo().isEmpty()) {
-          soilInfo_ = other.soilInfo_;
-          bitField0_ |= 0x00000001;
-          onChanged();
+      public Builder mergeFrom(com.project.SoilSensorProto.SoilInfo other) {
+        if (other == com.project.SoilSensorProto.SoilInfo.getDefaultInstance()) return this;
+        if (other.getMoistureLevel() != 0) {
+          setMoistureLevel(other.getMoistureLevel());
+        }
+        if (other.getPhLevel() != 0) {
+          setPhLevel(other.getPhLevel());
+        }
+        if (other.getSoilTemperature() != 0) {
+          setSoilTemperature(other.getSoilTemperature());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -426,11 +444,21 @@ public final class SoilSensorProto {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                soilInfo_ = input.readStringRequireUtf8();
+              case 8: {
+                moistureLevel_ = input.readInt32();
                 bitField0_ |= 0x00000001;
                 break;
-              } // case 10
+              } // case 8
+              case 16: {
+                phLevel_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                soilTemperature_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -448,94 +476,98 @@ public final class SoilSensorProto {
       }
       private int bitField0_;
 
-      private java.lang.Object soilInfo_ = "";
+      private int moistureLevel_ ;
       /**
-       * <pre>
-       * messages about temperature, nutrition, and pHLevel
-       * </pre>
-       *
-       * <code>string soilInfo = 1;</code>
-       * @return The soilInfo.
+       * <code>int32 moistureLevel = 1;</code>
+       * @return The moistureLevel.
        */
-      public java.lang.String getSoilInfo() {
-        java.lang.Object ref = soilInfo_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          soilInfo_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public int getMoistureLevel() {
+        return moistureLevel_;
       }
       /**
-       * <pre>
-       * messages about temperature, nutrition, and pHLevel
-       * </pre>
-       *
-       * <code>string soilInfo = 1;</code>
-       * @return The bytes for soilInfo.
-       */
-      public com.google.protobuf.ByteString
-          getSoilInfoBytes() {
-        java.lang.Object ref = soilInfo_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          soilInfo_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * messages about temperature, nutrition, and pHLevel
-       * </pre>
-       *
-       * <code>string soilInfo = 1;</code>
-       * @param value The soilInfo to set.
+       * <code>int32 moistureLevel = 1;</code>
+       * @param value The moistureLevel to set.
        * @return This builder for chaining.
        */
-      public Builder setSoilInfo(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        soilInfo_ = value;
+      public Builder setMoistureLevel(int value) {
+
+        moistureLevel_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <pre>
-       * messages about temperature, nutrition, and pHLevel
-       * </pre>
-       *
-       * <code>string soilInfo = 1;</code>
+       * <code>int32 moistureLevel = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSoilInfo() {
-        soilInfo_ = getDefaultInstance().getSoilInfo();
+      public Builder clearMoistureLevel() {
         bitField0_ = (bitField0_ & ~0x00000001);
+        moistureLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int phLevel_ ;
+      /**
+       * <code>int32 phLevel = 2;</code>
+       * @return The phLevel.
+       */
+      @java.lang.Override
+      public int getPhLevel() {
+        return phLevel_;
+      }
+      /**
+       * <code>int32 phLevel = 2;</code>
+       * @param value The phLevel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPhLevel(int value) {
+
+        phLevel_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <pre>
-       * messages about temperature, nutrition, and pHLevel
-       * </pre>
-       *
-       * <code>string soilInfo = 1;</code>
-       * @param value The bytes for soilInfo to set.
+       * <code>int32 phLevel = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder setSoilInfoBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        soilInfo_ = value;
-        bitField0_ |= 0x00000001;
+      public Builder clearPhLevel() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        phLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int soilTemperature_ ;
+      /**
+       * <code>int32 soilTemperature = 3;</code>
+       * @return The soilTemperature.
+       */
+      @java.lang.Override
+      public int getSoilTemperature() {
+        return soilTemperature_;
+      }
+      /**
+       * <code>int32 soilTemperature = 3;</code>
+       * @param value The soilTemperature to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSoilTemperature(int value) {
+
+        soilTemperature_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 soilTemperature = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSoilTemperature() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        soilTemperature_ = 0;
         onChanged();
         return this;
       }
@@ -552,23 +584,23 @@ public final class SoilSensorProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:SoilSensorRequest)
+      // @@protoc_insertion_point(builder_scope:SoilInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:SoilSensorRequest)
-    private static final com.project.SoilSensorProto.SoilSensorRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:SoilInfo)
+    private static final com.project.SoilSensorProto.SoilInfo DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.project.SoilSensorProto.SoilSensorRequest();
+      DEFAULT_INSTANCE = new com.project.SoilSensorProto.SoilInfo();
     }
 
-    public static com.project.SoilSensorProto.SoilSensorRequest getDefaultInstance() {
+    public static com.project.SoilSensorProto.SoilInfo getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SoilSensorRequest>
-        PARSER = new com.google.protobuf.AbstractParser<SoilSensorRequest>() {
+    private static final com.google.protobuf.Parser<SoilInfo>
+        PARSER = new com.google.protobuf.AbstractParser<SoilInfo>() {
       @java.lang.Override
-      public SoilSensorRequest parsePartialFrom(
+      public SoilInfo parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -587,127 +619,135 @@ public final class SoilSensorProto {
       }
     };
 
-    public static com.google.protobuf.Parser<SoilSensorRequest> parser() {
+    public static com.google.protobuf.Parser<SoilInfo> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SoilSensorRequest> getParserForType() {
+    public com.google.protobuf.Parser<SoilInfo> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.project.SoilSensorProto.SoilSensorRequest getDefaultInstanceForType() {
+    public com.project.SoilSensorProto.SoilInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface SoilSensorResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SoilSensorResponse)
+  public interface SoilInfoSummaryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SoilInfoSummary)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
-     * receive confirmation
+     * the number of SoilInfo messages received
      * </pre>
      *
-     * <code>string serverMessage = 1;</code>
-     * @return The serverMessage.
+     * <code>int32 requestCount = 1;</code>
+     * @return The requestCount.
      */
-    java.lang.String getServerMessage();
+    int getRequestCount();
+
     /**
-     * <pre>
-     * receive confirmation
-     * </pre>
-     *
-     * <code>string serverMessage = 1;</code>
-     * @return The bytes for serverMessage.
+     * <code>double averageMoistureLevel = 2;</code>
+     * @return The averageMoistureLevel.
      */
-    com.google.protobuf.ByteString
-        getServerMessageBytes();
+    double getAverageMoistureLevel();
+
+    /**
+     * <code>double averagePHLevel = 3;</code>
+     * @return The averagePHLevel.
+     */
+    double getAveragePHLevel();
+
+    /**
+     * <code>double averageSoilTemperature = 4;</code>
+     * @return The averageSoilTemperature.
+     */
+    double getAverageSoilTemperature();
   }
   /**
-   * Protobuf type {@code SoilSensorResponse}
+   * Protobuf type {@code SoilInfoSummary}
    */
-  public static final class SoilSensorResponse extends
+  public static final class SoilInfoSummary extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:SoilSensorResponse)
-      SoilSensorResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:SoilInfoSummary)
+      SoilInfoSummaryOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use SoilSensorResponse.newBuilder() to construct.
-    private SoilSensorResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SoilInfoSummary.newBuilder() to construct.
+    private SoilInfoSummary(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private SoilSensorResponse() {
-      serverMessage_ = "";
+    private SoilInfoSummary() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new SoilSensorResponse();
+      return new SoilInfoSummary();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.project.SoilSensorProto.internal_static_SoilSensorResponse_descriptor;
+      return com.project.SoilSensorProto.internal_static_SoilInfoSummary_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.project.SoilSensorProto.internal_static_SoilSensorResponse_fieldAccessorTable
+      return com.project.SoilSensorProto.internal_static_SoilInfoSummary_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.project.SoilSensorProto.SoilSensorResponse.class, com.project.SoilSensorProto.SoilSensorResponse.Builder.class);
+              com.project.SoilSensorProto.SoilInfoSummary.class, com.project.SoilSensorProto.SoilInfoSummary.Builder.class);
     }
 
-    public static final int SERVERMESSAGE_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object serverMessage_ = "";
+    public static final int REQUESTCOUNT_FIELD_NUMBER = 1;
+    private int requestCount_ = 0;
     /**
      * <pre>
-     * receive confirmation
+     * the number of SoilInfo messages received
      * </pre>
      *
-     * <code>string serverMessage = 1;</code>
-     * @return The serverMessage.
+     * <code>int32 requestCount = 1;</code>
+     * @return The requestCount.
      */
     @java.lang.Override
-    public java.lang.String getServerMessage() {
-      java.lang.Object ref = serverMessage_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        serverMessage_ = s;
-        return s;
-      }
+    public int getRequestCount() {
+      return requestCount_;
     }
+
+    public static final int AVERAGEMOISTURELEVEL_FIELD_NUMBER = 2;
+    private double averageMoistureLevel_ = 0D;
     /**
-     * <pre>
-     * receive confirmation
-     * </pre>
-     *
-     * <code>string serverMessage = 1;</code>
-     * @return The bytes for serverMessage.
+     * <code>double averageMoistureLevel = 2;</code>
+     * @return The averageMoistureLevel.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getServerMessageBytes() {
-      java.lang.Object ref = serverMessage_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        serverMessage_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public double getAverageMoistureLevel() {
+      return averageMoistureLevel_;
+    }
+
+    public static final int AVERAGEPHLEVEL_FIELD_NUMBER = 3;
+    private double averagePHLevel_ = 0D;
+    /**
+     * <code>double averagePHLevel = 3;</code>
+     * @return The averagePHLevel.
+     */
+    @java.lang.Override
+    public double getAveragePHLevel() {
+      return averagePHLevel_;
+    }
+
+    public static final int AVERAGESOILTEMPERATURE_FIELD_NUMBER = 4;
+    private double averageSoilTemperature_ = 0D;
+    /**
+     * <code>double averageSoilTemperature = 4;</code>
+     * @return The averageSoilTemperature.
+     */
+    @java.lang.Override
+    public double getAverageSoilTemperature() {
+      return averageSoilTemperature_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -724,8 +764,17 @@ public final class SoilSensorProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serverMessage_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, serverMessage_);
+      if (requestCount_ != 0) {
+        output.writeInt32(1, requestCount_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(averageMoistureLevel_) != 0) {
+        output.writeDouble(2, averageMoistureLevel_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(averagePHLevel_) != 0) {
+        output.writeDouble(3, averagePHLevel_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(averageSoilTemperature_) != 0) {
+        output.writeDouble(4, averageSoilTemperature_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -736,8 +785,21 @@ public final class SoilSensorProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serverMessage_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, serverMessage_);
+      if (requestCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, requestCount_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(averageMoistureLevel_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, averageMoistureLevel_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(averagePHLevel_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, averagePHLevel_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(averageSoilTemperature_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, averageSoilTemperature_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -749,13 +811,22 @@ public final class SoilSensorProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.project.SoilSensorProto.SoilSensorResponse)) {
+      if (!(obj instanceof com.project.SoilSensorProto.SoilInfoSummary)) {
         return super.equals(obj);
       }
-      com.project.SoilSensorProto.SoilSensorResponse other = (com.project.SoilSensorProto.SoilSensorResponse) obj;
+      com.project.SoilSensorProto.SoilInfoSummary other = (com.project.SoilSensorProto.SoilInfoSummary) obj;
 
-      if (!getServerMessage()
-          .equals(other.getServerMessage())) return false;
+      if (getRequestCount()
+          != other.getRequestCount()) return false;
+      if (java.lang.Double.doubleToLongBits(getAverageMoistureLevel())
+          != java.lang.Double.doubleToLongBits(
+              other.getAverageMoistureLevel())) return false;
+      if (java.lang.Double.doubleToLongBits(getAveragePHLevel())
+          != java.lang.Double.doubleToLongBits(
+              other.getAveragePHLevel())) return false;
+      if (java.lang.Double.doubleToLongBits(getAverageSoilTemperature())
+          != java.lang.Double.doubleToLongBits(
+              other.getAverageSoilTemperature())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -767,51 +838,60 @@ public final class SoilSensorProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SERVERMESSAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getServerMessage().hashCode();
+      hash = (37 * hash) + REQUESTCOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getRequestCount();
+      hash = (37 * hash) + AVERAGEMOISTURELEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getAverageMoistureLevel()));
+      hash = (37 * hash) + AVERAGEPHLEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getAveragePHLevel()));
+      hash = (37 * hash) + AVERAGESOILTEMPERATURE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getAverageSoilTemperature()));
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(byte[] data)
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(java.io.InputStream input)
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -819,26 +899,26 @@ public final class SoilSensorProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.project.SoilSensorProto.SoilSensorResponse parseDelimitedFrom(java.io.InputStream input)
+    public static com.project.SoilSensorProto.SoilInfoSummary parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.project.SoilSensorProto.SoilSensorResponse parseDelimitedFrom(
+    public static com.project.SoilSensorProto.SoilInfoSummary parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.SoilSensorProto.SoilSensorResponse parseFrom(
+    public static com.project.SoilSensorProto.SoilInfoSummary parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -851,7 +931,7 @@ public final class SoilSensorProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.project.SoilSensorProto.SoilSensorResponse prototype) {
+    public static Builder newBuilder(com.project.SoilSensorProto.SoilInfoSummary prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -867,26 +947,26 @@ public final class SoilSensorProto {
       return builder;
     }
     /**
-     * Protobuf type {@code SoilSensorResponse}
+     * Protobuf type {@code SoilInfoSummary}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:SoilSensorResponse)
-        com.project.SoilSensorProto.SoilSensorResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:SoilInfoSummary)
+        com.project.SoilSensorProto.SoilInfoSummaryOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.project.SoilSensorProto.internal_static_SoilSensorResponse_descriptor;
+        return com.project.SoilSensorProto.internal_static_SoilInfoSummary_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.project.SoilSensorProto.internal_static_SoilSensorResponse_fieldAccessorTable
+        return com.project.SoilSensorProto.internal_static_SoilInfoSummary_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.project.SoilSensorProto.SoilSensorResponse.class, com.project.SoilSensorProto.SoilSensorResponse.Builder.class);
+                com.project.SoilSensorProto.SoilInfoSummary.class, com.project.SoilSensorProto.SoilInfoSummary.Builder.class);
       }
 
-      // Construct using com.project.SoilSensorProto.SoilSensorResponse.newBuilder()
+      // Construct using com.project.SoilSensorProto.SoilInfoSummary.newBuilder()
       private Builder() {
 
       }
@@ -900,24 +980,27 @@ public final class SoilSensorProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        serverMessage_ = "";
+        requestCount_ = 0;
+        averageMoistureLevel_ = 0D;
+        averagePHLevel_ = 0D;
+        averageSoilTemperature_ = 0D;
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.project.SoilSensorProto.internal_static_SoilSensorResponse_descriptor;
+        return com.project.SoilSensorProto.internal_static_SoilInfoSummary_descriptor;
       }
 
       @java.lang.Override
-      public com.project.SoilSensorProto.SoilSensorResponse getDefaultInstanceForType() {
-        return com.project.SoilSensorProto.SoilSensorResponse.getDefaultInstance();
+      public com.project.SoilSensorProto.SoilInfoSummary getDefaultInstanceForType() {
+        return com.project.SoilSensorProto.SoilInfoSummary.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.project.SoilSensorProto.SoilSensorResponse build() {
-        com.project.SoilSensorProto.SoilSensorResponse result = buildPartial();
+      public com.project.SoilSensorProto.SoilInfoSummary build() {
+        com.project.SoilSensorProto.SoilInfoSummary result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -925,17 +1008,26 @@ public final class SoilSensorProto {
       }
 
       @java.lang.Override
-      public com.project.SoilSensorProto.SoilSensorResponse buildPartial() {
-        com.project.SoilSensorProto.SoilSensorResponse result = new com.project.SoilSensorProto.SoilSensorResponse(this);
+      public com.project.SoilSensorProto.SoilInfoSummary buildPartial() {
+        com.project.SoilSensorProto.SoilInfoSummary result = new com.project.SoilSensorProto.SoilInfoSummary(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.project.SoilSensorProto.SoilSensorResponse result) {
+      private void buildPartial0(com.project.SoilSensorProto.SoilInfoSummary result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.serverMessage_ = serverMessage_;
+          result.requestCount_ = requestCount_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.averageMoistureLevel_ = averageMoistureLevel_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.averagePHLevel_ = averagePHLevel_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.averageSoilTemperature_ = averageSoilTemperature_;
         }
       }
 
@@ -973,20 +1065,27 @@ public final class SoilSensorProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.project.SoilSensorProto.SoilSensorResponse) {
-          return mergeFrom((com.project.SoilSensorProto.SoilSensorResponse)other);
+        if (other instanceof com.project.SoilSensorProto.SoilInfoSummary) {
+          return mergeFrom((com.project.SoilSensorProto.SoilInfoSummary)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.project.SoilSensorProto.SoilSensorResponse other) {
-        if (other == com.project.SoilSensorProto.SoilSensorResponse.getDefaultInstance()) return this;
-        if (!other.getServerMessage().isEmpty()) {
-          serverMessage_ = other.serverMessage_;
-          bitField0_ |= 0x00000001;
-          onChanged();
+      public Builder mergeFrom(com.project.SoilSensorProto.SoilInfoSummary other) {
+        if (other == com.project.SoilSensorProto.SoilInfoSummary.getDefaultInstance()) return this;
+        if (other.getRequestCount() != 0) {
+          setRequestCount(other.getRequestCount());
+        }
+        if (other.getAverageMoistureLevel() != 0D) {
+          setAverageMoistureLevel(other.getAverageMoistureLevel());
+        }
+        if (other.getAveragePHLevel() != 0D) {
+          setAveragePHLevel(other.getAveragePHLevel());
+        }
+        if (other.getAverageSoilTemperature() != 0D) {
+          setAverageSoilTemperature(other.getAverageSoilTemperature());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1014,11 +1113,26 @@ public final class SoilSensorProto {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                serverMessage_ = input.readStringRequireUtf8();
+              case 8: {
+                requestCount_ = input.readInt32();
                 bitField0_ |= 0x00000001;
                 break;
-              } // case 10
+              } // case 8
+              case 17: {
+                averageMoistureLevel_ = input.readDouble();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 17
+              case 25: {
+                averagePHLevel_ = input.readDouble();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 25
+              case 33: {
+                averageSoilTemperature_ = input.readDouble();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 33
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1036,94 +1150,142 @@ public final class SoilSensorProto {
       }
       private int bitField0_;
 
-      private java.lang.Object serverMessage_ = "";
+      private int requestCount_ ;
       /**
        * <pre>
-       * receive confirmation
+       * the number of SoilInfo messages received
        * </pre>
        *
-       * <code>string serverMessage = 1;</code>
-       * @return The serverMessage.
+       * <code>int32 requestCount = 1;</code>
+       * @return The requestCount.
        */
-      public java.lang.String getServerMessage() {
-        java.lang.Object ref = serverMessage_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          serverMessage_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public int getRequestCount() {
+        return requestCount_;
       }
       /**
        * <pre>
-       * receive confirmation
+       * the number of SoilInfo messages received
        * </pre>
        *
-       * <code>string serverMessage = 1;</code>
-       * @return The bytes for serverMessage.
-       */
-      public com.google.protobuf.ByteString
-          getServerMessageBytes() {
-        java.lang.Object ref = serverMessage_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          serverMessage_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * receive confirmation
-       * </pre>
-       *
-       * <code>string serverMessage = 1;</code>
-       * @param value The serverMessage to set.
+       * <code>int32 requestCount = 1;</code>
+       * @param value The requestCount to set.
        * @return This builder for chaining.
        */
-      public Builder setServerMessage(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        serverMessage_ = value;
+      public Builder setRequestCount(int value) {
+
+        requestCount_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * receive confirmation
+       * the number of SoilInfo messages received
        * </pre>
        *
-       * <code>string serverMessage = 1;</code>
+       * <code>int32 requestCount = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearServerMessage() {
-        serverMessage_ = getDefaultInstance().getServerMessage();
+      public Builder clearRequestCount() {
         bitField0_ = (bitField0_ & ~0x00000001);
+        requestCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double averageMoistureLevel_ ;
+      /**
+       * <code>double averageMoistureLevel = 2;</code>
+       * @return The averageMoistureLevel.
+       */
+      @java.lang.Override
+      public double getAverageMoistureLevel() {
+        return averageMoistureLevel_;
+      }
+      /**
+       * <code>double averageMoistureLevel = 2;</code>
+       * @param value The averageMoistureLevel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAverageMoistureLevel(double value) {
+
+        averageMoistureLevel_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <pre>
-       * receive confirmation
-       * </pre>
-       *
-       * <code>string serverMessage = 1;</code>
-       * @param value The bytes for serverMessage to set.
+       * <code>double averageMoistureLevel = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder setServerMessageBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        serverMessage_ = value;
-        bitField0_ |= 0x00000001;
+      public Builder clearAverageMoistureLevel() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        averageMoistureLevel_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double averagePHLevel_ ;
+      /**
+       * <code>double averagePHLevel = 3;</code>
+       * @return The averagePHLevel.
+       */
+      @java.lang.Override
+      public double getAveragePHLevel() {
+        return averagePHLevel_;
+      }
+      /**
+       * <code>double averagePHLevel = 3;</code>
+       * @param value The averagePHLevel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAveragePHLevel(double value) {
+
+        averagePHLevel_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double averagePHLevel = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAveragePHLevel() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        averagePHLevel_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double averageSoilTemperature_ ;
+      /**
+       * <code>double averageSoilTemperature = 4;</code>
+       * @return The averageSoilTemperature.
+       */
+      @java.lang.Override
+      public double getAverageSoilTemperature() {
+        return averageSoilTemperature_;
+      }
+      /**
+       * <code>double averageSoilTemperature = 4;</code>
+       * @param value The averageSoilTemperature to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAverageSoilTemperature(double value) {
+
+        averageSoilTemperature_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double averageSoilTemperature = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAverageSoilTemperature() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        averageSoilTemperature_ = 0D;
         onChanged();
         return this;
       }
@@ -1140,23 +1302,23 @@ public final class SoilSensorProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:SoilSensorResponse)
+      // @@protoc_insertion_point(builder_scope:SoilInfoSummary)
     }
 
-    // @@protoc_insertion_point(class_scope:SoilSensorResponse)
-    private static final com.project.SoilSensorProto.SoilSensorResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:SoilInfoSummary)
+    private static final com.project.SoilSensorProto.SoilInfoSummary DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.project.SoilSensorProto.SoilSensorResponse();
+      DEFAULT_INSTANCE = new com.project.SoilSensorProto.SoilInfoSummary();
     }
 
-    public static com.project.SoilSensorProto.SoilSensorResponse getDefaultInstance() {
+    public static com.project.SoilSensorProto.SoilInfoSummary getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SoilSensorResponse>
-        PARSER = new com.google.protobuf.AbstractParser<SoilSensorResponse>() {
+    private static final com.google.protobuf.Parser<SoilInfoSummary>
+        PARSER = new com.google.protobuf.AbstractParser<SoilInfoSummary>() {
       @java.lang.Override
-      public SoilSensorResponse parsePartialFrom(
+      public SoilInfoSummary parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1175,32 +1337,32 @@ public final class SoilSensorProto {
       }
     };
 
-    public static com.google.protobuf.Parser<SoilSensorResponse> parser() {
+    public static com.google.protobuf.Parser<SoilInfoSummary> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SoilSensorResponse> getParserForType() {
+    public com.google.protobuf.Parser<SoilInfoSummary> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.project.SoilSensorProto.SoilSensorResponse getDefaultInstanceForType() {
+    public com.project.SoilSensorProto.SoilInfoSummary getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_SoilSensorRequest_descriptor;
+    internal_static_SoilInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_SoilSensorRequest_fieldAccessorTable;
+      internal_static_SoilInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_SoilSensorResponse_descriptor;
+    internal_static_SoilInfoSummary_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_SoilSensorResponse_fieldAccessorTable;
+      internal_static_SoilInfoSummary_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1210,29 +1372,32 @@ public final class SoilSensorProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020soilSensor.proto\"%\n\021SoilSensorRequest\022" +
-      "\020\n\010soilInfo\030\001 \001(\t\"+\n\022SoilSensorResponse\022" +
-      "\025\n\rserverMessage\030\001 \001(\t2N\n\021SoilSensorServ" +
-      "ice\0229\n\nsoilSensor\022\022.SoilSensorRequest\032\023." +
-      "SoilSensorResponse\"\000(\001B \n\013com.projectB\017S" +
-      "oilSensorProtoP\000b\006proto3"
+      "\n\020soilSensor.proto\"K\n\010SoilInfo\022\025\n\rmoistu" +
+      "reLevel\030\001 \001(\005\022\017\n\007phLevel\030\002 \001(\005\022\027\n\017soilTe" +
+      "mperature\030\003 \001(\005\"}\n\017SoilInfoSummary\022\024\n\014re" +
+      "questCount\030\001 \001(\005\022\034\n\024averageMoistureLevel" +
+      "\030\002 \001(\001\022\026\n\016averagePHLevel\030\003 \001(\001\022\036\n\026averag" +
+      "eSoilTemperature\030\004 \001(\0012D\n\021SoilSensorServ" +
+      "ice\022/\n\014SendSoilInfo\022\t.SoilInfo\032\020.SoilInf" +
+      "oSummary\"\000(\001B \n\013com.projectB\017SoilSensorP" +
+      "rotoP\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_SoilSensorRequest_descriptor =
+    internal_static_SoilInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_SoilSensorRequest_fieldAccessorTable = new
+    internal_static_SoilInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_SoilSensorRequest_descriptor,
-        new java.lang.String[] { "SoilInfo", });
-    internal_static_SoilSensorResponse_descriptor =
+        internal_static_SoilInfo_descriptor,
+        new java.lang.String[] { "MoistureLevel", "PhLevel", "SoilTemperature", });
+    internal_static_SoilInfoSummary_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_SoilSensorResponse_fieldAccessorTable = new
+    internal_static_SoilInfoSummary_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_SoilSensorResponse_descriptor,
-        new java.lang.String[] { "ServerMessage", });
+        internal_static_SoilInfoSummary_descriptor,
+        new java.lang.String[] { "RequestCount", "AverageMoistureLevel", "AveragePHLevel", "AverageSoilTemperature", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

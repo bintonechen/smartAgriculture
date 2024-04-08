@@ -15,91 +15,91 @@ public final class MobilePhoneProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface MobilePhoneRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:MobilePhoneRequest)
+  public interface UserIDOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UserID)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string requestMessage = 1;</code>
-     * @return The requestMessage.
+     * <code>string userID = 1;</code>
+     * @return The userID.
      */
-    java.lang.String getRequestMessage();
+    java.lang.String getUserID();
     /**
-     * <code>string requestMessage = 1;</code>
-     * @return The bytes for requestMessage.
+     * <code>string userID = 1;</code>
+     * @return The bytes for userID.
      */
     com.google.protobuf.ByteString
-        getRequestMessageBytes();
+        getUserIDBytes();
   }
   /**
-   * Protobuf type {@code MobilePhoneRequest}
+   * Protobuf type {@code UserID}
    */
-  public static final class MobilePhoneRequest extends
+  public static final class UserID extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:MobilePhoneRequest)
-      MobilePhoneRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:UserID)
+      UserIDOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use MobilePhoneRequest.newBuilder() to construct.
-    private MobilePhoneRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use UserID.newBuilder() to construct.
+    private UserID(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private MobilePhoneRequest() {
-      requestMessage_ = "";
+    private UserID() {
+      userID_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new MobilePhoneRequest();
+      return new UserID();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.project.MobilePhoneProto.internal_static_MobilePhoneRequest_descriptor;
+      return com.project.MobilePhoneProto.internal_static_UserID_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.project.MobilePhoneProto.internal_static_MobilePhoneRequest_fieldAccessorTable
+      return com.project.MobilePhoneProto.internal_static_UserID_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.project.MobilePhoneProto.MobilePhoneRequest.class, com.project.MobilePhoneProto.MobilePhoneRequest.Builder.class);
+              com.project.MobilePhoneProto.UserID.class, com.project.MobilePhoneProto.UserID.Builder.class);
     }
 
-    public static final int REQUESTMESSAGE_FIELD_NUMBER = 1;
+    public static final int USERID_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object requestMessage_ = "";
+    private volatile java.lang.Object userID_ = "";
     /**
-     * <code>string requestMessage = 1;</code>
-     * @return The requestMessage.
+     * <code>string userID = 1;</code>
+     * @return The userID.
      */
     @java.lang.Override
-    public java.lang.String getRequestMessage() {
-      java.lang.Object ref = requestMessage_;
+    public java.lang.String getUserID() {
+      java.lang.Object ref = userID_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        requestMessage_ = s;
+        userID_ = s;
         return s;
       }
     }
     /**
-     * <code>string requestMessage = 1;</code>
-     * @return The bytes for requestMessage.
+     * <code>string userID = 1;</code>
+     * @return The bytes for userID.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getRequestMessageBytes() {
-      java.lang.Object ref = requestMessage_;
+        getUserIDBytes() {
+      java.lang.Object ref = userID_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        requestMessage_ = b;
+        userID_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -120,8 +120,8 @@ public final class MobilePhoneProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(requestMessage_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requestMessage_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userID_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userID_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -132,8 +132,8 @@ public final class MobilePhoneProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(requestMessage_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requestMessage_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userID_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userID_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -145,13 +145,13 @@ public final class MobilePhoneProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.project.MobilePhoneProto.MobilePhoneRequest)) {
+      if (!(obj instanceof com.project.MobilePhoneProto.UserID)) {
         return super.equals(obj);
       }
-      com.project.MobilePhoneProto.MobilePhoneRequest other = (com.project.MobilePhoneProto.MobilePhoneRequest) obj;
+      com.project.MobilePhoneProto.UserID other = (com.project.MobilePhoneProto.UserID) obj;
 
-      if (!getRequestMessage()
-          .equals(other.getRequestMessage())) return false;
+      if (!getUserID()
+          .equals(other.getUserID())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -163,51 +163,51 @@ public final class MobilePhoneProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + REQUESTMESSAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getRequestMessage().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserID().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(
+    public static com.project.MobilePhoneProto.UserID parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(
+    public static com.project.MobilePhoneProto.UserID parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(
+    public static com.project.MobilePhoneProto.UserID parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(
+    public static com.project.MobilePhoneProto.UserID parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(byte[] data)
+    public static com.project.MobilePhoneProto.UserID parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(
+    public static com.project.MobilePhoneProto.UserID parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(java.io.InputStream input)
+    public static com.project.MobilePhoneProto.UserID parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(
+    public static com.project.MobilePhoneProto.UserID parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -215,26 +215,26 @@ public final class MobilePhoneProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.project.MobilePhoneProto.UserID parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseDelimitedFrom(
+    public static com.project.MobilePhoneProto.UserID parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(
+    public static com.project.MobilePhoneProto.UserID parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneRequest parseFrom(
+    public static com.project.MobilePhoneProto.UserID parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -247,7 +247,7 @@ public final class MobilePhoneProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.project.MobilePhoneProto.MobilePhoneRequest prototype) {
+    public static Builder newBuilder(com.project.MobilePhoneProto.UserID prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -263,26 +263,26 @@ public final class MobilePhoneProto {
       return builder;
     }
     /**
-     * Protobuf type {@code MobilePhoneRequest}
+     * Protobuf type {@code UserID}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:MobilePhoneRequest)
-        com.project.MobilePhoneProto.MobilePhoneRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:UserID)
+        com.project.MobilePhoneProto.UserIDOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.project.MobilePhoneProto.internal_static_MobilePhoneRequest_descriptor;
+        return com.project.MobilePhoneProto.internal_static_UserID_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.project.MobilePhoneProto.internal_static_MobilePhoneRequest_fieldAccessorTable
+        return com.project.MobilePhoneProto.internal_static_UserID_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.project.MobilePhoneProto.MobilePhoneRequest.class, com.project.MobilePhoneProto.MobilePhoneRequest.Builder.class);
+                com.project.MobilePhoneProto.UserID.class, com.project.MobilePhoneProto.UserID.Builder.class);
       }
 
-      // Construct using com.project.MobilePhoneProto.MobilePhoneRequest.newBuilder()
+      // Construct using com.project.MobilePhoneProto.UserID.newBuilder()
       private Builder() {
 
       }
@@ -296,24 +296,24 @@ public final class MobilePhoneProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        requestMessage_ = "";
+        userID_ = "";
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.project.MobilePhoneProto.internal_static_MobilePhoneRequest_descriptor;
+        return com.project.MobilePhoneProto.internal_static_UserID_descriptor;
       }
 
       @java.lang.Override
-      public com.project.MobilePhoneProto.MobilePhoneRequest getDefaultInstanceForType() {
-        return com.project.MobilePhoneProto.MobilePhoneRequest.getDefaultInstance();
+      public com.project.MobilePhoneProto.UserID getDefaultInstanceForType() {
+        return com.project.MobilePhoneProto.UserID.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.project.MobilePhoneProto.MobilePhoneRequest build() {
-        com.project.MobilePhoneProto.MobilePhoneRequest result = buildPartial();
+      public com.project.MobilePhoneProto.UserID build() {
+        com.project.MobilePhoneProto.UserID result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -321,17 +321,17 @@ public final class MobilePhoneProto {
       }
 
       @java.lang.Override
-      public com.project.MobilePhoneProto.MobilePhoneRequest buildPartial() {
-        com.project.MobilePhoneProto.MobilePhoneRequest result = new com.project.MobilePhoneProto.MobilePhoneRequest(this);
+      public com.project.MobilePhoneProto.UserID buildPartial() {
+        com.project.MobilePhoneProto.UserID result = new com.project.MobilePhoneProto.UserID(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.project.MobilePhoneProto.MobilePhoneRequest result) {
+      private void buildPartial0(com.project.MobilePhoneProto.UserID result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.requestMessage_ = requestMessage_;
+          result.userID_ = userID_;
         }
       }
 
@@ -369,18 +369,18 @@ public final class MobilePhoneProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.project.MobilePhoneProto.MobilePhoneRequest) {
-          return mergeFrom((com.project.MobilePhoneProto.MobilePhoneRequest)other);
+        if (other instanceof com.project.MobilePhoneProto.UserID) {
+          return mergeFrom((com.project.MobilePhoneProto.UserID)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.project.MobilePhoneProto.MobilePhoneRequest other) {
-        if (other == com.project.MobilePhoneProto.MobilePhoneRequest.getDefaultInstance()) return this;
-        if (!other.getRequestMessage().isEmpty()) {
-          requestMessage_ = other.requestMessage_;
+      public Builder mergeFrom(com.project.MobilePhoneProto.UserID other) {
+        if (other == com.project.MobilePhoneProto.UserID.getDefaultInstance()) return this;
+        if (!other.getUserID().isEmpty()) {
+          userID_ = other.userID_;
           bitField0_ |= 0x00000001;
           onChanged();
         }
@@ -411,7 +411,7 @@ public final class MobilePhoneProto {
                 done = true;
                 break;
               case 10: {
-                requestMessage_ = input.readStringRequireUtf8();
+                userID_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
@@ -432,73 +432,73 @@ public final class MobilePhoneProto {
       }
       private int bitField0_;
 
-      private java.lang.Object requestMessage_ = "";
+      private java.lang.Object userID_ = "";
       /**
-       * <code>string requestMessage = 1;</code>
-       * @return The requestMessage.
+       * <code>string userID = 1;</code>
+       * @return The userID.
        */
-      public java.lang.String getRequestMessage() {
-        java.lang.Object ref = requestMessage_;
+      public java.lang.String getUserID() {
+        java.lang.Object ref = userID_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          requestMessage_ = s;
+          userID_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string requestMessage = 1;</code>
-       * @return The bytes for requestMessage.
+       * <code>string userID = 1;</code>
+       * @return The bytes for userID.
        */
       public com.google.protobuf.ByteString
-          getRequestMessageBytes() {
-        java.lang.Object ref = requestMessage_;
+          getUserIDBytes() {
+        java.lang.Object ref = userID_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          requestMessage_ = b;
+          userID_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string requestMessage = 1;</code>
-       * @param value The requestMessage to set.
+       * <code>string userID = 1;</code>
+       * @param value The userID to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestMessage(
+      public Builder setUserID(
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        requestMessage_ = value;
+        userID_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>string requestMessage = 1;</code>
+       * <code>string userID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRequestMessage() {
-        requestMessage_ = getDefaultInstance().getRequestMessage();
+      public Builder clearUserID() {
+        userID_ = getDefaultInstance().getUserID();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <code>string requestMessage = 1;</code>
-       * @param value The bytes for requestMessage to set.
+       * <code>string userID = 1;</code>
+       * @param value The bytes for userID to set.
        * @return This builder for chaining.
        */
-      public Builder setRequestMessageBytes(
+      public Builder setUserIDBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        requestMessage_ = value;
+        userID_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
@@ -516,23 +516,23 @@ public final class MobilePhoneProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:MobilePhoneRequest)
+      // @@protoc_insertion_point(builder_scope:UserID)
     }
 
-    // @@protoc_insertion_point(class_scope:MobilePhoneRequest)
-    private static final com.project.MobilePhoneProto.MobilePhoneRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:UserID)
+    private static final com.project.MobilePhoneProto.UserID DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.project.MobilePhoneProto.MobilePhoneRequest();
+      DEFAULT_INSTANCE = new com.project.MobilePhoneProto.UserID();
     }
 
-    public static com.project.MobilePhoneProto.MobilePhoneRequest getDefaultInstance() {
+    public static com.project.MobilePhoneProto.UserID getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<MobilePhoneRequest>
-        PARSER = new com.google.protobuf.AbstractParser<MobilePhoneRequest>() {
+    private static final com.google.protobuf.Parser<UserID>
+        PARSER = new com.google.protobuf.AbstractParser<UserID>() {
       @java.lang.Override
-      public MobilePhoneRequest parsePartialFrom(
+      public UserID parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -551,107 +551,107 @@ public final class MobilePhoneProto {
       }
     };
 
-    public static com.google.protobuf.Parser<MobilePhoneRequest> parser() {
+    public static com.google.protobuf.Parser<UserID> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<MobilePhoneRequest> getParserForType() {
+    public com.google.protobuf.Parser<UserID> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.project.MobilePhoneProto.MobilePhoneRequest getDefaultInstanceForType() {
+    public com.project.MobilePhoneProto.UserID getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface MobilePhoneResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:MobilePhoneResponse)
+  public interface UserIDConfirmationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UserIDConfirmation)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string responseMessage = 1;</code>
-     * @return The responseMessage.
+     * <code>string confirmation = 1;</code>
+     * @return The confirmation.
      */
-    java.lang.String getResponseMessage();
+    java.lang.String getConfirmation();
     /**
-     * <code>string responseMessage = 1;</code>
-     * @return The bytes for responseMessage.
+     * <code>string confirmation = 1;</code>
+     * @return The bytes for confirmation.
      */
     com.google.protobuf.ByteString
-        getResponseMessageBytes();
+        getConfirmationBytes();
   }
   /**
-   * Protobuf type {@code MobilePhoneResponse}
+   * Protobuf type {@code UserIDConfirmation}
    */
-  public static final class MobilePhoneResponse extends
+  public static final class UserIDConfirmation extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:MobilePhoneResponse)
-      MobilePhoneResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:UserIDConfirmation)
+      UserIDConfirmationOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use MobilePhoneResponse.newBuilder() to construct.
-    private MobilePhoneResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use UserIDConfirmation.newBuilder() to construct.
+    private UserIDConfirmation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private MobilePhoneResponse() {
-      responseMessage_ = "";
+    private UserIDConfirmation() {
+      confirmation_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new MobilePhoneResponse();
+      return new UserIDConfirmation();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.project.MobilePhoneProto.internal_static_MobilePhoneResponse_descriptor;
+      return com.project.MobilePhoneProto.internal_static_UserIDConfirmation_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.project.MobilePhoneProto.internal_static_MobilePhoneResponse_fieldAccessorTable
+      return com.project.MobilePhoneProto.internal_static_UserIDConfirmation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.project.MobilePhoneProto.MobilePhoneResponse.class, com.project.MobilePhoneProto.MobilePhoneResponse.Builder.class);
+              com.project.MobilePhoneProto.UserIDConfirmation.class, com.project.MobilePhoneProto.UserIDConfirmation.Builder.class);
     }
 
-    public static final int RESPONSEMESSAGE_FIELD_NUMBER = 1;
+    public static final int CONFIRMATION_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object responseMessage_ = "";
+    private volatile java.lang.Object confirmation_ = "";
     /**
-     * <code>string responseMessage = 1;</code>
-     * @return The responseMessage.
+     * <code>string confirmation = 1;</code>
+     * @return The confirmation.
      */
     @java.lang.Override
-    public java.lang.String getResponseMessage() {
-      java.lang.Object ref = responseMessage_;
+    public java.lang.String getConfirmation() {
+      java.lang.Object ref = confirmation_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        responseMessage_ = s;
+        confirmation_ = s;
         return s;
       }
     }
     /**
-     * <code>string responseMessage = 1;</code>
-     * @return The bytes for responseMessage.
+     * <code>string confirmation = 1;</code>
+     * @return The bytes for confirmation.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getResponseMessageBytes() {
-      java.lang.Object ref = responseMessage_;
+        getConfirmationBytes() {
+      java.lang.Object ref = confirmation_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        responseMessage_ = b;
+        confirmation_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -672,8 +672,8 @@ public final class MobilePhoneProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(responseMessage_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, responseMessage_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(confirmation_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, confirmation_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -684,8 +684,8 @@ public final class MobilePhoneProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(responseMessage_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, responseMessage_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(confirmation_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, confirmation_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -697,13 +697,13 @@ public final class MobilePhoneProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.project.MobilePhoneProto.MobilePhoneResponse)) {
+      if (!(obj instanceof com.project.MobilePhoneProto.UserIDConfirmation)) {
         return super.equals(obj);
       }
-      com.project.MobilePhoneProto.MobilePhoneResponse other = (com.project.MobilePhoneProto.MobilePhoneResponse) obj;
+      com.project.MobilePhoneProto.UserIDConfirmation other = (com.project.MobilePhoneProto.UserIDConfirmation) obj;
 
-      if (!getResponseMessage()
-          .equals(other.getResponseMessage())) return false;
+      if (!getConfirmation()
+          .equals(other.getConfirmation())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -715,51 +715,51 @@ public final class MobilePhoneProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + RESPONSEMESSAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getResponseMessage().hashCode();
+      hash = (37 * hash) + CONFIRMATION_FIELD_NUMBER;
+      hash = (53 * hash) + getConfirmation().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(byte[] data)
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(java.io.InputStream input)
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -767,26 +767,26 @@ public final class MobilePhoneProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseDelimitedFrom(java.io.InputStream input)
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseDelimitedFrom(
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.MobilePhoneProto.MobilePhoneResponse parseFrom(
+    public static com.project.MobilePhoneProto.UserIDConfirmation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -799,7 +799,7 @@ public final class MobilePhoneProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.project.MobilePhoneProto.MobilePhoneResponse prototype) {
+    public static Builder newBuilder(com.project.MobilePhoneProto.UserIDConfirmation prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -815,26 +815,26 @@ public final class MobilePhoneProto {
       return builder;
     }
     /**
-     * Protobuf type {@code MobilePhoneResponse}
+     * Protobuf type {@code UserIDConfirmation}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:MobilePhoneResponse)
-        com.project.MobilePhoneProto.MobilePhoneResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:UserIDConfirmation)
+        com.project.MobilePhoneProto.UserIDConfirmationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.project.MobilePhoneProto.internal_static_MobilePhoneResponse_descriptor;
+        return com.project.MobilePhoneProto.internal_static_UserIDConfirmation_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.project.MobilePhoneProto.internal_static_MobilePhoneResponse_fieldAccessorTable
+        return com.project.MobilePhoneProto.internal_static_UserIDConfirmation_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.project.MobilePhoneProto.MobilePhoneResponse.class, com.project.MobilePhoneProto.MobilePhoneResponse.Builder.class);
+                com.project.MobilePhoneProto.UserIDConfirmation.class, com.project.MobilePhoneProto.UserIDConfirmation.Builder.class);
       }
 
-      // Construct using com.project.MobilePhoneProto.MobilePhoneResponse.newBuilder()
+      // Construct using com.project.MobilePhoneProto.UserIDConfirmation.newBuilder()
       private Builder() {
 
       }
@@ -848,24 +848,24 @@ public final class MobilePhoneProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        responseMessage_ = "";
+        confirmation_ = "";
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.project.MobilePhoneProto.internal_static_MobilePhoneResponse_descriptor;
+        return com.project.MobilePhoneProto.internal_static_UserIDConfirmation_descriptor;
       }
 
       @java.lang.Override
-      public com.project.MobilePhoneProto.MobilePhoneResponse getDefaultInstanceForType() {
-        return com.project.MobilePhoneProto.MobilePhoneResponse.getDefaultInstance();
+      public com.project.MobilePhoneProto.UserIDConfirmation getDefaultInstanceForType() {
+        return com.project.MobilePhoneProto.UserIDConfirmation.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.project.MobilePhoneProto.MobilePhoneResponse build() {
-        com.project.MobilePhoneProto.MobilePhoneResponse result = buildPartial();
+      public com.project.MobilePhoneProto.UserIDConfirmation build() {
+        com.project.MobilePhoneProto.UserIDConfirmation result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -873,17 +873,17 @@ public final class MobilePhoneProto {
       }
 
       @java.lang.Override
-      public com.project.MobilePhoneProto.MobilePhoneResponse buildPartial() {
-        com.project.MobilePhoneProto.MobilePhoneResponse result = new com.project.MobilePhoneProto.MobilePhoneResponse(this);
+      public com.project.MobilePhoneProto.UserIDConfirmation buildPartial() {
+        com.project.MobilePhoneProto.UserIDConfirmation result = new com.project.MobilePhoneProto.UserIDConfirmation(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.project.MobilePhoneProto.MobilePhoneResponse result) {
+      private void buildPartial0(com.project.MobilePhoneProto.UserIDConfirmation result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.responseMessage_ = responseMessage_;
+          result.confirmation_ = confirmation_;
         }
       }
 
@@ -921,18 +921,18 @@ public final class MobilePhoneProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.project.MobilePhoneProto.MobilePhoneResponse) {
-          return mergeFrom((com.project.MobilePhoneProto.MobilePhoneResponse)other);
+        if (other instanceof com.project.MobilePhoneProto.UserIDConfirmation) {
+          return mergeFrom((com.project.MobilePhoneProto.UserIDConfirmation)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.project.MobilePhoneProto.MobilePhoneResponse other) {
-        if (other == com.project.MobilePhoneProto.MobilePhoneResponse.getDefaultInstance()) return this;
-        if (!other.getResponseMessage().isEmpty()) {
-          responseMessage_ = other.responseMessage_;
+      public Builder mergeFrom(com.project.MobilePhoneProto.UserIDConfirmation other) {
+        if (other == com.project.MobilePhoneProto.UserIDConfirmation.getDefaultInstance()) return this;
+        if (!other.getConfirmation().isEmpty()) {
+          confirmation_ = other.confirmation_;
           bitField0_ |= 0x00000001;
           onChanged();
         }
@@ -963,7 +963,7 @@ public final class MobilePhoneProto {
                 done = true;
                 break;
               case 10: {
-                responseMessage_ = input.readStringRequireUtf8();
+                confirmation_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
@@ -984,73 +984,73 @@ public final class MobilePhoneProto {
       }
       private int bitField0_;
 
-      private java.lang.Object responseMessage_ = "";
+      private java.lang.Object confirmation_ = "";
       /**
-       * <code>string responseMessage = 1;</code>
-       * @return The responseMessage.
+       * <code>string confirmation = 1;</code>
+       * @return The confirmation.
        */
-      public java.lang.String getResponseMessage() {
-        java.lang.Object ref = responseMessage_;
+      public java.lang.String getConfirmation() {
+        java.lang.Object ref = confirmation_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          responseMessage_ = s;
+          confirmation_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string responseMessage = 1;</code>
-       * @return The bytes for responseMessage.
+       * <code>string confirmation = 1;</code>
+       * @return The bytes for confirmation.
        */
       public com.google.protobuf.ByteString
-          getResponseMessageBytes() {
-        java.lang.Object ref = responseMessage_;
+          getConfirmationBytes() {
+        java.lang.Object ref = confirmation_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          responseMessage_ = b;
+          confirmation_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string responseMessage = 1;</code>
-       * @param value The responseMessage to set.
+       * <code>string confirmation = 1;</code>
+       * @param value The confirmation to set.
        * @return This builder for chaining.
        */
-      public Builder setResponseMessage(
+      public Builder setConfirmation(
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        responseMessage_ = value;
+        confirmation_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>string responseMessage = 1;</code>
+       * <code>string confirmation = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearResponseMessage() {
-        responseMessage_ = getDefaultInstance().getResponseMessage();
+      public Builder clearConfirmation() {
+        confirmation_ = getDefaultInstance().getConfirmation();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <code>string responseMessage = 1;</code>
-       * @param value The bytes for responseMessage to set.
+       * <code>string confirmation = 1;</code>
+       * @param value The bytes for confirmation to set.
        * @return This builder for chaining.
        */
-      public Builder setResponseMessageBytes(
+      public Builder setConfirmationBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        responseMessage_ = value;
+        confirmation_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
@@ -1068,23 +1068,23 @@ public final class MobilePhoneProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:MobilePhoneResponse)
+      // @@protoc_insertion_point(builder_scope:UserIDConfirmation)
     }
 
-    // @@protoc_insertion_point(class_scope:MobilePhoneResponse)
-    private static final com.project.MobilePhoneProto.MobilePhoneResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:UserIDConfirmation)
+    private static final com.project.MobilePhoneProto.UserIDConfirmation DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.project.MobilePhoneProto.MobilePhoneResponse();
+      DEFAULT_INSTANCE = new com.project.MobilePhoneProto.UserIDConfirmation();
     }
 
-    public static com.project.MobilePhoneProto.MobilePhoneResponse getDefaultInstance() {
+    public static com.project.MobilePhoneProto.UserIDConfirmation getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<MobilePhoneResponse>
-        PARSER = new com.google.protobuf.AbstractParser<MobilePhoneResponse>() {
+    private static final com.google.protobuf.Parser<UserIDConfirmation>
+        PARSER = new com.google.protobuf.AbstractParser<UserIDConfirmation>() {
       @java.lang.Override
-      public MobilePhoneResponse parsePartialFrom(
+      public UserIDConfirmation parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1103,32 +1103,1146 @@ public final class MobilePhoneProto {
       }
     };
 
-    public static com.google.protobuf.Parser<MobilePhoneResponse> parser() {
+    public static com.google.protobuf.Parser<UserIDConfirmation> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<MobilePhoneResponse> getParserForType() {
+    public com.google.protobuf.Parser<UserIDConfirmation> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.project.MobilePhoneProto.MobilePhoneResponse getDefaultInstanceForType() {
+    public com.project.MobilePhoneProto.UserIDConfirmation getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InfoRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InfoRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string infoRequestMessage = 1;</code>
+     * @return The infoRequestMessage.
+     */
+    java.lang.String getInfoRequestMessage();
+    /**
+     * <code>string infoRequestMessage = 1;</code>
+     * @return The bytes for infoRequestMessage.
+     */
+    com.google.protobuf.ByteString
+        getInfoRequestMessageBytes();
+  }
+  /**
+   * Protobuf type {@code InfoRequest}
+   */
+  public static final class InfoRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InfoRequest)
+      InfoRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InfoRequest.newBuilder() to construct.
+    private InfoRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InfoRequest() {
+      infoRequestMessage_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InfoRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.project.MobilePhoneProto.internal_static_InfoRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.project.MobilePhoneProto.internal_static_InfoRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.project.MobilePhoneProto.InfoRequest.class, com.project.MobilePhoneProto.InfoRequest.Builder.class);
+    }
+
+    public static final int INFOREQUESTMESSAGE_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object infoRequestMessage_ = "";
+    /**
+     * <code>string infoRequestMessage = 1;</code>
+     * @return The infoRequestMessage.
+     */
+    @java.lang.Override
+    public java.lang.String getInfoRequestMessage() {
+      java.lang.Object ref = infoRequestMessage_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        infoRequestMessage_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string infoRequestMessage = 1;</code>
+     * @return The bytes for infoRequestMessage.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getInfoRequestMessageBytes() {
+      java.lang.Object ref = infoRequestMessage_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        infoRequestMessage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(infoRequestMessage_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, infoRequestMessage_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(infoRequestMessage_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, infoRequestMessage_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.project.MobilePhoneProto.InfoRequest)) {
+        return super.equals(obj);
+      }
+      com.project.MobilePhoneProto.InfoRequest other = (com.project.MobilePhoneProto.InfoRequest) obj;
+
+      if (!getInfoRequestMessage()
+          .equals(other.getInfoRequestMessage())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INFOREQUESTMESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getInfoRequestMessage().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.project.MobilePhoneProto.InfoRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.project.MobilePhoneProto.InfoRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.project.MobilePhoneProto.InfoRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.project.MobilePhoneProto.InfoRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InfoRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InfoRequest)
+        com.project.MobilePhoneProto.InfoRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.project.MobilePhoneProto.internal_static_InfoRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.project.MobilePhoneProto.internal_static_InfoRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.project.MobilePhoneProto.InfoRequest.class, com.project.MobilePhoneProto.InfoRequest.Builder.class);
+      }
+
+      // Construct using com.project.MobilePhoneProto.InfoRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        infoRequestMessage_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.project.MobilePhoneProto.internal_static_InfoRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.project.MobilePhoneProto.InfoRequest getDefaultInstanceForType() {
+        return com.project.MobilePhoneProto.InfoRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.project.MobilePhoneProto.InfoRequest build() {
+        com.project.MobilePhoneProto.InfoRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.project.MobilePhoneProto.InfoRequest buildPartial() {
+        com.project.MobilePhoneProto.InfoRequest result = new com.project.MobilePhoneProto.InfoRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.project.MobilePhoneProto.InfoRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.infoRequestMessage_ = infoRequestMessage_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.project.MobilePhoneProto.InfoRequest) {
+          return mergeFrom((com.project.MobilePhoneProto.InfoRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.project.MobilePhoneProto.InfoRequest other) {
+        if (other == com.project.MobilePhoneProto.InfoRequest.getDefaultInstance()) return this;
+        if (!other.getInfoRequestMessage().isEmpty()) {
+          infoRequestMessage_ = other.infoRequestMessage_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                infoRequestMessage_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object infoRequestMessage_ = "";
+      /**
+       * <code>string infoRequestMessage = 1;</code>
+       * @return The infoRequestMessage.
+       */
+      public java.lang.String getInfoRequestMessage() {
+        java.lang.Object ref = infoRequestMessage_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          infoRequestMessage_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string infoRequestMessage = 1;</code>
+       * @return The bytes for infoRequestMessage.
+       */
+      public com.google.protobuf.ByteString
+          getInfoRequestMessageBytes() {
+        java.lang.Object ref = infoRequestMessage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          infoRequestMessage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string infoRequestMessage = 1;</code>
+       * @param value The infoRequestMessage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInfoRequestMessage(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        infoRequestMessage_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string infoRequestMessage = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInfoRequestMessage() {
+        infoRequestMessage_ = getDefaultInstance().getInfoRequestMessage();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string infoRequestMessage = 1;</code>
+       * @param value The bytes for infoRequestMessage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInfoRequestMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        infoRequestMessage_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InfoRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InfoRequest)
+    private static final com.project.MobilePhoneProto.InfoRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.project.MobilePhoneProto.InfoRequest();
+    }
+
+    public static com.project.MobilePhoneProto.InfoRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InfoRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InfoRequest>() {
+      @java.lang.Override
+      public InfoRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<InfoRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InfoRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.project.MobilePhoneProto.InfoRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InfoResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InfoResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string infoResponseMessage = 1;</code>
+     * @return The infoResponseMessage.
+     */
+    java.lang.String getInfoResponseMessage();
+    /**
+     * <code>string infoResponseMessage = 1;</code>
+     * @return The bytes for infoResponseMessage.
+     */
+    com.google.protobuf.ByteString
+        getInfoResponseMessageBytes();
+  }
+  /**
+   * Protobuf type {@code InfoResponse}
+   */
+  public static final class InfoResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InfoResponse)
+      InfoResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InfoResponse.newBuilder() to construct.
+    private InfoResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InfoResponse() {
+      infoResponseMessage_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InfoResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.project.MobilePhoneProto.internal_static_InfoResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.project.MobilePhoneProto.internal_static_InfoResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.project.MobilePhoneProto.InfoResponse.class, com.project.MobilePhoneProto.InfoResponse.Builder.class);
+    }
+
+    public static final int INFORESPONSEMESSAGE_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object infoResponseMessage_ = "";
+    /**
+     * <code>string infoResponseMessage = 1;</code>
+     * @return The infoResponseMessage.
+     */
+    @java.lang.Override
+    public java.lang.String getInfoResponseMessage() {
+      java.lang.Object ref = infoResponseMessage_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        infoResponseMessage_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string infoResponseMessage = 1;</code>
+     * @return The bytes for infoResponseMessage.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getInfoResponseMessageBytes() {
+      java.lang.Object ref = infoResponseMessage_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        infoResponseMessage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(infoResponseMessage_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, infoResponseMessage_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(infoResponseMessage_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, infoResponseMessage_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.project.MobilePhoneProto.InfoResponse)) {
+        return super.equals(obj);
+      }
+      com.project.MobilePhoneProto.InfoResponse other = (com.project.MobilePhoneProto.InfoResponse) obj;
+
+      if (!getInfoResponseMessage()
+          .equals(other.getInfoResponseMessage())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INFORESPONSEMESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getInfoResponseMessage().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.project.MobilePhoneProto.InfoResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.project.MobilePhoneProto.InfoResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.project.MobilePhoneProto.InfoResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.project.MobilePhoneProto.InfoResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InfoResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InfoResponse)
+        com.project.MobilePhoneProto.InfoResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.project.MobilePhoneProto.internal_static_InfoResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.project.MobilePhoneProto.internal_static_InfoResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.project.MobilePhoneProto.InfoResponse.class, com.project.MobilePhoneProto.InfoResponse.Builder.class);
+      }
+
+      // Construct using com.project.MobilePhoneProto.InfoResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        infoResponseMessage_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.project.MobilePhoneProto.internal_static_InfoResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public com.project.MobilePhoneProto.InfoResponse getDefaultInstanceForType() {
+        return com.project.MobilePhoneProto.InfoResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.project.MobilePhoneProto.InfoResponse build() {
+        com.project.MobilePhoneProto.InfoResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.project.MobilePhoneProto.InfoResponse buildPartial() {
+        com.project.MobilePhoneProto.InfoResponse result = new com.project.MobilePhoneProto.InfoResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.project.MobilePhoneProto.InfoResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.infoResponseMessage_ = infoResponseMessage_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.project.MobilePhoneProto.InfoResponse) {
+          return mergeFrom((com.project.MobilePhoneProto.InfoResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.project.MobilePhoneProto.InfoResponse other) {
+        if (other == com.project.MobilePhoneProto.InfoResponse.getDefaultInstance()) return this;
+        if (!other.getInfoResponseMessage().isEmpty()) {
+          infoResponseMessage_ = other.infoResponseMessage_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                infoResponseMessage_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object infoResponseMessage_ = "";
+      /**
+       * <code>string infoResponseMessage = 1;</code>
+       * @return The infoResponseMessage.
+       */
+      public java.lang.String getInfoResponseMessage() {
+        java.lang.Object ref = infoResponseMessage_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          infoResponseMessage_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string infoResponseMessage = 1;</code>
+       * @return The bytes for infoResponseMessage.
+       */
+      public com.google.protobuf.ByteString
+          getInfoResponseMessageBytes() {
+        java.lang.Object ref = infoResponseMessage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          infoResponseMessage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string infoResponseMessage = 1;</code>
+       * @param value The infoResponseMessage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInfoResponseMessage(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        infoResponseMessage_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string infoResponseMessage = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInfoResponseMessage() {
+        infoResponseMessage_ = getDefaultInstance().getInfoResponseMessage();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string infoResponseMessage = 1;</code>
+       * @param value The bytes for infoResponseMessage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInfoResponseMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        infoResponseMessage_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InfoResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:InfoResponse)
+    private static final com.project.MobilePhoneProto.InfoResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.project.MobilePhoneProto.InfoResponse();
+    }
+
+    public static com.project.MobilePhoneProto.InfoResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InfoResponse>
+        PARSER = new com.google.protobuf.AbstractParser<InfoResponse>() {
+      @java.lang.Override
+      public InfoResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<InfoResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InfoResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.project.MobilePhoneProto.InfoResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_MobilePhoneRequest_descriptor;
+    internal_static_UserID_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_MobilePhoneRequest_fieldAccessorTable;
+      internal_static_UserID_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_MobilePhoneResponse_descriptor;
+    internal_static_UserIDConfirmation_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_MobilePhoneResponse_fieldAccessorTable;
+      internal_static_UserIDConfirmation_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InfoRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InfoRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InfoResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InfoResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1138,31 +2252,44 @@ public final class MobilePhoneProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021mobilePhone.proto\",\n\022MobilePhoneReques" +
-      "t\022\026\n\016requestMessage\030\001 \001(\t\".\n\023MobilePhone" +
-      "Response\022\027\n\017responseMessage\030\001 \001(\t2\236\001\n\022Mo" +
-      "bilePhoneService\022D\n\023mobilePhoneService1\022" +
-      "\023.MobilePhoneRequest\032\024.MobilePhoneRespon" +
-      "se\"\0000\001\022B\n\023mobilePhoneService2\022\023.MobilePh" +
-      "oneRequest\032\024.MobilePhoneResponse\"\000B!\n\013co" +
-      "m.projectB\020MobilePhoneProtoP\000b\006proto3"
+      "\n\021mobilePhone.proto\"\030\n\006UserID\022\016\n\006userID\030" +
+      "\001 \001(\t\"*\n\022UserIDConfirmation\022\024\n\014confirmat" +
+      "ion\030\001 \001(\t\")\n\013InfoRequest\022\032\n\022infoRequestM" +
+      "essage\030\001 \001(\t\"+\n\014InfoResponse\022\033\n\023infoResp" +
+      "onseMessage\030\001 \001(\t2x\n\022MobilePhoneService\022" +
+      "+\n\tSetUserID\022\007.UserID\032\023.UserIDConfirmati" +
+      "on\"\000\0225\n\022MobilePhoneRequest\022\014.InfoRequest" +
+      "\032\r.InfoResponse\"\0000\001B!\n\013com.projectB\020Mobi" +
+      "lePhoneProtoP\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_MobilePhoneRequest_descriptor =
+    internal_static_UserID_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_MobilePhoneRequest_fieldAccessorTable = new
+    internal_static_UserID_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_MobilePhoneRequest_descriptor,
-        new java.lang.String[] { "RequestMessage", });
-    internal_static_MobilePhoneResponse_descriptor =
+        internal_static_UserID_descriptor,
+        new java.lang.String[] { "UserID", });
+    internal_static_UserIDConfirmation_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_MobilePhoneResponse_fieldAccessorTable = new
+    internal_static_UserIDConfirmation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_MobilePhoneResponse_descriptor,
-        new java.lang.String[] { "ResponseMessage", });
+        internal_static_UserIDConfirmation_descriptor,
+        new java.lang.String[] { "Confirmation", });
+    internal_static_InfoRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_InfoRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InfoRequest_descriptor,
+        new java.lang.String[] { "InfoRequestMessage", });
+    internal_static_InfoResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_InfoResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InfoResponse_descriptor,
+        new java.lang.String[] { "InfoResponseMessage", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

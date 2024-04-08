@@ -15,35 +15,35 @@ public final class SoilSensorServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "SoilSensorService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.project.SoilSensorProto.SoilSensorRequest,
-      com.project.SoilSensorProto.SoilSensorResponse> getSoilSensorMethod;
+  private static volatile io.grpc.MethodDescriptor<com.project.SoilSensorProto.SoilInfo,
+      com.project.SoilSensorProto.SoilInfoSummary> getSendSoilInfoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "soilSensor",
-      requestType = com.project.SoilSensorProto.SoilSensorRequest.class,
-      responseType = com.project.SoilSensorProto.SoilSensorResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "SendSoilInfo",
+      requestType = com.project.SoilSensorProto.SoilInfo.class,
+      responseType = com.project.SoilSensorProto.SoilInfoSummary.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<com.project.SoilSensorProto.SoilSensorRequest,
-      com.project.SoilSensorProto.SoilSensorResponse> getSoilSensorMethod() {
-    io.grpc.MethodDescriptor<com.project.SoilSensorProto.SoilSensorRequest, com.project.SoilSensorProto.SoilSensorResponse> getSoilSensorMethod;
-    if ((getSoilSensorMethod = SoilSensorServiceGrpc.getSoilSensorMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.project.SoilSensorProto.SoilInfo,
+      com.project.SoilSensorProto.SoilInfoSummary> getSendSoilInfoMethod() {
+    io.grpc.MethodDescriptor<com.project.SoilSensorProto.SoilInfo, com.project.SoilSensorProto.SoilInfoSummary> getSendSoilInfoMethod;
+    if ((getSendSoilInfoMethod = SoilSensorServiceGrpc.getSendSoilInfoMethod) == null) {
       synchronized (SoilSensorServiceGrpc.class) {
-        if ((getSoilSensorMethod = SoilSensorServiceGrpc.getSoilSensorMethod) == null) {
-          SoilSensorServiceGrpc.getSoilSensorMethod = getSoilSensorMethod =
-              io.grpc.MethodDescriptor.<com.project.SoilSensorProto.SoilSensorRequest, com.project.SoilSensorProto.SoilSensorResponse>newBuilder()
+        if ((getSendSoilInfoMethod = SoilSensorServiceGrpc.getSendSoilInfoMethod) == null) {
+          SoilSensorServiceGrpc.getSendSoilInfoMethod = getSendSoilInfoMethod =
+              io.grpc.MethodDescriptor.<com.project.SoilSensorProto.SoilInfo, com.project.SoilSensorProto.SoilInfoSummary>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "soilSensor"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SendSoilInfo"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.SoilSensorProto.SoilSensorRequest.getDefaultInstance()))
+                  com.project.SoilSensorProto.SoilInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.SoilSensorProto.SoilSensorResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new SoilSensorServiceMethodDescriptorSupplier("soilSensor"))
+                  com.project.SoilSensorProto.SoilInfoSummary.getDefaultInstance()))
+              .setSchemaDescriptor(new SoilSensorServiceMethodDescriptorSupplier("SendSoilInfo"))
               .build();
         }
       }
     }
-    return getSoilSensorMethod;
+    return getSendSoilInfoMethod;
   }
 
   /**
@@ -96,12 +96,13 @@ public final class SoilSensorServiceGrpc {
 
     /**
      * <pre>
-     * Client streaming RPC
+     * A client-to-server streaming RPC
+     * The Server accepts a stream of SoilInfo from the SoilSensor, then return a response
      * </pre>
      */
-    default io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorRequest> soilSensor(
-        io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorResponse> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSoilSensorMethod(), responseObserver);
+    default io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilInfo> sendSoilInfo(
+        io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilInfoSummary> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSendSoilInfoMethod(), responseObserver);
     }
   }
 
@@ -134,13 +135,14 @@ public final class SoilSensorServiceGrpc {
 
     /**
      * <pre>
-     * Client streaming RPC
+     * A client-to-server streaming RPC
+     * The Server accepts a stream of SoilInfo from the SoilSensor, then return a response
      * </pre>
      */
-    public io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorRequest> soilSensor(
-        io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorResponse> responseObserver) {
+    public io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilInfo> sendSoilInfo(
+        io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilInfoSummary> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
-          getChannel().newCall(getSoilSensorMethod(), getCallOptions()), responseObserver);
+          getChannel().newCall(getSendSoilInfoMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -178,7 +180,7 @@ public final class SoilSensorServiceGrpc {
     }
   }
 
-  private static final int METHODID_SOIL_SENSOR = 0;
+  private static final int METHODID_SEND_SOIL_INFO = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -207,9 +209,9 @@ public final class SoilSensorServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SOIL_SENSOR:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.soilSensor(
-              (io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilSensorResponse>) responseObserver);
+        case METHODID_SEND_SOIL_INFO:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.sendSoilInfo(
+              (io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilInfoSummary>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -219,12 +221,12 @@ public final class SoilSensorServiceGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getSoilSensorMethod(),
+          getSendSoilInfoMethod(),
           io.grpc.stub.ServerCalls.asyncClientStreamingCall(
             new MethodHandlers<
-              com.project.SoilSensorProto.SoilSensorRequest,
-              com.project.SoilSensorProto.SoilSensorResponse>(
-                service, METHODID_SOIL_SENSOR)))
+              com.project.SoilSensorProto.SoilInfo,
+              com.project.SoilSensorProto.SoilInfoSummary>(
+                service, METHODID_SEND_SOIL_INFO)))
         .build();
   }
 
@@ -273,7 +275,7 @@ public final class SoilSensorServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new SoilSensorServiceFileDescriptorSupplier())
-              .addMethod(getSoilSensorMethod())
+              .addMethod(getSendSoilInfoMethod())
               .build();
         }
       }

@@ -15,35 +15,35 @@ public final class IrrigationSystemServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "IrrigationSystemService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.project.IrrigationSystemProto.IrrigationSystemRequest,
-      com.project.IrrigationSystemProto.IrrigationSystemResponse> getIrrigationSystemMethod;
+  private static volatile io.grpc.MethodDescriptor<com.project.IrrigationSystemProto.IrrigationStatus,
+      com.project.IrrigationSystemProto.ServerInstruction> getInstructIrrigationSystemMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "irrigationSystem",
-      requestType = com.project.IrrigationSystemProto.IrrigationSystemRequest.class,
-      responseType = com.project.IrrigationSystemProto.IrrigationSystemResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "InstructIrrigationSystem",
+      requestType = com.project.IrrigationSystemProto.IrrigationStatus.class,
+      responseType = com.project.IrrigationSystemProto.ServerInstruction.class,
       methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<com.project.IrrigationSystemProto.IrrigationSystemRequest,
-      com.project.IrrigationSystemProto.IrrigationSystemResponse> getIrrigationSystemMethod() {
-    io.grpc.MethodDescriptor<com.project.IrrigationSystemProto.IrrigationSystemRequest, com.project.IrrigationSystemProto.IrrigationSystemResponse> getIrrigationSystemMethod;
-    if ((getIrrigationSystemMethod = IrrigationSystemServiceGrpc.getIrrigationSystemMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.project.IrrigationSystemProto.IrrigationStatus,
+      com.project.IrrigationSystemProto.ServerInstruction> getInstructIrrigationSystemMethod() {
+    io.grpc.MethodDescriptor<com.project.IrrigationSystemProto.IrrigationStatus, com.project.IrrigationSystemProto.ServerInstruction> getInstructIrrigationSystemMethod;
+    if ((getInstructIrrigationSystemMethod = IrrigationSystemServiceGrpc.getInstructIrrigationSystemMethod) == null) {
       synchronized (IrrigationSystemServiceGrpc.class) {
-        if ((getIrrigationSystemMethod = IrrigationSystemServiceGrpc.getIrrigationSystemMethod) == null) {
-          IrrigationSystemServiceGrpc.getIrrigationSystemMethod = getIrrigationSystemMethod =
-              io.grpc.MethodDescriptor.<com.project.IrrigationSystemProto.IrrigationSystemRequest, com.project.IrrigationSystemProto.IrrigationSystemResponse>newBuilder()
+        if ((getInstructIrrigationSystemMethod = IrrigationSystemServiceGrpc.getInstructIrrigationSystemMethod) == null) {
+          IrrigationSystemServiceGrpc.getInstructIrrigationSystemMethod = getInstructIrrigationSystemMethod =
+              io.grpc.MethodDescriptor.<com.project.IrrigationSystemProto.IrrigationStatus, com.project.IrrigationSystemProto.ServerInstruction>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "irrigationSystem"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InstructIrrigationSystem"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.IrrigationSystemProto.IrrigationSystemRequest.getDefaultInstance()))
+                  com.project.IrrigationSystemProto.IrrigationStatus.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.project.IrrigationSystemProto.IrrigationSystemResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new IrrigationSystemServiceMethodDescriptorSupplier("irrigationSystem"))
+                  com.project.IrrigationSystemProto.ServerInstruction.getDefaultInstance()))
+              .setSchemaDescriptor(new IrrigationSystemServiceMethodDescriptorSupplier("InstructIrrigationSystem"))
               .build();
         }
       }
     }
-    return getIrrigationSystemMethod;
+    return getInstructIrrigationSystemMethod;
   }
 
   /**
@@ -96,12 +96,13 @@ public final class IrrigationSystemServiceGrpc {
 
     /**
      * <pre>
-     * Bidirectional streaming RPC
+     * A bidirectional streaming RPC
+     * The IrrigationSystem accepts a stream of ServerInstruction, while sending a stream of IrrigationResponse.
      * </pre>
      */
-    default io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.IrrigationSystemRequest> irrigationSystem(
-        io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.IrrigationSystemResponse> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getIrrigationSystemMethod(), responseObserver);
+    default io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.IrrigationStatus> instructIrrigationSystem(
+        io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.ServerInstruction> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getInstructIrrigationSystemMethod(), responseObserver);
     }
   }
 
@@ -134,13 +135,14 @@ public final class IrrigationSystemServiceGrpc {
 
     /**
      * <pre>
-     * Bidirectional streaming RPC
+     * A bidirectional streaming RPC
+     * The IrrigationSystem accepts a stream of ServerInstruction, while sending a stream of IrrigationResponse.
      * </pre>
      */
-    public io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.IrrigationSystemRequest> irrigationSystem(
-        io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.IrrigationSystemResponse> responseObserver) {
+    public io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.IrrigationStatus> instructIrrigationSystem(
+        io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.ServerInstruction> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
-          getChannel().newCall(getIrrigationSystemMethod(), getCallOptions()), responseObserver);
+          getChannel().newCall(getInstructIrrigationSystemMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -178,7 +180,7 @@ public final class IrrigationSystemServiceGrpc {
     }
   }
 
-  private static final int METHODID_IRRIGATION_SYSTEM = 0;
+  private static final int METHODID_INSTRUCT_IRRIGATION_SYSTEM = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -207,9 +209,9 @@ public final class IrrigationSystemServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_IRRIGATION_SYSTEM:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.irrigationSystem(
-              (io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.IrrigationSystemResponse>) responseObserver);
+        case METHODID_INSTRUCT_IRRIGATION_SYSTEM:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.instructIrrigationSystem(
+              (io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.ServerInstruction>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -219,12 +221,12 @@ public final class IrrigationSystemServiceGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getIrrigationSystemMethod(),
+          getInstructIrrigationSystemMethod(),
           io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
             new MethodHandlers<
-              com.project.IrrigationSystemProto.IrrigationSystemRequest,
-              com.project.IrrigationSystemProto.IrrigationSystemResponse>(
-                service, METHODID_IRRIGATION_SYSTEM)))
+              com.project.IrrigationSystemProto.IrrigationStatus,
+              com.project.IrrigationSystemProto.ServerInstruction>(
+                service, METHODID_INSTRUCT_IRRIGATION_SYSTEM)))
         .build();
   }
 
@@ -273,7 +275,7 @@ public final class IrrigationSystemServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new IrrigationSystemServiceFileDescriptorSupplier())
-              .addMethod(getIrrigationSystemMethod())
+              .addMethod(getInstructIrrigationSystemMethod())
               .build();
         }
       }

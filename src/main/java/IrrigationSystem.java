@@ -1,97 +1,99 @@
-import com.project.IrrigationSystemServiceGrpc;
 import com.project.IrrigationSystemProto;
+import com.project.IrrigationSystemServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class IrrigationSystem {
-    // declare and create a channel
-    private ManagedChannel channel;
+
+    private static ManagedChannel channel;
+    private IrrigationSystemServiceGrpc.IrrigationSystemServiceStub stub;
 
     // constructor
     public IrrigationSystem(String host, int port){
-        this.channel = ManagedChannelBuilder.forAddress(host, port)
-                .usePlaintext().build();
+        this.channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+        this.stub = IrrigationSystemServiceGrpc.newStub(channel);
     }
 
-    // bidirectional streaming RPC
-    public void irrigationSystem(){
+    // bidirectional RPC
+    public void InstructIrrigationSystem(ArrayList<IrrigationStatus> irrigationStatusData){
 
         try {
-
-            // create a gRPC server streaming stub for the bidirectional streaming RPC
-            IrrigationSystemServiceGrpc.IrrigationSystemServiceStub stub = IrrigationSystemServiceGrpc.newStub(channel);
-
-            // create a stream observer to handle responses from the server
-            StreamObserver<IrrigationSystemProto.IrrigationSystemResponse> responseStreamObserver
-                    = new StreamObserver<IrrigationSystemProto.IrrigationSystemResponse>() {
+            StreamObserver<IrrigationSystemProto.IrrigationStatus> irrigationStatusStreamObserver = stub.instructIrrigationSystem(new StreamObserver<IrrigationSystemProto.ServerInstruction>() {
                 @Override
-                public void onNext(IrrigationSystemProto.IrrigationSystemResponse irrigationSystemResponse) {
+                public void onNext(IrrigationSystemProto.ServerInstruction serverInstruction) {
                     // print the response from the server
-                    System.out.println("Received response from server: " + irrigationSystemResponse.getInstruction());
+                    System.out.println("Instruction received from the Server: "
+                            + "\nset Irrigation System status to: " + serverInstruction.getInstruction()
+                            + "\nset flow rate to: " + serverInstruction.getFlowRate());
                 }
 
                 @Override
                 public void onError(Throwable t) {
                     // handle errors from the server
-                    System.err.println("Error from sever: " + t.getMessage());
+                    System.err.println("Error occurred while receiving responses from the server: " + t.getMessage());
                 }
 
                 @Override
                 public void onCompleted() {
-                    // print completion message when the response is completed
-                    System.out.println("Server streaming responses completed.");
+                    System.out.println("Server instructions received completed.");
                 }
-            };
+            });
 
-            // create a request observer for Irrigation System streaming
-            StreamObserver<IrrigationSystemProto.IrrigationSystemRequest> requestStreamObserver = stub.irrigationSystem(responseStreamObserver);
+            // create 5 IrrigationStatus messages to send to the server
+            for(int i = 0; i < irrigationStatusData.size(); i++){
+                IrrigationStatus irrigationStatus = irrigationStatusData.get(i);
+                IrrigationSystemProto.IrrigationStatus irrigationStatusInfo = IrrigationSystemProto.IrrigationStatus.newBuilder()
+                        .setCurrentStatus(irrigationStatus.currentStatus)
+                        .setFlowRate(irrigationStatus.flowRate)
+                        .build();
 
-            // create three request messages and send to the server separately
-            for (int i = 0; i < 3; i++) {
-
-                String soilMoistureMessage = "The Moisture Level: ";
-                String flowRateMessage = "The Flow Rate: ";
-
-                if (i == 0) {
-                    soilMoistureMessage += "Very Low ";
-                    flowRateMessage += "High Flow ";
-                } else if (i == 1) {
-                    soilMoistureMessage += "Low ";
-                    flowRateMessage += "Low Flow ";
-                } else {
-                    soilMoistureMessage += "Optimal ";
-                    flowRateMessage += "Very Low Flow ";
-                }
-
-                // create the request object with the request message
-                IrrigationSystemProto.IrrigationSystemRequest.Builder builder = IrrigationSystemProto.IrrigationSystemRequest.newBuilder();
-                builder.setFlowRate(flowRateMessage);
-                builder.setSoilMoisture(soilMoistureMessage);
-                IrrigationSystemProto.IrrigationSystemRequest irrigationSystemRequest = builder.build();
-
-                // send each request to the server with 2 seconds apart
-                requestStreamObserver.onNext(irrigationSystemRequest);
-                Thread.sleep(2000);
+                irrigationStatusStreamObserver.onNext(irrigationStatusInfo);
+                Thread.sleep(1000);
             }
 
-            requestStreamObserver.onCompleted();
+            irrigationStatusStreamObserver.onCompleted();
 
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    // create an IrrigationStatus object to store data
+    public static class IrrigationStatus{
+        public String currentStatus;
+        public int flowRate;
+
+        // IrrigationStatus constructor
+        public IrrigationStatus(String currentStatus, int flowRate){
+            this.currentStatus = currentStatus;
+            this.flowRate = flowRate;
         }
     }
 
-    public static void main(String[] args) {
 
-        // create an Irrigation System instance
-        IrrigationSystem irrigationSystem = new IrrigationSystem("localhost", 9001);
+    public static void main(String[] args){
 
-        // invoke the bidirectional streaming RPC
-        irrigationSystem.irrigationSystem();
+        // create 5 pieces of IrrigationStatus to send to Server
+        ArrayList<IrrigationStatus> irrigationStatusData = new ArrayList<>();
+        irrigationStatusData.add(new IrrigationStatus("on",5));
+        irrigationStatusData.add(new IrrigationStatus("on",4));
+        irrigationStatusData.add(new IrrigationStatus("on",3));
+        irrigationStatusData.add(new IrrigationStatus("on",2));
+        irrigationStatusData.add(new IrrigationStatus("on",1));
+
+        // create a MobilePhone instance
+        IrrigationSystem irrigationSystem = new IrrigationSystem("localhost", 9093);
+
+        //invoke the bidirectional RPC
+        irrigationSystem.InstructIrrigationSystem(irrigationStatusData);
+
 
         // read input from the user to quit
         Scanner scanner = new Scanner(System.in);
@@ -108,9 +110,8 @@ public class IrrigationSystem {
     public void shutdown (){
         try{
             channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-            System.out.println("Irrigation System connection closed.");
         } catch (InterruptedException e){
-            System.err.println("Error while shutting down Irrigation System: " + e.getMessage());
+            System.err.println("Error while shutting down Mobile Phone: " + e.getMessage());
         }
 
     }

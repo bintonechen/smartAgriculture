@@ -1,5 +1,6 @@
-import com.project.MobilePhoneServiceGrpc;
 import com.project.MobilePhoneProto;
+import com.project.MobilePhoneServiceGrpc;
+import com.project.SoilSensorServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
@@ -9,81 +10,77 @@ import java.util.concurrent.TimeUnit;
 
 public class MobilePhone {
 
-    // declare and create a channel
-    private ManagedChannel channel;
+    private static ManagedChannel channel;
+    private MobilePhoneServiceGrpc.MobilePhoneServiceStub stub; // for the server-to-client streaming RPC
+
+    private MobilePhoneServiceGrpc.MobilePhoneServiceBlockingStub blockingStub; // for the unary RPC
 
     // constructor
     public MobilePhone(String host, int port){
-        this.channel = ManagedChannelBuilder.forAddress(host, port)
-                .usePlaintext().build();
+        this.channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+        this.stub = MobilePhoneServiceGrpc.newStub(channel);
+        this.blockingStub = MobilePhoneServiceGrpc.newBlockingStub(channel);
     }
 
-    // Server streaming RPC
-    public void mobilePhoneService1(String requestMessage){
+    // Unary RPC
+    public void SetUserID(String userID){
+        try{
+            // create a request message with a user ID
+            MobilePhoneProto.UserID request = MobilePhoneProto.UserID.newBuilder().setUserID(userID).build();
 
-        // create a request message for Soil Sensor and Irrigation System update
-        MobilePhoneProto.MobilePhoneRequest request = MobilePhoneProto.MobilePhoneRequest
-                .newBuilder().setRequestMessage(requestMessage).build();
+            // send the request and receive a user ID confirmation response
+            MobilePhoneProto.UserIDConfirmation response = blockingStub.setUserID(request);
 
-        // create a gRPC stub for the server streaming RPC
-        MobilePhoneServiceGrpc.MobilePhoneServiceStub stub = MobilePhoneServiceGrpc.newStub(channel);
+            System.out.println(response);
 
-        // create a stream observer to handle responses from the server
-        StreamObserver<MobilePhoneProto.MobilePhoneResponse> responseStreamObserver
-                = new StreamObserver<MobilePhoneProto.MobilePhoneResponse>() {
+        } catch (Exception e){
+            System.err.println("An error occurred in SetUserID service: " + e.getMessage());
+            throw new RuntimeException();
+        }
+    }
+
+    // server-to-client streaming RPC
+    public void MobilePhoneRequest(){
+
+        String requestMessage = "Request for health check for the Soil Sensor and the Irrigation System. ";
+
+        // create a request message
+        MobilePhoneProto.InfoRequest request = MobilePhoneProto.InfoRequest
+                .newBuilder().setInfoRequestMessage(requestMessage).build();
+
+        // create a stream observer to handle response from the server
+        StreamObserver<MobilePhoneProto.InfoResponse> infoResponseStreamObserver
+                = new StreamObserver<MobilePhoneProto.InfoResponse>() {
             @Override
-            public void onNext(MobilePhoneProto.MobilePhoneResponse mobilePhoneResponse) {
-                // print each response from the server
-                System.out.println("Received response from server: " + mobilePhoneResponse.getResponseMessage());
+            public void onNext(MobilePhoneProto.InfoResponse infoResponse) {
+                System.out.println(infoResponse);
             }
 
             @Override
             public void onError(Throwable t) {
-                // handle errors from the server
                 System.err.println("Error from server: " + t.getMessage());
             }
 
             @Override
             public void onCompleted() {
-                // print completion message when the response is completed
-                System.out.println("Server streaming responses completed.");
+                System.out.println("Health check for the Soil Sensor and the Irrigation System completed.");
             }
         };
 
-        // send the request and handle responses;
-        stub.mobilePhoneService1(request, responseStreamObserver);
+        // send the request and handle response
+        stub.mobilePhoneRequest(request, infoResponseStreamObserver);
+
 
     }
 
-    // Unary RPC
-    public void mobilePhoneService2(String userID){
-        try {
-            // create a request message with a user ID
-            MobilePhoneProto.MobilePhoneRequest request = MobilePhoneProto.MobilePhoneRequest
-                    .newBuilder().setRequestMessage(userID).build();
-
-            // create a gRPC blocking stub for the unary RPC
-            MobilePhoneServiceGrpc.MobilePhoneServiceBlockingStub blockingStub = MobilePhoneServiceGrpc.newBlockingStub(channel);
-
-            // send the request and receive one response
-            MobilePhoneProto.MobilePhoneResponse responseMessage = blockingStub.mobilePhoneService2(request);
-            System.out.println("Mobile Phone Service 2 response from server: " + responseMessage);
-            System.out.println("Mobile Phone Service 2 response completed."); // once received one response message, the response from the server is completed.
-        } catch (Exception e){
-            // log the exception
-            System.err.println("An error occurred in Mobile Phone Service 2: " + e.getMessage());
-            throw new RuntimeException();
-        }
-
-    }
 
     public static void main(String[] args){
         // create a MobilePhone instance
-        MobilePhone mobilePhone = new MobilePhone("localhost",9002);
+        MobilePhone mobilePhone = new MobilePhone("localhost", 9092);
 
-        // invoke the unary RPC and the server streaming RPC
-        mobilePhone.mobilePhoneService2("A001");
-        mobilePhone.mobilePhoneService1("Request for Soil Sensor and Irrigation System update.");
+        //invoke the unary RPC
+        mobilePhone.SetUserID("A0001");
+        mobilePhone.MobilePhoneRequest();
 
         // read input from the user to quit
         Scanner scanner = new Scanner(System.in);
@@ -105,4 +102,6 @@ public class MobilePhone {
         }
 
     }
+
+
 }

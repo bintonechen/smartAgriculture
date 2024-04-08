@@ -15,128 +15,97 @@ public final class IrrigationSystemProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface IrrigationSystemRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:IrrigationSystemRequest)
+  public interface IrrigationStatusOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:IrrigationStatus)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <pre>
-     * Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-     * </pre>
-     *
-     * <code>string soilMoisture = 1;</code>
-     * @return The soilMoisture.
+     * <code>string currentStatus = 1;</code>
+     * @return The currentStatus.
      */
-    java.lang.String getSoilMoisture();
+    java.lang.String getCurrentStatus();
     /**
-     * <pre>
-     * Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-     * </pre>
-     *
-     * <code>string soilMoisture = 1;</code>
-     * @return The bytes for soilMoisture.
+     * <code>string currentStatus = 1;</code>
+     * @return The bytes for currentStatus.
      */
     com.google.protobuf.ByteString
-        getSoilMoistureBytes();
+        getCurrentStatusBytes();
 
     /**
-     * <pre>
-     * Water flow rate: 'Low Flow', or 'High Flow'.
-     * </pre>
-     *
-     * <code>string flowRate = 2;</code>
+     * <code>int32 flowRate = 2;</code>
      * @return The flowRate.
      */
-    java.lang.String getFlowRate();
-    /**
-     * <pre>
-     * Water flow rate: 'Low Flow', or 'High Flow'.
-     * </pre>
-     *
-     * <code>string flowRate = 2;</code>
-     * @return The bytes for flowRate.
-     */
-    com.google.protobuf.ByteString
-        getFlowRateBytes();
+    int getFlowRate();
   }
   /**
-   * Protobuf type {@code IrrigationSystemRequest}
+   * Protobuf type {@code IrrigationStatus}
    */
-  public static final class IrrigationSystemRequest extends
+  public static final class IrrigationStatus extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:IrrigationSystemRequest)
-      IrrigationSystemRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:IrrigationStatus)
+      IrrigationStatusOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use IrrigationSystemRequest.newBuilder() to construct.
-    private IrrigationSystemRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use IrrigationStatus.newBuilder() to construct.
+    private IrrigationStatus(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private IrrigationSystemRequest() {
-      soilMoisture_ = "";
-      flowRate_ = "";
+    private IrrigationStatus() {
+      currentStatus_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new IrrigationSystemRequest();
+      return new IrrigationStatus();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.project.IrrigationSystemProto.internal_static_IrrigationSystemRequest_descriptor;
+      return com.project.IrrigationSystemProto.internal_static_IrrigationStatus_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.project.IrrigationSystemProto.internal_static_IrrigationSystemRequest_fieldAccessorTable
+      return com.project.IrrigationSystemProto.internal_static_IrrigationStatus_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.project.IrrigationSystemProto.IrrigationSystemRequest.class, com.project.IrrigationSystemProto.IrrigationSystemRequest.Builder.class);
+              com.project.IrrigationSystemProto.IrrigationStatus.class, com.project.IrrigationSystemProto.IrrigationStatus.Builder.class);
     }
 
-    public static final int SOILMOISTURE_FIELD_NUMBER = 1;
+    public static final int CURRENTSTATUS_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object soilMoisture_ = "";
+    private volatile java.lang.Object currentStatus_ = "";
     /**
-     * <pre>
-     * Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-     * </pre>
-     *
-     * <code>string soilMoisture = 1;</code>
-     * @return The soilMoisture.
+     * <code>string currentStatus = 1;</code>
+     * @return The currentStatus.
      */
     @java.lang.Override
-    public java.lang.String getSoilMoisture() {
-      java.lang.Object ref = soilMoisture_;
+    public java.lang.String getCurrentStatus() {
+      java.lang.Object ref = currentStatus_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        soilMoisture_ = s;
+        currentStatus_ = s;
         return s;
       }
     }
     /**
-     * <pre>
-     * Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-     * </pre>
-     *
-     * <code>string soilMoisture = 1;</code>
-     * @return The bytes for soilMoisture.
+     * <code>string currentStatus = 1;</code>
+     * @return The bytes for currentStatus.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getSoilMoistureBytes() {
-      java.lang.Object ref = soilMoisture_;
+        getCurrentStatusBytes() {
+      java.lang.Object ref = currentStatus_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        soilMoisture_ = b;
+        currentStatus_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -144,50 +113,14 @@ public final class IrrigationSystemProto {
     }
 
     public static final int FLOWRATE_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object flowRate_ = "";
+    private int flowRate_ = 0;
     /**
-     * <pre>
-     * Water flow rate: 'Low Flow', or 'High Flow'.
-     * </pre>
-     *
-     * <code>string flowRate = 2;</code>
+     * <code>int32 flowRate = 2;</code>
      * @return The flowRate.
      */
     @java.lang.Override
-    public java.lang.String getFlowRate() {
-      java.lang.Object ref = flowRate_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        flowRate_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * Water flow rate: 'Low Flow', or 'High Flow'.
-     * </pre>
-     *
-     * <code>string flowRate = 2;</code>
-     * @return The bytes for flowRate.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getFlowRateBytes() {
-      java.lang.Object ref = flowRate_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        flowRate_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getFlowRate() {
+      return flowRate_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -204,11 +137,11 @@ public final class IrrigationSystemProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(soilMoisture_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, soilMoisture_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(currentStatus_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, currentStatus_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowRate_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, flowRate_);
+      if (flowRate_ != 0) {
+        output.writeInt32(2, flowRate_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -219,11 +152,12 @@ public final class IrrigationSystemProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(soilMoisture_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, soilMoisture_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(currentStatus_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, currentStatus_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowRate_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, flowRate_);
+      if (flowRate_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, flowRate_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -235,15 +169,15 @@ public final class IrrigationSystemProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.project.IrrigationSystemProto.IrrigationSystemRequest)) {
+      if (!(obj instanceof com.project.IrrigationSystemProto.IrrigationStatus)) {
         return super.equals(obj);
       }
-      com.project.IrrigationSystemProto.IrrigationSystemRequest other = (com.project.IrrigationSystemProto.IrrigationSystemRequest) obj;
+      com.project.IrrigationSystemProto.IrrigationStatus other = (com.project.IrrigationSystemProto.IrrigationStatus) obj;
 
-      if (!getSoilMoisture()
-          .equals(other.getSoilMoisture())) return false;
-      if (!getFlowRate()
-          .equals(other.getFlowRate())) return false;
+      if (!getCurrentStatus()
+          .equals(other.getCurrentStatus())) return false;
+      if (getFlowRate()
+          != other.getFlowRate()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -255,53 +189,53 @@ public final class IrrigationSystemProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SOILMOISTURE_FIELD_NUMBER;
-      hash = (53 * hash) + getSoilMoisture().hashCode();
+      hash = (37 * hash) + CURRENTSTATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getCurrentStatus().hashCode();
       hash = (37 * hash) + FLOWRATE_FIELD_NUMBER;
-      hash = (53 * hash) + getFlowRate().hashCode();
+      hash = (53 * hash) + getFlowRate();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(byte[] data)
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(java.io.InputStream input)
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -309,26 +243,26 @@ public final class IrrigationSystemProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseDelimitedFrom(
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest parseFrom(
+    public static com.project.IrrigationSystemProto.IrrigationStatus parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -341,7 +275,7 @@ public final class IrrigationSystemProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.project.IrrigationSystemProto.IrrigationSystemRequest prototype) {
+    public static Builder newBuilder(com.project.IrrigationSystemProto.IrrigationStatus prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -357,26 +291,26 @@ public final class IrrigationSystemProto {
       return builder;
     }
     /**
-     * Protobuf type {@code IrrigationSystemRequest}
+     * Protobuf type {@code IrrigationStatus}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:IrrigationSystemRequest)
-        com.project.IrrigationSystemProto.IrrigationSystemRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:IrrigationStatus)
+        com.project.IrrigationSystemProto.IrrigationStatusOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.project.IrrigationSystemProto.internal_static_IrrigationSystemRequest_descriptor;
+        return com.project.IrrigationSystemProto.internal_static_IrrigationStatus_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.project.IrrigationSystemProto.internal_static_IrrigationSystemRequest_fieldAccessorTable
+        return com.project.IrrigationSystemProto.internal_static_IrrigationStatus_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.project.IrrigationSystemProto.IrrigationSystemRequest.class, com.project.IrrigationSystemProto.IrrigationSystemRequest.Builder.class);
+                com.project.IrrigationSystemProto.IrrigationStatus.class, com.project.IrrigationSystemProto.IrrigationStatus.Builder.class);
       }
 
-      // Construct using com.project.IrrigationSystemProto.IrrigationSystemRequest.newBuilder()
+      // Construct using com.project.IrrigationSystemProto.IrrigationStatus.newBuilder()
       private Builder() {
 
       }
@@ -390,25 +324,25 @@ public final class IrrigationSystemProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        soilMoisture_ = "";
-        flowRate_ = "";
+        currentStatus_ = "";
+        flowRate_ = 0;
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.project.IrrigationSystemProto.internal_static_IrrigationSystemRequest_descriptor;
+        return com.project.IrrigationSystemProto.internal_static_IrrigationStatus_descriptor;
       }
 
       @java.lang.Override
-      public com.project.IrrigationSystemProto.IrrigationSystemRequest getDefaultInstanceForType() {
-        return com.project.IrrigationSystemProto.IrrigationSystemRequest.getDefaultInstance();
+      public com.project.IrrigationSystemProto.IrrigationStatus getDefaultInstanceForType() {
+        return com.project.IrrigationSystemProto.IrrigationStatus.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.project.IrrigationSystemProto.IrrigationSystemRequest build() {
-        com.project.IrrigationSystemProto.IrrigationSystemRequest result = buildPartial();
+      public com.project.IrrigationSystemProto.IrrigationStatus build() {
+        com.project.IrrigationSystemProto.IrrigationStatus result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -416,17 +350,17 @@ public final class IrrigationSystemProto {
       }
 
       @java.lang.Override
-      public com.project.IrrigationSystemProto.IrrigationSystemRequest buildPartial() {
-        com.project.IrrigationSystemProto.IrrigationSystemRequest result = new com.project.IrrigationSystemProto.IrrigationSystemRequest(this);
+      public com.project.IrrigationSystemProto.IrrigationStatus buildPartial() {
+        com.project.IrrigationSystemProto.IrrigationStatus result = new com.project.IrrigationSystemProto.IrrigationStatus(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.project.IrrigationSystemProto.IrrigationSystemRequest result) {
+      private void buildPartial0(com.project.IrrigationSystemProto.IrrigationStatus result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.soilMoisture_ = soilMoisture_;
+          result.currentStatus_ = currentStatus_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.flowRate_ = flowRate_;
@@ -467,25 +401,23 @@ public final class IrrigationSystemProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.project.IrrigationSystemProto.IrrigationSystemRequest) {
-          return mergeFrom((com.project.IrrigationSystemProto.IrrigationSystemRequest)other);
+        if (other instanceof com.project.IrrigationSystemProto.IrrigationStatus) {
+          return mergeFrom((com.project.IrrigationSystemProto.IrrigationStatus)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.project.IrrigationSystemProto.IrrigationSystemRequest other) {
-        if (other == com.project.IrrigationSystemProto.IrrigationSystemRequest.getDefaultInstance()) return this;
-        if (!other.getSoilMoisture().isEmpty()) {
-          soilMoisture_ = other.soilMoisture_;
+      public Builder mergeFrom(com.project.IrrigationSystemProto.IrrigationStatus other) {
+        if (other == com.project.IrrigationSystemProto.IrrigationStatus.getDefaultInstance()) return this;
+        if (!other.getCurrentStatus().isEmpty()) {
+          currentStatus_ = other.currentStatus_;
           bitField0_ |= 0x00000001;
           onChanged();
         }
-        if (!other.getFlowRate().isEmpty()) {
-          flowRate_ = other.flowRate_;
-          bitField0_ |= 0x00000002;
-          onChanged();
+        if (other.getFlowRate() != 0) {
+          setFlowRate(other.getFlowRate());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -514,15 +446,15 @@ public final class IrrigationSystemProto {
                 done = true;
                 break;
               case 10: {
-                soilMoisture_ = input.readStringRequireUtf8();
+                currentStatus_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
-              case 18: {
-                flowRate_ = input.readStringRequireUtf8();
+              case 16: {
+                flowRate_ = input.readInt32();
                 bitField0_ |= 0x00000002;
                 break;
-              } // case 18
+              } // case 16
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -540,186 +472,106 @@ public final class IrrigationSystemProto {
       }
       private int bitField0_;
 
-      private java.lang.Object soilMoisture_ = "";
+      private java.lang.Object currentStatus_ = "";
       /**
-       * <pre>
-       * Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-       * </pre>
-       *
-       * <code>string soilMoisture = 1;</code>
-       * @return The soilMoisture.
+       * <code>string currentStatus = 1;</code>
+       * @return The currentStatus.
        */
-      public java.lang.String getSoilMoisture() {
-        java.lang.Object ref = soilMoisture_;
+      public java.lang.String getCurrentStatus() {
+        java.lang.Object ref = currentStatus_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          soilMoisture_ = s;
+          currentStatus_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <pre>
-       * Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-       * </pre>
-       *
-       * <code>string soilMoisture = 1;</code>
-       * @return The bytes for soilMoisture.
+       * <code>string currentStatus = 1;</code>
+       * @return The bytes for currentStatus.
        */
       public com.google.protobuf.ByteString
-          getSoilMoistureBytes() {
-        java.lang.Object ref = soilMoisture_;
+          getCurrentStatusBytes() {
+        java.lang.Object ref = currentStatus_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          soilMoisture_ = b;
+          currentStatus_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <pre>
-       * Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-       * </pre>
-       *
-       * <code>string soilMoisture = 1;</code>
-       * @param value The soilMoisture to set.
+       * <code>string currentStatus = 1;</code>
+       * @param value The currentStatus to set.
        * @return This builder for chaining.
        */
-      public Builder setSoilMoisture(
+      public Builder setCurrentStatus(
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        soilMoisture_ = value;
+        currentStatus_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <pre>
-       * Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-       * </pre>
-       *
-       * <code>string soilMoisture = 1;</code>
+       * <code>string currentStatus = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSoilMoisture() {
-        soilMoisture_ = getDefaultInstance().getSoilMoisture();
+      public Builder clearCurrentStatus() {
+        currentStatus_ = getDefaultInstance().getCurrentStatus();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <pre>
-       * Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-       * </pre>
-       *
-       * <code>string soilMoisture = 1;</code>
-       * @param value The bytes for soilMoisture to set.
+       * <code>string currentStatus = 1;</code>
+       * @param value The bytes for currentStatus to set.
        * @return This builder for chaining.
        */
-      public Builder setSoilMoistureBytes(
+      public Builder setCurrentStatusBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        soilMoisture_ = value;
+        currentStatus_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
 
-      private java.lang.Object flowRate_ = "";
+      private int flowRate_ ;
       /**
-       * <pre>
-       * Water flow rate: 'Low Flow', or 'High Flow'.
-       * </pre>
-       *
-       * <code>string flowRate = 2;</code>
+       * <code>int32 flowRate = 2;</code>
        * @return The flowRate.
        */
-      public java.lang.String getFlowRate() {
-        java.lang.Object ref = flowRate_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          flowRate_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public int getFlowRate() {
+        return flowRate_;
       }
       /**
-       * <pre>
-       * Water flow rate: 'Low Flow', or 'High Flow'.
-       * </pre>
-       *
-       * <code>string flowRate = 2;</code>
-       * @return The bytes for flowRate.
-       */
-      public com.google.protobuf.ByteString
-          getFlowRateBytes() {
-        java.lang.Object ref = flowRate_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          flowRate_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Water flow rate: 'Low Flow', or 'High Flow'.
-       * </pre>
-       *
-       * <code>string flowRate = 2;</code>
+       * <code>int32 flowRate = 2;</code>
        * @param value The flowRate to set.
        * @return This builder for chaining.
        */
-      public Builder setFlowRate(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
+      public Builder setFlowRate(int value) {
+
         flowRate_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <pre>
-       * Water flow rate: 'Low Flow', or 'High Flow'.
-       * </pre>
-       *
-       * <code>string flowRate = 2;</code>
+       * <code>int32 flowRate = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearFlowRate() {
-        flowRate_ = getDefaultInstance().getFlowRate();
         bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Water flow rate: 'Low Flow', or 'High Flow'.
-       * </pre>
-       *
-       * <code>string flowRate = 2;</code>
-       * @param value The bytes for flowRate to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFlowRateBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        flowRate_ = value;
-        bitField0_ |= 0x00000002;
+        flowRate_ = 0;
         onChanged();
         return this;
       }
@@ -736,23 +588,23 @@ public final class IrrigationSystemProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:IrrigationSystemRequest)
+      // @@protoc_insertion_point(builder_scope:IrrigationStatus)
     }
 
-    // @@protoc_insertion_point(class_scope:IrrigationSystemRequest)
-    private static final com.project.IrrigationSystemProto.IrrigationSystemRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:IrrigationStatus)
+    private static final com.project.IrrigationSystemProto.IrrigationStatus DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.project.IrrigationSystemProto.IrrigationSystemRequest();
+      DEFAULT_INSTANCE = new com.project.IrrigationSystemProto.IrrigationStatus();
     }
 
-    public static com.project.IrrigationSystemProto.IrrigationSystemRequest getDefaultInstance() {
+    public static com.project.IrrigationSystemProto.IrrigationStatus getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<IrrigationSystemRequest>
-        PARSER = new com.google.protobuf.AbstractParser<IrrigationSystemRequest>() {
+    private static final com.google.protobuf.Parser<IrrigationStatus>
+        PARSER = new com.google.protobuf.AbstractParser<IrrigationStatus>() {
       @java.lang.Override
-      public IrrigationSystemRequest parsePartialFrom(
+      public IrrigationStatus parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -771,24 +623,24 @@ public final class IrrigationSystemProto {
       }
     };
 
-    public static com.google.protobuf.Parser<IrrigationSystemRequest> parser() {
+    public static com.google.protobuf.Parser<IrrigationStatus> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<IrrigationSystemRequest> getParserForType() {
+    public com.google.protobuf.Parser<IrrigationStatus> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.project.IrrigationSystemProto.IrrigationSystemRequest getDefaultInstanceForType() {
+    public com.project.IrrigationSystemProto.IrrigationStatus getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface IrrigationSystemResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:IrrigationSystemResponse)
+  public interface ServerInstructionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ServerInstruction)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -802,20 +654,26 @@ public final class IrrigationSystemProto {
      */
     com.google.protobuf.ByteString
         getInstructionBytes();
+
+    /**
+     * <code>int32 flowRate = 2;</code>
+     * @return The flowRate.
+     */
+    int getFlowRate();
   }
   /**
-   * Protobuf type {@code IrrigationSystemResponse}
+   * Protobuf type {@code ServerInstruction}
    */
-  public static final class IrrigationSystemResponse extends
+  public static final class ServerInstruction extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:IrrigationSystemResponse)
-      IrrigationSystemResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:ServerInstruction)
+      ServerInstructionOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use IrrigationSystemResponse.newBuilder() to construct.
-    private IrrigationSystemResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ServerInstruction.newBuilder() to construct.
+    private ServerInstruction(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private IrrigationSystemResponse() {
+    private ServerInstruction() {
       instruction_ = "";
     }
 
@@ -823,20 +681,20 @@ public final class IrrigationSystemProto {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new IrrigationSystemResponse();
+      return new ServerInstruction();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.project.IrrigationSystemProto.internal_static_IrrigationSystemResponse_descriptor;
+      return com.project.IrrigationSystemProto.internal_static_ServerInstruction_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.project.IrrigationSystemProto.internal_static_IrrigationSystemResponse_fieldAccessorTable
+      return com.project.IrrigationSystemProto.internal_static_ServerInstruction_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.project.IrrigationSystemProto.IrrigationSystemResponse.class, com.project.IrrigationSystemProto.IrrigationSystemResponse.Builder.class);
+              com.project.IrrigationSystemProto.ServerInstruction.class, com.project.IrrigationSystemProto.ServerInstruction.Builder.class);
     }
 
     public static final int INSTRUCTION_FIELD_NUMBER = 1;
@@ -878,6 +736,17 @@ public final class IrrigationSystemProto {
       }
     }
 
+    public static final int FLOWRATE_FIELD_NUMBER = 2;
+    private int flowRate_ = 0;
+    /**
+     * <code>int32 flowRate = 2;</code>
+     * @return The flowRate.
+     */
+    @java.lang.Override
+    public int getFlowRate() {
+      return flowRate_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -895,6 +764,9 @@ public final class IrrigationSystemProto {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(instruction_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, instruction_);
       }
+      if (flowRate_ != 0) {
+        output.writeInt32(2, flowRate_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -907,6 +779,10 @@ public final class IrrigationSystemProto {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(instruction_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, instruction_);
       }
+      if (flowRate_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, flowRate_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -917,13 +793,15 @@ public final class IrrigationSystemProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.project.IrrigationSystemProto.IrrigationSystemResponse)) {
+      if (!(obj instanceof com.project.IrrigationSystemProto.ServerInstruction)) {
         return super.equals(obj);
       }
-      com.project.IrrigationSystemProto.IrrigationSystemResponse other = (com.project.IrrigationSystemProto.IrrigationSystemResponse) obj;
+      com.project.IrrigationSystemProto.ServerInstruction other = (com.project.IrrigationSystemProto.ServerInstruction) obj;
 
       if (!getInstruction()
           .equals(other.getInstruction())) return false;
+      if (getFlowRate()
+          != other.getFlowRate()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -937,49 +815,51 @@ public final class IrrigationSystemProto {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + INSTRUCTION_FIELD_NUMBER;
       hash = (53 * hash) + getInstruction().hashCode();
+      hash = (37 * hash) + FLOWRATE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlowRate();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(byte[] data)
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(java.io.InputStream input)
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -987,26 +867,26 @@ public final class IrrigationSystemProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseDelimitedFrom(java.io.InputStream input)
+    public static com.project.IrrigationSystemProto.ServerInstruction parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseDelimitedFrom(
+    public static com.project.IrrigationSystemProto.ServerInstruction parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse parseFrom(
+    public static com.project.IrrigationSystemProto.ServerInstruction parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1019,7 +899,7 @@ public final class IrrigationSystemProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.project.IrrigationSystemProto.IrrigationSystemResponse prototype) {
+    public static Builder newBuilder(com.project.IrrigationSystemProto.ServerInstruction prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1035,26 +915,26 @@ public final class IrrigationSystemProto {
       return builder;
     }
     /**
-     * Protobuf type {@code IrrigationSystemResponse}
+     * Protobuf type {@code ServerInstruction}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:IrrigationSystemResponse)
-        com.project.IrrigationSystemProto.IrrigationSystemResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ServerInstruction)
+        com.project.IrrigationSystemProto.ServerInstructionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.project.IrrigationSystemProto.internal_static_IrrigationSystemResponse_descriptor;
+        return com.project.IrrigationSystemProto.internal_static_ServerInstruction_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.project.IrrigationSystemProto.internal_static_IrrigationSystemResponse_fieldAccessorTable
+        return com.project.IrrigationSystemProto.internal_static_ServerInstruction_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.project.IrrigationSystemProto.IrrigationSystemResponse.class, com.project.IrrigationSystemProto.IrrigationSystemResponse.Builder.class);
+                com.project.IrrigationSystemProto.ServerInstruction.class, com.project.IrrigationSystemProto.ServerInstruction.Builder.class);
       }
 
-      // Construct using com.project.IrrigationSystemProto.IrrigationSystemResponse.newBuilder()
+      // Construct using com.project.IrrigationSystemProto.ServerInstruction.newBuilder()
       private Builder() {
 
       }
@@ -1069,23 +949,24 @@ public final class IrrigationSystemProto {
         super.clear();
         bitField0_ = 0;
         instruction_ = "";
+        flowRate_ = 0;
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.project.IrrigationSystemProto.internal_static_IrrigationSystemResponse_descriptor;
+        return com.project.IrrigationSystemProto.internal_static_ServerInstruction_descriptor;
       }
 
       @java.lang.Override
-      public com.project.IrrigationSystemProto.IrrigationSystemResponse getDefaultInstanceForType() {
-        return com.project.IrrigationSystemProto.IrrigationSystemResponse.getDefaultInstance();
+      public com.project.IrrigationSystemProto.ServerInstruction getDefaultInstanceForType() {
+        return com.project.IrrigationSystemProto.ServerInstruction.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.project.IrrigationSystemProto.IrrigationSystemResponse build() {
-        com.project.IrrigationSystemProto.IrrigationSystemResponse result = buildPartial();
+      public com.project.IrrigationSystemProto.ServerInstruction build() {
+        com.project.IrrigationSystemProto.ServerInstruction result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1093,17 +974,20 @@ public final class IrrigationSystemProto {
       }
 
       @java.lang.Override
-      public com.project.IrrigationSystemProto.IrrigationSystemResponse buildPartial() {
-        com.project.IrrigationSystemProto.IrrigationSystemResponse result = new com.project.IrrigationSystemProto.IrrigationSystemResponse(this);
+      public com.project.IrrigationSystemProto.ServerInstruction buildPartial() {
+        com.project.IrrigationSystemProto.ServerInstruction result = new com.project.IrrigationSystemProto.ServerInstruction(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.project.IrrigationSystemProto.IrrigationSystemResponse result) {
+      private void buildPartial0(com.project.IrrigationSystemProto.ServerInstruction result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.instruction_ = instruction_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.flowRate_ = flowRate_;
         }
       }
 
@@ -1141,20 +1025,23 @@ public final class IrrigationSystemProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.project.IrrigationSystemProto.IrrigationSystemResponse) {
-          return mergeFrom((com.project.IrrigationSystemProto.IrrigationSystemResponse)other);
+        if (other instanceof com.project.IrrigationSystemProto.ServerInstruction) {
+          return mergeFrom((com.project.IrrigationSystemProto.ServerInstruction)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.project.IrrigationSystemProto.IrrigationSystemResponse other) {
-        if (other == com.project.IrrigationSystemProto.IrrigationSystemResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.project.IrrigationSystemProto.ServerInstruction other) {
+        if (other == com.project.IrrigationSystemProto.ServerInstruction.getDefaultInstance()) return this;
         if (!other.getInstruction().isEmpty()) {
           instruction_ = other.instruction_;
           bitField0_ |= 0x00000001;
           onChanged();
+        }
+        if (other.getFlowRate() != 0) {
+          setFlowRate(other.getFlowRate());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1187,6 +1074,11 @@ public final class IrrigationSystemProto {
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
+              case 16: {
+                flowRate_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1275,6 +1167,38 @@ public final class IrrigationSystemProto {
         onChanged();
         return this;
       }
+
+      private int flowRate_ ;
+      /**
+       * <code>int32 flowRate = 2;</code>
+       * @return The flowRate.
+       */
+      @java.lang.Override
+      public int getFlowRate() {
+        return flowRate_;
+      }
+      /**
+       * <code>int32 flowRate = 2;</code>
+       * @param value The flowRate to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlowRate(int value) {
+
+        flowRate_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flowRate = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlowRate() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        flowRate_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1288,23 +1212,23 @@ public final class IrrigationSystemProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:IrrigationSystemResponse)
+      // @@protoc_insertion_point(builder_scope:ServerInstruction)
     }
 
-    // @@protoc_insertion_point(class_scope:IrrigationSystemResponse)
-    private static final com.project.IrrigationSystemProto.IrrigationSystemResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ServerInstruction)
+    private static final com.project.IrrigationSystemProto.ServerInstruction DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.project.IrrigationSystemProto.IrrigationSystemResponse();
+      DEFAULT_INSTANCE = new com.project.IrrigationSystemProto.ServerInstruction();
     }
 
-    public static com.project.IrrigationSystemProto.IrrigationSystemResponse getDefaultInstance() {
+    public static com.project.IrrigationSystemProto.ServerInstruction getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<IrrigationSystemResponse>
-        PARSER = new com.google.protobuf.AbstractParser<IrrigationSystemResponse>() {
+    private static final com.google.protobuf.Parser<ServerInstruction>
+        PARSER = new com.google.protobuf.AbstractParser<ServerInstruction>() {
       @java.lang.Override
-      public IrrigationSystemResponse parsePartialFrom(
+      public ServerInstruction parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1323,32 +1247,32 @@ public final class IrrigationSystemProto {
       }
     };
 
-    public static com.google.protobuf.Parser<IrrigationSystemResponse> parser() {
+    public static com.google.protobuf.Parser<ServerInstruction> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<IrrigationSystemResponse> getParserForType() {
+    public com.google.protobuf.Parser<ServerInstruction> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.project.IrrigationSystemProto.IrrigationSystemResponse getDefaultInstanceForType() {
+    public com.project.IrrigationSystemProto.ServerInstruction getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_IrrigationSystemRequest_descriptor;
+    internal_static_IrrigationStatus_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_IrrigationSystemRequest_fieldAccessorTable;
+      internal_static_IrrigationStatus_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_IrrigationSystemResponse_descriptor;
+    internal_static_ServerInstruction_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_IrrigationSystemResponse_fieldAccessorTable;
+      internal_static_ServerInstruction_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1358,31 +1282,31 @@ public final class IrrigationSystemProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\026IrrigationSystem.proto\"A\n\027IrrigationSy" +
-      "stemRequest\022\024\n\014soilMoisture\030\001 \001(\t\022\020\n\010flo" +
-      "wRate\030\002 \001(\t\"/\n\030IrrigationSystemResponse\022" +
-      "\023\n\013instruction\030\001 \001(\t2h\n\027IrrigationSystem" +
-      "Service\022M\n\020irrigationSystem\022\030.Irrigation" +
-      "SystemRequest\032\031.IrrigationSystemResponse" +
-      "\"\000(\0010\001B&\n\013com.projectB\025IrrigationSystemP" +
-      "rotoP\000b\006proto3"
+      "\n\026IrrigationSystem.proto\";\n\020IrrigationSt" +
+      "atus\022\025\n\rcurrentStatus\030\001 \001(\t\022\020\n\010flowRate\030" +
+      "\002 \001(\005\":\n\021ServerInstruction\022\023\n\013instructio" +
+      "n\030\001 \001(\t\022\020\n\010flowRate\030\002 \001(\0052b\n\027IrrigationS" +
+      "ystemService\022G\n\030InstructIrrigationSystem" +
+      "\022\021.IrrigationStatus\032\022.ServerInstruction\"" +
+      "\000(\0010\001B&\n\013com.projectB\025IrrigationSystemPr" +
+      "otoP\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_IrrigationSystemRequest_descriptor =
+    internal_static_IrrigationStatus_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_IrrigationSystemRequest_fieldAccessorTable = new
+    internal_static_IrrigationStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_IrrigationSystemRequest_descriptor,
-        new java.lang.String[] { "SoilMoisture", "FlowRate", });
-    internal_static_IrrigationSystemResponse_descriptor =
+        internal_static_IrrigationStatus_descriptor,
+        new java.lang.String[] { "CurrentStatus", "FlowRate", });
+    internal_static_ServerInstruction_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_IrrigationSystemResponse_fieldAccessorTable = new
+    internal_static_ServerInstruction_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_IrrigationSystemResponse_descriptor,
-        new java.lang.String[] { "Instruction", });
+        internal_static_ServerInstruction_descriptor,
+        new java.lang.String[] { "Instruction", "FlowRate", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -4,33 +4,33 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class SoilSensor {
-    // declare and create a channel  
-    private ManagedChannel channel;
 
-    // constructor  
+    private static ManagedChannel channel;
+    private SoilSensorServiceGrpc.SoilSensorServiceStub stub;
+
+    // constructor
     public SoilSensor(String host, int port){
-        this.channel = ManagedChannelBuilder.forAddress(host, port)
-                .usePlaintext().build();
+        this.channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+        this.stub = SoilSensorServiceGrpc.newStub(channel);
     }
 
-    // client streaming RPC  
-    public void soilSensorService(){
+    public void SoilSensorService(ArrayList<SoilSensorInfo> soilSensorInfos){
 
         try {
-            // create a gRPC stub for client streaming RPC
-            SoilSensorServiceGrpc.SoilSensorServiceStub stub = SoilSensorServiceGrpc.newStub(channel);
 
-            // create the StreamObserver to handle responses from the server
-            StreamObserver<SoilSensorProto.SoilSensorRequest> requestStreamObserver = stub.soilSensor(new StreamObserver<SoilSensorProto.SoilSensorResponse>() {
+            StreamObserver<SoilSensorProto.SoilInfo> soilInfoStreamObserver = stub.sendSoilInfo(new StreamObserver<SoilSensorProto.SoilInfoSummary>() {
                 @Override
-                public void onNext(SoilSensorProto.SoilSensorResponse soilSensorResponse) {
+                public void onNext(SoilSensorProto.SoilInfoSummary soilInfoSummary) {
                     // print the response from the server
-                    System.out.println("Server response: " + soilSensorResponse.getServerMessage());
+                    System.out.println("Soil Info Summary received from Server: \nnumber of Soil Info received: " + soilInfoSummary.getRequestCount()
+                            + "\nAverage Moisture Level: " + soilInfoSummary.getAverageMoistureLevel()
+                            + "\nAverage PH Level: " + soilInfoSummary.getAveragePHLevel()
+                            + "\nAverage Soil Temperature: " + soilInfoSummary.getAverageSoilTemperature());
                 }
 
                 @Override
@@ -41,49 +41,65 @@ public class SoilSensor {
 
                 @Override
                 public void onCompleted() {
-                    // print completion message when the response is completed
-                    System.out.println("Response from the server completed.");
+                    System.out.println("Soil Info Summary received completed.");
                 }
             });
 
+            // create 10 SoilInfo messages to send to the server
+            for (int i = 0; i < soilSensorInfos.size(); i++) {
+                SoilSensorInfo soilSensorInfo = soilSensorInfos.get(i);
+                SoilSensorProto.SoilInfo soilInfo = SoilSensorProto.SoilInfo.newBuilder()
+                        .setMoistureLevel(soilSensorInfo.moistureLevel)
+                        .setPhLevel(soilSensorInfo.phLevel)
+                        .setSoilTemperature(soilSensorInfo.soilTemperature)
+                        .build();
 
-            // create four request messages and send to the server separately
-            String request;
-            for (int i = 0; i < 4; i++) {
-                if (i == 0) {
-                    request = "TEMPERATURE: 20 degree ";
-                } else if (i == 1) {
-                    request = "NUTRITION: Nitrogen: Optimal ; Phosphorus: Optimal ; potassium: Low ";
-                } else if (i == 2){
-                    request = "PH LEVEL: optimal ";
-                } else {
-                    request = "Soil Sensor information update completed ";
-                }
-
-                // create the request object with the request message
-                SoilSensorProto.SoilSensorRequest.Builder builder = SoilSensorProto.SoilSensorRequest.newBuilder();
-                builder.setSoilInfo(request + "at " + LocalDateTime.now());
-                SoilSensorProto.SoilSensorRequest soilSensorRequest = builder.build();
-
-                // send each request to the server with 2 seconds apart
-                requestStreamObserver.onNext(soilSensorRequest);
-                Thread.sleep(2000);
+                soilInfoStreamObserver.onNext(soilInfo);
+                Thread.sleep(1000);
             }
 
-            requestStreamObserver.onCompleted();
+            soilInfoStreamObserver.onCompleted();
 
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
-        } catch (InterruptedException e){
-            Thread.currentThread().interrupt();
+    }
+
+    // create a SoilSensorInfo object to store SoilSensorInfo
+    public static class SoilSensorInfo{
+        public int moistureLevel;
+        public int phLevel;
+        public int soilTemperature;
+
+        // SoilSensorInfo constructor
+        public SoilSensorInfo(int moistureLevel, int phLevel, int soilTemperature){
+            this.moistureLevel = moistureLevel;
+            this.phLevel = phLevel;
+            this.soilTemperature = soilTemperature;
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
+
+        // create 10 pieces of SoilSensorInfo to send to Server
+        ArrayList<SoilSensorInfo> soilSensorInfos = new ArrayList<>();
+        soilSensorInfos.add(new SoilSensorInfo(3, 5, 21));// 1
+        soilSensorInfos.add(new SoilSensorInfo(2, 5, 21));// 2
+        soilSensorInfos.add(new SoilSensorInfo(1, 5, 21));// 3
+        soilSensorInfos.add(new SoilSensorInfo(0, 5, 21));// 4
+        soilSensorInfos.add(new SoilSensorInfo(1, 5, 21));// 5
+        soilSensorInfos.add(new SoilSensorInfo(2, 5, 20));// 6
+        soilSensorInfos.add(new SoilSensorInfo(3, 5, 20));// 7
+        soilSensorInfos.add(new SoilSensorInfo(4, 5, 20));// 8
+        soilSensorInfos.add(new SoilSensorInfo(5, 5, 20));// 9
+        soilSensorInfos.add(new SoilSensorInfo(5, 5, 20));// 10
+
         // create a SoilSensor instance
-        SoilSensor soilSensor = new SoilSensor("localhost",9000);
+        SoilSensor soilSensor = new SoilSensor("localhost",9091);
 
         // invoke the client streaming RPC
-        soilSensor.soilSensorService();
+        soilSensor.SoilSensorService(soilSensorInfos);
 
         // read input from the user to quit
         Scanner scanner = new Scanner(System.in);
@@ -106,4 +122,5 @@ public class SoilSensor {
         }
 
     }
+
 }

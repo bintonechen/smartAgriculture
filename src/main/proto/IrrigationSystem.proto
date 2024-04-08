@@ -5,15 +5,17 @@ option java_package = "com.project";
 option java_outer_classname = "IrrigationSystemProto";
 
 service IrrigationSystemService{
-  // Bidirectional streaming RPC
-  rpc irrigationSystem(stream IrrigationSystemRequest) returns (stream IrrigationSystemResponse){}
+  // A bidirectional streaming RPC
+  // The IrrigationSystem accepts a stream of ServerInstruction, while sending a stream of IrrigationResponse.
+  rpc InstructIrrigationSystem (stream IrrigationStatus) returns (stream ServerInstruction){}
 }
 
-message IrrigationSystemRequest{
-  string soilMoisture = 1; // Soil moisture level: 'Very Low Level', 'Low Level', 'Optimal Level', or 'High Level'.
-  string flowRate = 2; // Water flow rate: 'Low Flow', or 'High Flow'.
+message IrrigationStatus{
+  string currentStatus = 1;
+  int32 flowRate = 2;
 }
 
-message IrrigationSystemResponse{
+message ServerInstruction{
   string instruction = 1;
+  int32 flowRate = 2;
 }

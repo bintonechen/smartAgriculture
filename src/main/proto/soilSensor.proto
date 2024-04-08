@@ -5,15 +5,20 @@ option java_package = "com.project";
 option java_outer_classname = "SoilSensorProto";
 
 service SoilSensorService{
-  // Client streaming RPC
-  rpc soilSensor(stream SoilSensorRequest) returns (SoilSensorResponse){}
+  // A client-to-server streaming RPC
+  // The Server accepts a stream of SoilInfo from the SoilSensor, then return a response
+  rpc SendSoilInfo(stream SoilInfo) returns (SoilInfoSummary){}
 }
 
-message SoilSensorRequest{
-  string soilInfo = 1; // messages about temperature, nutrition, and pHLevel
+message SoilInfo{
+  int32 moistureLevel = 1;
+  int32 phLevel = 2;
+  int32 soilTemperature = 3;
 }
 
-message SoilSensorResponse{
-  string serverMessage = 1; // receive confirmation
+message SoilInfoSummary{
+  int32 requestCount = 1; // the number of SoilInfo messages received
+  double averageMoistureLevel = 2;
+  double averagePHLevel = 3;
+  double averageSoilTemperature = 4;
 }
-

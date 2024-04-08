@@ -5,16 +5,27 @@ option java_package = "com.project";
 option java_outer_classname = "MobilePhoneProto";
 
 service MobilePhoneService{
-  // Server streaming RPC
-  rpc mobilePhoneService1(MobilePhoneRequest) returns (stream MobilePhoneResponse){}
-  // Unary RPC
-  rpc mobilePhoneService2(MobilePhoneRequest) returns (MobilePhoneResponse){}
+  // A unary RPC
+  // The Server accepts a UserID from the MobilePhone, then return a confirmation response
+  rpc SetUserID(UserID) returns (UserIDConfirmation){}
+
+  // A server-to-client streaming RPC
+  // The server accepts an InfoRequest from the MobilePhone, then return a stream of InfoResponse
+  rpc MobilePhoneRequest (InfoRequest) returns (stream InfoResponse){}
 }
 
-message MobilePhoneRequest{
-  string requestMessage = 1;
+message UserID{
+  string userID = 1;
 }
 
-message MobilePhoneResponse{
-  string responseMessage = 1;
+message UserIDConfirmation{
+  string confirmation = 1;
+}
+
+message InfoRequest{
+  string infoRequestMessage = 1;
+}
+
+message InfoResponse{
+  string infoResponseMessage = 1;
 }
