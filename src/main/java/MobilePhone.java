@@ -1,6 +1,5 @@
 import com.project.MobilePhoneProto;
 import com.project.MobilePhoneServiceGrpc;
-import com.project.SoilSensorServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
@@ -78,7 +77,6 @@ public class MobilePhone {
         // create a MobilePhone instance
         MobilePhone mobilePhone = new MobilePhone("localhost", 9092);
 
-        //invoke the unary RPC
         mobilePhone.SetUserID("A0001");
         mobilePhone.MobilePhoneRequest();
 

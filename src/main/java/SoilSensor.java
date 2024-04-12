@@ -19,6 +19,7 @@ public class SoilSensor {
         this.stub = SoilSensorServiceGrpc.newStub(channel);
     }
 
+    // method to perform the client streaming RPC
     public void SoilSensorService(ArrayList<SoilSensorInfo> soilSensorInfos){
 
         try {
@@ -45,7 +46,7 @@ public class SoilSensor {
                 }
             });
 
-            // create 10 SoilInfo messages to send to the server
+            // create SoilInfo messages to send to the server
             for (int i = 0; i < soilSensorInfos.size(); i++) {
                 SoilSensorInfo soilSensorInfo = soilSensorInfos.get(i);
                 SoilSensorProto.SoilInfo soilInfo = SoilSensorProto.SoilInfo.newBuilder()
@@ -55,7 +56,7 @@ public class SoilSensor {
                         .build();
 
                 soilInfoStreamObserver.onNext(soilInfo);
-                Thread.sleep(1000);
+                Thread.sleep(2000); // paused for 2 second between sending each message
             }
 
             soilInfoStreamObserver.onCompleted();

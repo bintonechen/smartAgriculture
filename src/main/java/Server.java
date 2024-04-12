@@ -1,5 +1,7 @@
 //import com.project.IrrigationSystemServiceGrpc;
 //import com.project.MobilePhoneServiceGrpc;
+import com.ecwid.consul.v1.ConsulClient;
+import com.ecwid.consul.v1.agent.model.NewService;
 import com.project.*;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -14,18 +16,25 @@ public class Server {
     public void startSoilSensorServer(int port) throws IOException {
         server = ServerBuilder.forPort(port).addService(new SoilSensorServiceImpl()).build().start();
         System.out.println("Server started, listening to Soil Sensor on port " + port +"\n");
+
+        // register to consul with service name, service port, and service ID
+        registerToConsul("smart.agriculture.soil.sensor.service", port, "smartAgricultureSoilSensorServiceID");
     }
 
     // method to start the service with IrrigationSystemServiceImpl() service
     public void startIrrigationSystemServer(int port) throws IOException{
         server = ServerBuilder.forPort(port).addService(new IrrigationSystemServiceImpl()).build().start();
         System.out.println("Server started, listening to Irrigation System on port " + port);
+
+        registerToConsul("smart.agriculture.irrigation.system.service", port, "smartAgricultureIrrigationSystemID");
     }
 
     // method to start the service with MobilePhoneServiceImpl() service
     public void startMobilePhoneServer(int port) throws IOException{
         server = ServerBuilder.forPort(port).addService(new MobilePhoneServiceImpl()).build().start();
         System.out.println("Server started, listening to Mobile Phone on port " + port);
+
+        registerToConsul("smart.agriculture.mobile.phone.service", port, "smartAgricultureMobilePhoneID");
     }
 
     //  await termination on the main thread
@@ -42,13 +51,33 @@ public class Server {
         }
     }
 
+    public void registerToConsul(String serviceName, int servicePort, String serviceID){
+        System.out.println("Registering server to Consul...");
+
+        // Create a Consul client
+        ConsulClient consulClient = new ConsulClient("localhost", 8500);
+
+        // Define service details
+        NewService newService = new NewService();
+        newService.setName(serviceName);
+        newService.setAddress("localhost");
+        newService.setPort(servicePort);
+        newService.setId(serviceID);
+
+        // Register service with Consul
+        consulClient.agentServiceRegister(newService);
+
+        // Print registration success message
+        System.out.println(serviceName + " server registered to Consul successfully");
+    }
+
     public class MobilePhoneServiceImpl extends MobilePhoneServiceGrpc.MobilePhoneServiceImplBase{
 
         @Override
         public void setUserID(MobilePhoneProto.UserID request, StreamObserver<MobilePhoneProto.UserIDConfirmation> responseObserver) {
             // get the user ID from the request
             String userID = request.getUserID();
-            // log the received User ID
+            // log the User ID
             System.out.println("Received User ID: " + userID + " from the Mobile Phone");
             // create a response message representing successful login
             String confirmation = "User ID: " + userID + " has been successfully logged in.";
@@ -62,12 +91,14 @@ public class Server {
 
         @Override
         public void mobilePhoneRequest(MobilePhoneProto.InfoRequest request, StreamObserver<MobilePhoneProto.InfoResponse> responseObserver) {
-            // get the InfoRequest
+            // get the request from the MobilePhone
             String requestFromMobilePhone = request.getInfoRequestMessage();
             // log the InfoRequest
             System.out.println("Received from the Mobile Phone: " + requestFromMobilePhone);
             System.out.println("Health check would run 3 times.");
 
+            // generate three health check results
+            // send each result back to the mobile phone separately, with a 2-second interval between each response
             for (int i = 0; i<3; i++){
 
                 MobilePhoneProto.InfoResponse infoResponse = MobilePhoneProto.InfoResponse.newBuilder()
@@ -75,14 +106,14 @@ public class Server {
                 responseObserver.onNext(infoResponse);
 
                 try{
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
 
             }
             responseObserver.onCompleted();
-            System.out.println("Health check for the Soil Sensor and the Irrigation System completed.");
+            System.out.println("Health check is completed.");
         }
     }
 
@@ -98,17 +129,13 @@ public class Server {
 
                 @Override
                 public void onNext(SoilSensorProto.SoilInfo soilInfo) {
-                    requestCount++;
-                    averageMoistureLevel += soilInfo.getMoistureLevel();
+                    requestCount++; // when receive a new SoilInfo, the count increase by 1
+                    averageMoistureLevel += soilInfo.getMoistureLevel(); // Accumulate the moisture levels received to calculate the average.
+                                                                         // Division will be performed when the request stream is completed.
                     averagePHLevel += soilInfo.getPhLevel();
                     averageSoilTemperature+= soilInfo.getSoilTemperature();
                     System.out.println("Received SoilInfo " + requestCount + ": \nMoisture Level: " + soilInfo.getMoistureLevel()
                             + " PH Level: " + soilInfo.getPhLevel() + " Soil Temperature: " + soilInfo.getSoilTemperature() + "\n");
-
-//                    if(soilInfo.getMoistureLevel() == 0){
-//                        IrrigationService();
-//                        System.out.println("Moisture level is low. Triggering irrigation system.");
-//                    }
                 }
 
                 @Override
@@ -116,8 +143,10 @@ public class Server {
                     System.err.println("Error in Soil Sensor request streaming: " + t.getMessage());
                 }
 
+
                 @Override
                 public void onCompleted() {
+                    // calculate the average MoistureLevel, SoilTemperature, and PHLevel for the summary message
                     averageMoistureLevel = averageMoistureLevel / requestCount;
                     averageSoilTemperature = averageSoilTemperature / requestCount;
                     averagePHLevel = averagePHLevel / requestCount;
@@ -142,15 +171,15 @@ public class Server {
             return new StreamObserver<IrrigationSystemProto.IrrigationStatus>() {
                 @Override
                 public void onNext(IrrigationSystemProto.IrrigationStatus irrigationStatus) {
-                    String status = irrigationStatus.getCurrentStatus();
-                    int flowRate = irrigationStatus.getFlowRate();
+                    String status = irrigationStatus.getCurrentStatus(); // get the current status of the irrigation system
+                    int flowRate = irrigationStatus.getFlowRate(); // get the current flow rate of the irrigtation system
                     System.out.println("The current status of Irrigation System is: " + status + " and the current flow rate is: " + flowRate);
 
                     // create response message
-                    int adjustedFlowedRate = flowRate - 1;
+                    int adjustedFlowedRate = flowRate - 1; // decrease the flow rate by 1 each time
                     String instruction;
 
-                    if(adjustedFlowedRate>0){
+                    if(adjustedFlowedRate>0){ // determine the status to set based on the flow rate to set.
                         instruction = "on";
                     } else {
                         instruction = "off";
@@ -172,7 +201,7 @@ public class Server {
 
                 @Override
                 public void onCompleted() {
-                    System.out.println("The irrigation system request streaming completed.");
+                    System.out.println("The irrigation system request streaming is completed.");
                     responseObserver.onCompleted();
 
                 }
@@ -181,7 +210,7 @@ public class Server {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        // instantiate a server for Soil Sensor
+        // create a server instance, which listens to three devices on three separate ports
         Server server = new Server();
         server.startSoilSensorServer(9091);
         server.startMobilePhoneServer(9092);
@@ -191,13 +220,9 @@ public class Server {
         // add a shutdown hook for graceful shutdown
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             // print a message indicting the start of the shutdown process
-            System.err.println("*** shutting down gRPC servers");
+            System.err.println("*** shutting down gRPC server");
             try {
                 server.stopServer();
-
-//                soilSensorServer.stopServer();
-//                irrigationSystemServer.stopServer();
-//                mobilePhoneServer.stopServer();
 
                 // print a message indicating successful shutdown
                 System.err.println("*** all gRPC servers successfully shut down ***");
@@ -214,12 +239,7 @@ public class Server {
         // Block until all servers shut down
         server.blockUntilServerShutdown();
 
-//      soilSensorServer.blockUntilServerShutdown();
-//      irrigationSystemServer.blockUntilServerShutdown();
-//      mobilePhoneServer.blockUntilServerShutdown();
-
     }
-
 }
 
 

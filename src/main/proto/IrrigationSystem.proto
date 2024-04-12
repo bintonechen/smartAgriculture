@@ -12,10 +12,10 @@ service IrrigationSystemService{
 
 message IrrigationStatus{
   string currentStatus = 1;
-  int32 flowRate = 2;
+  int32 flowRate = 2; // the current flow rate of the irrigationSystem
 }
 
 message ServerInstruction{
-  string instruction = 1;
-  int32 flowRate = 2;
+  string instruction = 1; // instruction to turn on or off of the IrrigationSystem
+  int32 flowRate = 2; // instruction to set the flow rate of the IrrigationSystem
 }

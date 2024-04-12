@@ -19,7 +19,7 @@ public class IrrigationSystem {
         this.stub = IrrigationSystemServiceGrpc.newStub(channel);
     }
 
-    // bidirectional RPC
+    // method to perform the bidirectional RPC
     public void InstructIrrigationSystem(ArrayList<IrrigationStatus> irrigationStatusData){
 
         try {
@@ -44,7 +44,7 @@ public class IrrigationSystem {
                 }
             });
 
-            // create 5 IrrigationStatus messages to send to the server
+            // create IrrigationStatus messages to send to the server
             for(int i = 0; i < irrigationStatusData.size(); i++){
                 IrrigationStatus irrigationStatus = irrigationStatusData.get(i);
                 IrrigationSystemProto.IrrigationStatus irrigationStatusInfo = IrrigationSystemProto.IrrigationStatus.newBuilder()
@@ -53,7 +53,7 @@ public class IrrigationSystem {
                         .build();
 
                 irrigationStatusStreamObserver.onNext(irrigationStatusInfo);
-                Thread.sleep(1000);
+                Thread.sleep(2000); // Pause for 2 second between sending each request
             }
 
             irrigationStatusStreamObserver.onCompleted();
@@ -61,7 +61,6 @@ public class IrrigationSystem {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
 

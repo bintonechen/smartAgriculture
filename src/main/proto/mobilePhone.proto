@@ -6,11 +6,12 @@ option java_outer_classname = "MobilePhoneProto";
 
 service MobilePhoneService{
   // A unary RPC
-  // The Server accepts a UserID from the MobilePhone, then return a confirmation response
+  // The Server accepts a UserID from the MobilePhone, then returns a confirmation response
   rpc SetUserID(UserID) returns (UserIDConfirmation){}
 
   // A server-to-client streaming RPC
-  // The server accepts an InfoRequest from the MobilePhone, then return a stream of InfoResponse
+  // The server accepts one health check request from the MobilePhone,
+  // then returns three health check results to the MobilePhone
   rpc MobilePhoneRequest (InfoRequest) returns (stream InfoResponse){}
 }
 
@@ -23,9 +24,9 @@ message UserIDConfirmation{
 }
 
 message InfoRequest{
-  string infoRequestMessage = 1;
+  string infoRequestMessage = 1; // request for the Server to perform three health check tests for the entire Smart Agriculture System
 }
 
 message InfoResponse{
-  string infoResponseMessage = 1;
+  string infoResponseMessage = 1; // result of the health check tests
 }

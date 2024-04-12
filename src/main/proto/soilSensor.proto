@@ -17,7 +17,7 @@ message SoilInfo{
 }
 
 message SoilInfoSummary{
-  int32 requestCount = 1; // the number of SoilInfo messages received
+  int32 requestCount = 1; // the number of SoilInfo messages that the server received
   double averageMoistureLevel = 2;
   double averagePHLevel = 3;
   double averageSoilTemperature = 4;
