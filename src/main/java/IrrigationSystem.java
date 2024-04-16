@@ -1,3 +1,5 @@
+import com.ecwid.consul.v1.ConsulClient;
+import com.ecwid.consul.v1.health.model.HealthService;
 import com.project.IrrigationSystemProto;
 import com.project.IrrigationSystemServiceGrpc;
 import io.grpc.ManagedChannel;
@@ -5,22 +7,47 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class IrrigationSystem {
 
+    private ConsulClient consulClient;
+    private String consulServiceName;
     private static ManagedChannel channel;
     private IrrigationSystemServiceGrpc.IrrigationSystemServiceStub stub;
 
     // constructor
-    public IrrigationSystem(String host, int port){
-        this.channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+    public IrrigationSystem(String consulHost, int consulPort, int consulServicePort, String consulServiceName) {
+        this.consulClient = new ConsulClient(consulHost, consulPort);
+        this.consulServiceName = consulServiceName;
+        this.channel = ManagedChannelBuilder.forAddress(consulHost, consulServicePort).usePlaintext().build();
         this.stub = IrrigationSystemServiceGrpc.newStub(channel);
     }
 
     // method to perform the bidirectional RPC
     public void InstructIrrigationSystem(ArrayList<IrrigationStatus> irrigationStatusData){
+        // Lookup service details from Consul
+        List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
+        if (healthServices.isEmpty()) {
+            System.err.println("No healthy instances of " + consulServiceName + " found in Consul.");
+            return;
+        }
+
+        // Pick the first healthy instance (you can implement a load balancing strategy here)
+        HealthService healthService = healthServices.get(0);
+
+        // Debug output for service details
+        System.out.println("Service details from Consul:");
+        System.out.println("Service ID: " + healthService.getService().getId());
+        System.out.println("Service Name: " + healthService.getService().getService());
+        System.out.println("Service Address: " + healthService.getService().getAddress());
+        System.out.println("Service Port: " + healthService.getService().getPort());
+
+        // Extract host and port from the service details
+        String serverHost = healthService.getService().getAddress();
+        int serverPort = healthService.getService().getPort();
 
         try {
             StreamObserver<IrrigationSystemProto.IrrigationStatus> irrigationStatusStreamObserver = stub.instructIrrigationSystem(new StreamObserver<IrrigationSystemProto.ServerInstruction>() {
@@ -88,7 +115,7 @@ public class IrrigationSystem {
         irrigationStatusData.add(new IrrigationStatus("on",1));
 
         // create a MobilePhone instance
-        IrrigationSystem irrigationSystem = new IrrigationSystem("localhost", 9093);
+        IrrigationSystem irrigationSystem = new IrrigationSystem("localhost", 8500,9192,"irrigation.system.service");
 
         //invoke the bidirectional RPC
         irrigationSystem.InstructIrrigationSystem(irrigationStatusData);

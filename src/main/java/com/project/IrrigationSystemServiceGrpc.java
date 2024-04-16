@@ -6,7 +6,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.62.2)",
-    comments = "Source: IrrigationSystem.proto")
+    comments = "Source: irrigationSystem.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class IrrigationSystemServiceGrpc {
 
@@ -44,6 +44,37 @@ public final class IrrigationSystemServiceGrpc {
       }
     }
     return getInstructIrrigationSystemMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.project.IrrigationSystemProto.HealthCheckRequest1,
+      com.project.IrrigationSystemProto.HealthCheckResponse1> getHealthCheck1Method;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "HealthCheck1",
+      requestType = com.project.IrrigationSystemProto.HealthCheckRequest1.class,
+      responseType = com.project.IrrigationSystemProto.HealthCheckResponse1.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.project.IrrigationSystemProto.HealthCheckRequest1,
+      com.project.IrrigationSystemProto.HealthCheckResponse1> getHealthCheck1Method() {
+    io.grpc.MethodDescriptor<com.project.IrrigationSystemProto.HealthCheckRequest1, com.project.IrrigationSystemProto.HealthCheckResponse1> getHealthCheck1Method;
+    if ((getHealthCheck1Method = IrrigationSystemServiceGrpc.getHealthCheck1Method) == null) {
+      synchronized (IrrigationSystemServiceGrpc.class) {
+        if ((getHealthCheck1Method = IrrigationSystemServiceGrpc.getHealthCheck1Method) == null) {
+          IrrigationSystemServiceGrpc.getHealthCheck1Method = getHealthCheck1Method =
+              io.grpc.MethodDescriptor.<com.project.IrrigationSystemProto.HealthCheckRequest1, com.project.IrrigationSystemProto.HealthCheckResponse1>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "HealthCheck1"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.project.IrrigationSystemProto.HealthCheckRequest1.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.project.IrrigationSystemProto.HealthCheckResponse1.getDefaultInstance()))
+              .setSchemaDescriptor(new IrrigationSystemServiceMethodDescriptorSupplier("HealthCheck1"))
+              .build();
+        }
+      }
+    }
+    return getHealthCheck1Method;
   }
 
   /**
@@ -104,6 +135,13 @@ public final class IrrigationSystemServiceGrpc {
         io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.ServerInstruction> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getInstructIrrigationSystemMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void healthCheck1(com.project.IrrigationSystemProto.HealthCheckRequest1 request,
+        io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.HealthCheckResponse1> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHealthCheck1Method(), responseObserver);
+    }
   }
 
   /**
@@ -144,6 +182,14 @@ public final class IrrigationSystemServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getInstructIrrigationSystemMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     */
+    public void healthCheck1(com.project.IrrigationSystemProto.HealthCheckRequest1 request,
+        io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.HealthCheckResponse1> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getHealthCheck1Method(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -160,6 +206,14 @@ public final class IrrigationSystemServiceGrpc {
     protected IrrigationSystemServiceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new IrrigationSystemServiceBlockingStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.project.IrrigationSystemProto.HealthCheckResponse1> healthCheck1(
+        com.project.IrrigationSystemProto.HealthCheckRequest1 request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getHealthCheck1Method(), getCallOptions(), request);
     }
   }
 
@@ -180,7 +234,8 @@ public final class IrrigationSystemServiceGrpc {
     }
   }
 
-  private static final int METHODID_INSTRUCT_IRRIGATION_SYSTEM = 0;
+  private static final int METHODID_HEALTH_CHECK1 = 0;
+  private static final int METHODID_INSTRUCT_IRRIGATION_SYSTEM = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -199,6 +254,10 @@ public final class IrrigationSystemServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_HEALTH_CHECK1:
+          serviceImpl.healthCheck1((com.project.IrrigationSystemProto.HealthCheckRequest1) request,
+              (io.grpc.stub.StreamObserver<com.project.IrrigationSystemProto.HealthCheckResponse1>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -227,6 +286,13 @@ public final class IrrigationSystemServiceGrpc {
               com.project.IrrigationSystemProto.IrrigationStatus,
               com.project.IrrigationSystemProto.ServerInstruction>(
                 service, METHODID_INSTRUCT_IRRIGATION_SYSTEM)))
+        .addMethod(
+          getHealthCheck1Method(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              com.project.IrrigationSystemProto.HealthCheckRequest1,
+              com.project.IrrigationSystemProto.HealthCheckResponse1>(
+                service, METHODID_HEALTH_CHECK1)))
         .build();
   }
 
@@ -276,6 +342,7 @@ public final class IrrigationSystemServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new IrrigationSystemServiceFileDescriptorSupplier())
               .addMethod(getInstructIrrigationSystemMethod())
+              .addMethod(getHealthCheck1Method())
               .build();
         }
       }

@@ -77,6 +77,37 @@ public final class MobilePhoneServiceGrpc {
     return getMobilePhoneRequestMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.project.MobilePhoneProto.HealthCheckRequest2,
+      com.project.MobilePhoneProto.HealthCheckResponse2> getHealthCheck2Method;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "HealthCheck2",
+      requestType = com.project.MobilePhoneProto.HealthCheckRequest2.class,
+      responseType = com.project.MobilePhoneProto.HealthCheckResponse2.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.project.MobilePhoneProto.HealthCheckRequest2,
+      com.project.MobilePhoneProto.HealthCheckResponse2> getHealthCheck2Method() {
+    io.grpc.MethodDescriptor<com.project.MobilePhoneProto.HealthCheckRequest2, com.project.MobilePhoneProto.HealthCheckResponse2> getHealthCheck2Method;
+    if ((getHealthCheck2Method = MobilePhoneServiceGrpc.getHealthCheck2Method) == null) {
+      synchronized (MobilePhoneServiceGrpc.class) {
+        if ((getHealthCheck2Method = MobilePhoneServiceGrpc.getHealthCheck2Method) == null) {
+          MobilePhoneServiceGrpc.getHealthCheck2Method = getHealthCheck2Method =
+              io.grpc.MethodDescriptor.<com.project.MobilePhoneProto.HealthCheckRequest2, com.project.MobilePhoneProto.HealthCheckResponse2>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "HealthCheck2"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.project.MobilePhoneProto.HealthCheckRequest2.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.project.MobilePhoneProto.HealthCheckResponse2.getDefaultInstance()))
+              .setSchemaDescriptor(new MobilePhoneServiceMethodDescriptorSupplier("HealthCheck2"))
+              .build();
+        }
+      }
+    }
+    return getHealthCheck2Method;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -128,7 +159,7 @@ public final class MobilePhoneServiceGrpc {
     /**
      * <pre>
      * A unary RPC
-     * The Server accepts a UserID from the MobilePhone, then return a confirmation response
+     * The Server accepts a UserID from the MobilePhone, then returns a confirmation response
      * </pre>
      */
     default void setUserID(com.project.MobilePhoneProto.UserID request,
@@ -139,12 +170,20 @@ public final class MobilePhoneServiceGrpc {
     /**
      * <pre>
      * A server-to-client streaming RPC
-     * The server accepts an InfoRequest from the MobilePhone, then return a stream of InfoResponse
+     * The server accepts one health check request from the MobilePhone,
+     * then returns three health check results to the MobilePhone
      * </pre>
      */
     default void mobilePhoneRequest(com.project.MobilePhoneProto.InfoRequest request,
         io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.InfoResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getMobilePhoneRequestMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void healthCheck2(com.project.MobilePhoneProto.HealthCheckRequest2 request,
+        io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.HealthCheckResponse2> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHealthCheck2Method(), responseObserver);
     }
   }
 
@@ -178,7 +217,7 @@ public final class MobilePhoneServiceGrpc {
     /**
      * <pre>
      * A unary RPC
-     * The Server accepts a UserID from the MobilePhone, then return a confirmation response
+     * The Server accepts a UserID from the MobilePhone, then returns a confirmation response
      * </pre>
      */
     public void setUserID(com.project.MobilePhoneProto.UserID request,
@@ -190,13 +229,22 @@ public final class MobilePhoneServiceGrpc {
     /**
      * <pre>
      * A server-to-client streaming RPC
-     * The server accepts an InfoRequest from the MobilePhone, then return a stream of InfoResponse
+     * The server accepts one health check request from the MobilePhone,
+     * then returns three health check results to the MobilePhone
      * </pre>
      */
     public void mobilePhoneRequest(com.project.MobilePhoneProto.InfoRequest request,
         io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.InfoResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getMobilePhoneRequestMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void healthCheck2(com.project.MobilePhoneProto.HealthCheckRequest2 request,
+        io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.HealthCheckResponse2> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getHealthCheck2Method(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -219,7 +267,7 @@ public final class MobilePhoneServiceGrpc {
     /**
      * <pre>
      * A unary RPC
-     * The Server accepts a UserID from the MobilePhone, then return a confirmation response
+     * The Server accepts a UserID from the MobilePhone, then returns a confirmation response
      * </pre>
      */
     public com.project.MobilePhoneProto.UserIDConfirmation setUserID(com.project.MobilePhoneProto.UserID request) {
@@ -230,13 +278,22 @@ public final class MobilePhoneServiceGrpc {
     /**
      * <pre>
      * A server-to-client streaming RPC
-     * The server accepts an InfoRequest from the MobilePhone, then return a stream of InfoResponse
+     * The server accepts one health check request from the MobilePhone,
+     * then returns three health check results to the MobilePhone
      * </pre>
      */
     public java.util.Iterator<com.project.MobilePhoneProto.InfoResponse> mobilePhoneRequest(
         com.project.MobilePhoneProto.InfoRequest request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getMobilePhoneRequestMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.project.MobilePhoneProto.HealthCheckResponse2> healthCheck2(
+        com.project.MobilePhoneProto.HealthCheckRequest2 request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getHealthCheck2Method(), getCallOptions(), request);
     }
   }
 
@@ -259,7 +316,7 @@ public final class MobilePhoneServiceGrpc {
     /**
      * <pre>
      * A unary RPC
-     * The Server accepts a UserID from the MobilePhone, then return a confirmation response
+     * The Server accepts a UserID from the MobilePhone, then returns a confirmation response
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.project.MobilePhoneProto.UserIDConfirmation> setUserID(
@@ -271,6 +328,7 @@ public final class MobilePhoneServiceGrpc {
 
   private static final int METHODID_SET_USER_ID = 0;
   private static final int METHODID_MOBILE_PHONE_REQUEST = 1;
+  private static final int METHODID_HEALTH_CHECK2 = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -296,6 +354,10 @@ public final class MobilePhoneServiceGrpc {
         case METHODID_MOBILE_PHONE_REQUEST:
           serviceImpl.mobilePhoneRequest((com.project.MobilePhoneProto.InfoRequest) request,
               (io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.InfoResponse>) responseObserver);
+          break;
+        case METHODID_HEALTH_CHECK2:
+          serviceImpl.healthCheck2((com.project.MobilePhoneProto.HealthCheckRequest2) request,
+              (io.grpc.stub.StreamObserver<com.project.MobilePhoneProto.HealthCheckResponse2>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -329,6 +391,13 @@ public final class MobilePhoneServiceGrpc {
               com.project.MobilePhoneProto.InfoRequest,
               com.project.MobilePhoneProto.InfoResponse>(
                 service, METHODID_MOBILE_PHONE_REQUEST)))
+        .addMethod(
+          getHealthCheck2Method(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              com.project.MobilePhoneProto.HealthCheckRequest2,
+              com.project.MobilePhoneProto.HealthCheckResponse2>(
+                service, METHODID_HEALTH_CHECK2)))
         .build();
   }
 
@@ -379,6 +448,7 @@ public final class MobilePhoneServiceGrpc {
               .setSchemaDescriptor(new MobilePhoneServiceFileDescriptorSupplier())
               .addMethod(getSetUserIDMethod())
               .addMethod(getMobilePhoneRequestMethod())
+              .addMethod(getHealthCheck2Method())
               .build();
         }
       }

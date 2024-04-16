@@ -7,7 +7,10 @@ option java_outer_classname = "IrrigationSystemProto";
 service IrrigationSystemService{
   // A bidirectional streaming RPC
   // The IrrigationSystem accepts a stream of ServerInstruction, while sending a stream of IrrigationResponse.
-  rpc InstructIrrigationSystem (stream IrrigationStatus) returns (stream ServerInstruction){}
+  rpc InstructIrrigationSystem (stream IrrigationStatus) returns (stream ServerInstruction);
+
+  // health check
+  rpc HealthCheck1(HealthCheckRequest1) returns (stream HealthCheckResponse1);
 }
 
 message IrrigationStatus{
@@ -18,4 +21,15 @@ message IrrigationStatus{
 message ServerInstruction{
   string instruction = 1; // instruction to turn on or off of the IrrigationSystem
   int32 flowRate = 2; // instruction to set the flow rate of the IrrigationSystem
+}
+
+message HealthCheckRequest1 {
+  string serviceName = 1;
+  string serviceVersion = 2;
+  int64 timestamp = 3;
+}
+
+message HealthCheckResponse1 {
+  int32 status = 1;
+  string message = 2;
 }

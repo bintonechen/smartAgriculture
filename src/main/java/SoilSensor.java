@@ -1,3 +1,5 @@
+import com.ecwid.consul.v1.ConsulClient;
+import com.ecwid.consul.v1.health.model.HealthService;
 import com.project.SoilSensorProto;
 import com.project.SoilSensorServiceGrpc;
 import io.grpc.ManagedChannel;
@@ -5,25 +7,49 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class SoilSensor {
 
+    private ConsulClient consulClient;
+    private String consulServiceName;
     private static ManagedChannel channel;
     private SoilSensorServiceGrpc.SoilSensorServiceStub stub;
 
-    // constructor
-    public SoilSensor(String host, int port){
-        this.channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+    public SoilSensor(String consulHost, int consulPort, int consulServicePort, String consulServiceName) {
+        this.consulClient = new ConsulClient(consulHost, consulPort);
+        this.consulServiceName = consulServiceName;
+        this.channel = ManagedChannelBuilder.forAddress(consulHost, consulServicePort).usePlaintext().build();
         this.stub = SoilSensorServiceGrpc.newStub(channel);
     }
 
     // method to perform the client streaming RPC
     public void SoilSensorService(ArrayList<SoilSensorInfo> soilSensorInfos){
 
-        try {
+        // Lookup service details from Consul
+        List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
+        if (healthServices.isEmpty()) {
+            System.err.println("No healthy instances of " + consulServiceName + " found in Consul.");
+            return;
+        }
 
+        // Pick the first healthy instance (you can implement a load balancing strategy here)
+        HealthService healthService = healthServices.get(0);
+
+        // Debug output for service details
+        System.out.println("Service details from Consul:");
+        System.out.println("Service ID: " + healthService.getService().getId());
+        System.out.println("Service Name: " + healthService.getService().getService());
+        System.out.println("Service Address: " + healthService.getService().getAddress());
+        System.out.println("Service Port: " + healthService.getService().getPort());
+
+        // Extract host and port from the service details
+        String serverHost = healthService.getService().getAddress();
+        int serverPort = healthService.getService().getPort();
+
+        try {
             StreamObserver<SoilSensorProto.SoilInfo> soilInfoStreamObserver = stub.sendSoilInfo(new StreamObserver<SoilSensorProto.SoilInfoSummary>() {
                 @Override
                 public void onNext(SoilSensorProto.SoilInfoSummary soilInfoSummary) {
@@ -56,6 +82,9 @@ public class SoilSensor {
                         .build();
 
                 soilInfoStreamObserver.onNext(soilInfo);
+
+                System.out.println("I just sent message " + (i+1));
+
                 Thread.sleep(2000); // paused for 2 second between sending each message
             }
 
@@ -96,8 +125,7 @@ public class SoilSensor {
         soilSensorInfos.add(new SoilSensorInfo(5, 5, 20));// 9
         soilSensorInfos.add(new SoilSensorInfo(5, 5, 20));// 10
 
-        // create a SoilSensor instance
-        SoilSensor soilSensor = new SoilSensor("localhost",9091);
+        SoilSensor soilSensor = new SoilSensor("localhost", 8500,9191,"soil.sensor.service");
 
         // invoke the client streaming RPC
         soilSensor.SoilSensorService(soilSensorInfos);

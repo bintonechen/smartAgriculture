@@ -7,7 +7,10 @@ option java_outer_classname = "SoilSensorProto";
 service SoilSensorService{
   // A client-to-server streaming RPC
   // The Server accepts a stream of SoilInfo from the SoilSensor, then return a response
-  rpc SendSoilInfo(stream SoilInfo) returns (SoilInfoSummary){}
+  rpc SendSoilInfo(stream SoilInfo) returns (SoilInfoSummary);
+
+  // health check
+  rpc HealthCheck(HealthCheckRequest) returns (stream HealthCheckResponse);
 }
 
 message SoilInfo{
@@ -21,4 +24,15 @@ message SoilInfoSummary{
   double averageMoistureLevel = 2;
   double averagePHLevel = 3;
   double averageSoilTemperature = 4;
+}
+
+message HealthCheckRequest {
+  string serviceName = 1;
+  string serviceVersion = 2;
+  int64 timestamp = 3;
+}
+
+message HealthCheckResponse {
+  int32 status = 1;
+  string message = 2;
 }

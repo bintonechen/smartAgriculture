@@ -12,7 +12,10 @@ service MobilePhoneService{
   // A server-to-client streaming RPC
   // The server accepts one health check request from the MobilePhone,
   // then returns three health check results to the MobilePhone
-  rpc MobilePhoneRequest (InfoRequest) returns (stream InfoResponse){}
+  rpc MobilePhoneRequest (InfoRequest) returns (stream InfoResponse);
+
+  // health check
+  rpc HealthCheck2(HealthCheckRequest2) returns (stream HealthCheckResponse2);
 }
 
 message UserID{
@@ -29,4 +32,15 @@ message InfoRequest{
 
 message InfoResponse{
   string infoResponseMessage = 1; // result of the health check tests
+}
+
+message HealthCheckRequest2 {
+  string serviceName = 1;
+  string serviceVersion = 2;
+  int64 timestamp = 3;
+}
+
+message HealthCheckResponse2 {
+  int32 status = 1;
+  string message = 2;
 }

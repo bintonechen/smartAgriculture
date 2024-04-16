@@ -46,6 +46,37 @@ public final class SoilSensorServiceGrpc {
     return getSendSoilInfoMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.project.SoilSensorProto.HealthCheckRequest,
+      com.project.SoilSensorProto.HealthCheckResponse> getHealthCheckMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "HealthCheck",
+      requestType = com.project.SoilSensorProto.HealthCheckRequest.class,
+      responseType = com.project.SoilSensorProto.HealthCheckResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.project.SoilSensorProto.HealthCheckRequest,
+      com.project.SoilSensorProto.HealthCheckResponse> getHealthCheckMethod() {
+    io.grpc.MethodDescriptor<com.project.SoilSensorProto.HealthCheckRequest, com.project.SoilSensorProto.HealthCheckResponse> getHealthCheckMethod;
+    if ((getHealthCheckMethod = SoilSensorServiceGrpc.getHealthCheckMethod) == null) {
+      synchronized (SoilSensorServiceGrpc.class) {
+        if ((getHealthCheckMethod = SoilSensorServiceGrpc.getHealthCheckMethod) == null) {
+          SoilSensorServiceGrpc.getHealthCheckMethod = getHealthCheckMethod =
+              io.grpc.MethodDescriptor.<com.project.SoilSensorProto.HealthCheckRequest, com.project.SoilSensorProto.HealthCheckResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "HealthCheck"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.project.SoilSensorProto.HealthCheckRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.project.SoilSensorProto.HealthCheckResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new SoilSensorServiceMethodDescriptorSupplier("HealthCheck"))
+              .build();
+        }
+      }
+    }
+    return getHealthCheckMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -104,6 +135,13 @@ public final class SoilSensorServiceGrpc {
         io.grpc.stub.StreamObserver<com.project.SoilSensorProto.SoilInfoSummary> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSendSoilInfoMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void healthCheck(com.project.SoilSensorProto.HealthCheckRequest request,
+        io.grpc.stub.StreamObserver<com.project.SoilSensorProto.HealthCheckResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHealthCheckMethod(), responseObserver);
+    }
   }
 
   /**
@@ -144,6 +182,14 @@ public final class SoilSensorServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getSendSoilInfoMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     */
+    public void healthCheck(com.project.SoilSensorProto.HealthCheckRequest request,
+        io.grpc.stub.StreamObserver<com.project.SoilSensorProto.HealthCheckResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getHealthCheckMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -160,6 +206,14 @@ public final class SoilSensorServiceGrpc {
     protected SoilSensorServiceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new SoilSensorServiceBlockingStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.project.SoilSensorProto.HealthCheckResponse> healthCheck(
+        com.project.SoilSensorProto.HealthCheckRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getHealthCheckMethod(), getCallOptions(), request);
     }
   }
 
@@ -180,7 +234,8 @@ public final class SoilSensorServiceGrpc {
     }
   }
 
-  private static final int METHODID_SEND_SOIL_INFO = 0;
+  private static final int METHODID_HEALTH_CHECK = 0;
+  private static final int METHODID_SEND_SOIL_INFO = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -199,6 +254,10 @@ public final class SoilSensorServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_HEALTH_CHECK:
+          serviceImpl.healthCheck((com.project.SoilSensorProto.HealthCheckRequest) request,
+              (io.grpc.stub.StreamObserver<com.project.SoilSensorProto.HealthCheckResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -227,6 +286,13 @@ public final class SoilSensorServiceGrpc {
               com.project.SoilSensorProto.SoilInfo,
               com.project.SoilSensorProto.SoilInfoSummary>(
                 service, METHODID_SEND_SOIL_INFO)))
+        .addMethod(
+          getHealthCheckMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              com.project.SoilSensorProto.HealthCheckRequest,
+              com.project.SoilSensorProto.HealthCheckResponse>(
+                service, METHODID_HEALTH_CHECK)))
         .build();
   }
 
@@ -276,6 +342,7 @@ public final class SoilSensorServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new SoilSensorServiceFileDescriptorSupplier())
               .addMethod(getSendSoilInfoMethod())
+              .addMethod(getHealthCheckMethod())
               .build();
         }
       }
