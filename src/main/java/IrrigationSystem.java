@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class IrrigationSystem {
 
-    private TextArea irrigationTextArea; // for message display in GUI
+    private TextArea irrigationTextArea; // for displaying messages in the GUI
     private ConsulClient consulClient;
     private String consulServiceName;
     private static ManagedChannel channel;
@@ -31,7 +31,7 @@ public class IrrigationSystem {
 
     // Bidirectional RPC
     public void InstructIrrigationSystem(ArrayList<IrrigationStatus> irrigationStatusData){
-        // Lookup service details from Consul
+        // lookup service details from Consul
         List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
         if (healthServices.isEmpty()) {
             System.err.println("No healthy instances of " + consulServiceName + " found in Consul.");
@@ -39,10 +39,9 @@ public class IrrigationSystem {
             return;
         }
 
-        // Pick the first healthy instance (you can implement a load balancing strategy here)
+        // pick the first healthy instance
         HealthService healthService = healthServices.get(0);
 
-        // Debug output for service details
         System.out.println("Service details from Consul:");
         System.out.println("Service ID: " + healthService.getService().getId());
         System.out.println("Service Name: " + healthService.getService().getService());
@@ -82,7 +81,7 @@ public class IrrigationSystem {
                 }
             });
 
-            // create IrrigationStatus messages to send to the server
+            // read the data from the ArrayList and send messages to the server
             for(int i = 0; i < irrigationStatusData.size(); i++){
                 IrrigationStatus irrigationStatus = irrigationStatusData.get(i);
                 IrrigationSystemProto.IrrigationStatus irrigationStatusInfo = IrrigationSystemProto.IrrigationStatus.newBuilder()
@@ -91,7 +90,7 @@ public class IrrigationSystem {
                         .build();
 
                 irrigationStatusStreamObserver.onNext(irrigationStatusInfo);
-                Thread.sleep(5000); // Pause for a few second between sending each request
+                Thread.sleep(5000); //pause for a few seconds between sending each request
             }
             irrigationStatusStreamObserver.onCompleted();
 

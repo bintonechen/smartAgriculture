@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SoilSensor {
 
-    private TextArea soilSensorTextArea; // for message display in GUI
+    private TextArea soilSensorTextArea; // for displaying messages in the GUI
     private ConsulClient consulClient;
     private String consulServiceName;
     private static ManagedChannel channel;
@@ -29,22 +29,22 @@ public class SoilSensor {
         this.soilSensorTextArea = soilSensorTextArea;
     }
 
-    // method to perform the client streaming RPC
+    // Client-to-server streaming RPC
     public void SoilSensorService(ArrayList<SoilSensorInfo> soilSensorInfos){
 
-        // Lookup service details from Consul
+        // lookup service details from Consul
         List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
         if (healthServices.isEmpty()) {
+            // if no health instances found
             soilSensorTextArea.appendText("No healthy instances of " + consulServiceName + " found in Consul.");
             System.err.println("****** Soil Sensor ******");
             System.err.println("No healthy instances of " + consulServiceName + " found in Consul.");
             return;
         }
 
-        // Pick the first healthy instance (you can implement a load balancing strategy here)
+        // pick the first healthy instance
         HealthService healthService = healthServices.get(0);
 
-        // Debug output for service details
         System.out.println("****** Soil Sensor ******");
         System.out.println("Service details from Consul:");
         System.out.println("Service ID: " + healthService.getService().getId());
@@ -52,7 +52,7 @@ public class SoilSensor {
         System.out.println("Service Address: " + healthService.getService().getAddress());
         System.out.println("Service Port: " + healthService.getService().getPort() + "\n");
 
-        // Extract host and port from the service details
+        // extract host and port from the service details
         String serverHost = healthService.getService().getAddress();
         int serverPort = healthService.getService().getPort();
 
@@ -107,7 +107,7 @@ public class SoilSensor {
                 System.out.println("****** Soil Sensor ******");
                 System.out.println("Soil Info " + messageNumber + " sent at " + messageNumber +" o'clock.\n");
                 soilSensorTextArea.appendText("Soil Info " + messageNumber + " sent at " + messageNumber +" o'clock.\n\n");
-                Thread.sleep(5000); // paused for a few second between sending each message
+                Thread.sleep(5000); // paused for a few seconds between sending each message
             }
 
             soilInfoStreamObserver.onCompleted();

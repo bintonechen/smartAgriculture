@@ -14,7 +14,7 @@ service IrrigationSystemService{
 }
 
 message IrrigationStatus{
-  string currentStatus = 1;
+  string currentStatus = 1; // the current status of the irrigationSystem
   int32 flowRate = 2; // the current flow rate of the irrigationSystem
 }
 

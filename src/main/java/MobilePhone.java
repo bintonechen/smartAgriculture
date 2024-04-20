@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MobilePhone {
 
-    private TextArea serverTextArea; // for message display in GUI
+    private TextArea serverTextArea; // for displaying messages in the GUI
 
     private ConsulClient consulClient;
     private String consulServiceName;
@@ -37,24 +37,23 @@ public class MobilePhone {
 
     // Unary RPC
     public String SetUserID(String userID){
-        // Lookup service details from Consul
+        // lookup service details from Consul
         List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
         if (healthServices.isEmpty()) {
             System.err.println("No healthy instances of " + consulServiceName + " found in Consul.");
             return "No healthy instances of \" + consulServiceName + \" found in Consul.";
         }
 
-        // Pick the first healthy instance (you can implement a load balancing strategy here)
+        // pick the first healthy instance
         HealthService healthService = healthServices.get(0);
 
-        // Debug output for service details
         System.out.println("Service details from Consul:");
         System.out.println("Service ID: " + healthService.getService().getId());
         System.out.println("Service Name: " + healthService.getService().getService());
         System.out.println("Service Address: " + healthService.getService().getAddress());
         System.out.println("Service Port: " + healthService.getService().getPort());
 
-        // Extract host and port from the service details
+        // extract host and port from the service details
         String serverHost = healthService.getService().getAddress();
         int serverPort = healthService.getService().getPort();
 
@@ -78,10 +77,10 @@ public class MobilePhone {
         }
     }
 
-    // server-to-client streaming RPC
+    // Server-to-client streaming RPC
     public void MobilePhoneRequest(){
 
-        // Lookup service details from Consul
+        // lookup service details from Consul
         List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
         if (healthServices.isEmpty()) {
             serverTextArea.appendText("No healthy instances of " + consulServiceName + " found in Consul.");
@@ -90,10 +89,9 @@ public class MobilePhone {
             return;
         }
 
-        // Pick the first healthy instance (you can implement a load balancing strategy here)
+        // pick the first healthy instance
         HealthService healthService = healthServices.get(0);
 
-        // Debug output for service details
         System.out.println("****** Mobile Phone ******");
         System.out.println("Service details from Consul:");
         System.out.println("Service ID: " + healthService.getService().getId());
@@ -101,7 +99,7 @@ public class MobilePhone {
         System.out.println("Service Address: " + healthService.getService().getAddress());
         System.out.println("Service Port: " + healthService.getService().getPort());
 
-        // Extract host and port from the service details
+        // extract host and port from the service details
         String serverHost = healthService.getService().getAddress();
         int serverPort = healthService.getService().getPort();
 

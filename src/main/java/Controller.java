@@ -47,25 +47,28 @@ public class Controller {
     @FXML
     private ImageView logoImageView;
 
+    // method to handle login button click
     public void login(ActionEvent e) throws IOException {
+        // get the userID entered by the user from the text field
         String userID = userIDTextField.getText();
+        // create a MobilePhone instance
         MobilePhone mobilePhone = new MobilePhone("localhost", 8500,9193,"mobile.phone.service", null);
         String confirmationMessage = mobilePhone.SetUserID(userID);
         displayLogInConfirmation(confirmationMessage);
-
     }
 
+    // method to display login confirmation message
     public void displayLogInConfirmation(String confirmationMessage){
         serverTextArea.setWrapText(true);
         serverTextArea.setText(confirmationMessage+"\n");
     }
 
+    // method to handle soil sensor start button click
     public void startSoilSensor(ActionEvent e) throws IOException{
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(() -> {
 
-
-        // Create 10 pieces of SoilSensorInfo to send to Server
+        // create 10 pieces of SoilSensorInfo to send to Server
         ArrayList<SoilSensor.SoilSensorInfo> soilSensorInfos = new ArrayList<>();
         soilSensorInfos.add(new SoilSensor.SoilSensorInfo(3, 5, 21));// 1
         soilSensorInfos.add(new SoilSensor.SoilSensorInfo(2, 5, 21));// 2
@@ -87,6 +90,7 @@ public class Controller {
     });
     }
 
+    // method to handle health check button click
     @FXML
     public void requestSystemHealthCheck(ActionEvent e) throws IOException {
         serverTextArea.setWrapText(true);
@@ -94,13 +98,14 @@ public class Controller {
         mobilePhone.MobilePhoneRequest();
     }
 
+    // method to handle irrigation system start button click
     @FXML
     void startIrrigationSystem(ActionEvent event) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(() -> {
 
         irrigationSystemTextArea.setWrapText(true);
-        // create 5 pieces of IrrigationStatus to send to Server
+        // create 10 pieces of IrrigationStatusData to send to Server
         ArrayList<IrrigationSystem.IrrigationStatus> irrigationStatusData = new ArrayList<>();
 
         irrigationStatusData.add(new IrrigationSystem.IrrigationStatus("on",10));

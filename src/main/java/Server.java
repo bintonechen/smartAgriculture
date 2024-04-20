@@ -57,7 +57,7 @@ public class Server {
     public void registerToConsul(int serviceNumber){
         System.out.println("Registering server to Consul...");
 
-        // Load Consul configuration from consul.properties file
+        // load Consul configuration from consul.properties file
         Properties props = new Properties();
         try (FileInputStream fis = new FileInputStream("src/main/resources/consul.properties")) {
             props.load(fis);
@@ -66,27 +66,27 @@ public class Server {
             return;
         }
 
-        // Extract Consul configuration properties
+        // extract Consul configuration properties
         String consulHost = props.getProperty("consul.host");
         int consulPort = Integer.parseInt(props.getProperty("consul.port"));
         String healthCheckInterval = props.getProperty("consul.service.healthCheckInterval");
 
-        // Determine the serviceName and servicePort based on the serviceNumber passed in
+        // determine the serviceName and servicePort based on the serviceNumber passed in
         String serviceName = null;
         int servicePort = 0;
 
-        if (serviceNumber == 1){
+        if (serviceNumber == 1){ // soil sensor service
             serviceName = props.getProperty("consul.service.name.soilSensor");
             servicePort = Integer.parseInt(props.getProperty("consul.service.port.soilSensor"));
-        } else if (serviceNumber == 2){
+        } else if (serviceNumber == 2){ // irrigation system service
             serviceName = props.getProperty("consul.service.name.irrigationSystem");
             servicePort = Integer.parseInt(props.getProperty("consul.service.port.irrigationSystem"));
-        } else if (serviceNumber == 3){
+        } else if (serviceNumber == 3){ // mobile phone service
             serviceName = props.getProperty("consul.service.name.mobilePhone");
             servicePort = Integer.parseInt(props.getProperty("consul.service.port.mobilePhone"));
         }
 
-        // Get host address
+        // get host address
         String hostAddress;
         try {
             hostAddress = InetAddress.getLocalHost().getHostAddress();
@@ -95,29 +95,30 @@ public class Server {
             return;
         }
 
-        // Create a Consul client
+        // create a Consul client
         ConsulClient consulClient = new ConsulClient(consulHost, consulPort);
 
-        // Define service details
+        // define service details
         NewService newService = new NewService();
         newService.setName(serviceName);
         newService.setPort(servicePort);
-        newService.setAddress(hostAddress); // Set host address
+        newService.setAddress(hostAddress); // set host address
 
-        // Register service with Consul
+        // register service with Consul
         consulClient.agentServiceRegister(newService);
 
-        // Print registration success message
+        // print registration success message
         System.out.println(serviceName + " server registered to Consul successfully" +"\n");
     }
 
+    // Implementation of Soil Sensor Service
     public class SoilSensorServiceImpl extends SoilSensorServiceGrpc.SoilSensorServiceImplBase{
 
         @Override
         public StreamObserver<SoilSensorProto.SoilInfo> sendSoilInfo(StreamObserver<SoilSensorProto.SoilInfoSummary> responseObserver) {
             return new StreamObserver<SoilSensorProto.SoilInfo>() {
 
-                int requestCount = 0;
+                int requestCount = 0; // the number of request messages received
                 double averageMoistureLevel = 0.0;
                 double averagePHLevel = 0.0;
                 double averageSoilTemperature = 0.0;
@@ -126,7 +127,7 @@ public class Server {
                 public void onNext(SoilSensorProto.SoilInfo soilInfo) {
                     requestCount++; // when receive a new SoilInfo, the count increase by 1
                     averageMoistureLevel += soilInfo.getMoistureLevel(); // Accumulate the moisture levels received to calculate the average.
-                    // Division will be performed when the request stream is completed.
+                                                                         // Division will be performed when the request stream is completed.
                     averagePHLevel += soilInfo.getPhLevel();
                     averageSoilTemperature+= soilInfo.getSoilTemperature();
                     System.out.println("****** Server ******");
@@ -162,6 +163,7 @@ public class Server {
         }
     }
 
+    // Implementation of Irrigation System Service
     public class IrrigationSystemServiceImpl extends IrrigationSystemServiceGrpc.IrrigationSystemServiceImplBase{
 
         @Override
@@ -170,18 +172,20 @@ public class Server {
                 @Override
                 public void onNext(IrrigationSystemProto.IrrigationStatus irrigationStatus) {
                     String status = irrigationStatus.getCurrentStatus(); // get the current status of the irrigation system
-                    int flowRate = irrigationStatus.getFlowRate(); // get the current flow rate of the irrigtation system
+                    int flowRate = irrigationStatus.getFlowRate(); // get the current flow rate of the irrigation system
                     System.out.println("The current status of Irrigation System is: " + status
                                     + "\nThe current flow rate is: " + flowRate +"\n");
 
-                    // create response message
+                    // create an instruction message
+                    // can develop different implementations here
+                    // this implementation instructs the irrigation system to decrease the flow rate by 1 each time.
                     int adjustedFlowedRate = flowRate - 1; // decrease the flow rate by 1 each time
                     String instruction;
 
                     if(adjustedFlowedRate>0){ // determine the status to set based on the flow rate to set.
                         instruction = "on";
                     } else {
-                        instruction = "off";
+                        instruction = "off"; // when the flow rate is 0, the status is set to 'off'
                     }
 
                     // create the response object and send to the irrigation system
@@ -215,6 +219,7 @@ public class Server {
         }
     }
 
+    // Implementation of Mobile Phone Service
     public class MobilePhoneServiceImpl extends MobilePhoneServiceGrpc.MobilePhoneServiceImplBase{
 
         @Override
@@ -223,7 +228,7 @@ public class Server {
             String userID = request.getUserID();
             String confirmation = " ";
 
-            if(userID.equals("")){ // if the user enter an empty ID
+            if(userID.equals("")){ // if the user entered an empty ID
                 System.out.println("Received an empty user ID \n");
                 confirmation = "Please enter a valid user ID to log in";
             } else {
@@ -257,7 +262,7 @@ public class Server {
             }
 
             // generate three health check results
-            // send each result back to the mobile phone separately, with a 2-second interval between each response
+            // send each result back to the mobile phone separately, with a interval between each response
             for (int i = 0; i<3; i++){
 
                 MobilePhoneProto.InfoResponse infoResponse = MobilePhoneProto.InfoResponse.newBuilder()

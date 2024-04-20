@@ -31,7 +31,7 @@ message InfoRequest{
 }
 
 message InfoResponse{
-  string infoResponseMessage = 1; // result of the health check tests
+  string infoResponseMessage = 1; // results of the health check tests
 }
 
 message HealthCheckRequest2 {
