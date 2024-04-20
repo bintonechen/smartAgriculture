@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Button fx:id="logInButton" layoutX="249.0" layoutY="48.0" mnemonicParsing="false" onAction="#login" text="log in" />
+      <Button fx:id="systemHealthCheckButton" layoutX="318.0" layoutY="48.0" mnemonicParsing="false" onAction="#requestSystemHealthCheck" text="System Health Check" />
+      <TextArea fx:id="userIDTextField" layoutX="31.0" layoutY="41.0" prefHeight="16.0" prefWidth="200.0" />
+      <Label layoutX="40.0" layoutY="116.0" text="Server" />
+      <Label layoutX="257.0" layoutY="113.0" text="Soil Sensor" />
+      <Label layoutX="482.0" layoutY="113.0" text="Irrigation System" />
+      <Button fx:id="soilSensorStartButton" layoutX="326.0" layoutY="103.0" mnemonicParsing="false" onAction="#startSoilSensor" text="Start " />
+      <Button fx:id="irrigationSystemButton" layoutX="582.0" layoutY="103.0" mnemonicParsing="false" onAction="#startIrrigationSystem" text="Start" />
+      <TextArea fx:id="serverTextArea" layoutX="31.0" layoutY="134.0" prefHeight="253.0" prefWidth="187.0" />
+      <TextArea fx:id="soilSensorTextArea" layoutX="255.0" layoutY="134.0" prefHeight="253.0" prefWidth="187.0" />
+      <TextArea fx:id="irrigationSystemTextArea" layoutX="479.0" layoutY="134.0" prefHeight="253.0" prefWidth="187.0" />
+      <ImageView fx:id="logoImageView" fitHeight="71.0" fitWidth="92.0" layoutX="591.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@seedingEmoji.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

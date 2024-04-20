@@ -3,7 +3,6 @@ import com.ecwid.consul.v1.agent.model.NewService;
 import com.project.*;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,16 +18,17 @@ public class Server {
     // method to start the service with SoilSensorServiceImpl() service
     public void startSoilSensorServer(int port) throws IOException {
         server = ServerBuilder.forPort(port).addService(new SoilSensorServiceImpl()).build().start();
-        System.out.println("Server started, listening to Soil Sensor on port " + port +"\n");
+        System.out.println("****** Server ******");
+        System.out.println("Server started, listening to Soil Sensor on port " + port );
 
-        // register to consul with service name, service port, and service ID
         registerToConsul(1); // register to Consul with the serviceName and servicePort specifically for soilSensor
     }
 
     // method to start the service with IrrigationSystemServiceImpl() service
     public void startIrrigationSystemServer(int port) throws IOException{
         server = ServerBuilder.forPort(port).addService(new IrrigationSystemServiceImpl()).build().start();
-        System.out.println("Server started, listening to Irrigation System on port " + port);
+        System.out.println("****** Server ******");
+        System.out.println("Server started, listening to Irrigation System on port " + port );
 
         registerToConsul(2); // register to Consul with the serviceName and servicePort specifically for IrrigationSystem
     }
@@ -36,7 +36,8 @@ public class Server {
     // method to start the service with MobilePhoneServiceImpl() service
     public void startMobilePhoneServer(int port) throws IOException{
         server = ServerBuilder.forPort(port).addService(new MobilePhoneServiceImpl()).build().start();
-        System.out.println("Server started, listening to Mobile Phone on port " + port);
+        System.out.println("****** Server ******");
+        System.out.println("Server started, listening to Mobile Phone on port " + port );
 
         registerToConsul(3); // register to Consul with the serviceName and servicePort specifically for MobilePhone
     }
@@ -54,7 +55,6 @@ public class Server {
     }
 
     public void registerToConsul(int serviceNumber){
-
         System.out.println("Registering server to Consul...");
 
         // Load Consul configuration from consul.properties file
@@ -71,7 +71,7 @@ public class Server {
         int consulPort = Integer.parseInt(props.getProperty("consul.port"));
         String healthCheckInterval = props.getProperty("consul.service.healthCheckInterval");
 
-        // Determain the serviceName and servicePort based on the serviceNumber passed in
+        // Determine the serviceName and servicePort based on the serviceNumber passed in
         String serviceName = null;
         int servicePort = 0;
 
@@ -108,7 +108,7 @@ public class Server {
         consulClient.agentServiceRegister(newService);
 
         // Print registration success message
-        System.out.println(serviceName + " server registered to Consul successfully");
+        System.out.println(serviceName + " server registered to Consul successfully" +"\n");
     }
 
     public class SoilSensorServiceImpl extends SoilSensorServiceGrpc.SoilSensorServiceImplBase{
@@ -129,12 +129,14 @@ public class Server {
                     // Division will be performed when the request stream is completed.
                     averagePHLevel += soilInfo.getPhLevel();
                     averageSoilTemperature+= soilInfo.getSoilTemperature();
+                    System.out.println("****** Server ******");
                     System.out.println("Received SoilInfo " + requestCount + ": \nMoisture Level: " + soilInfo.getMoistureLevel()
                             + " PH Level: " + soilInfo.getPhLevel() + " Soil Temperature: " + soilInfo.getSoilTemperature() + "\n");
                 }
 
                 @Override
                 public void onError(Throwable t) {
+                    System.err.println("****** Server ******");
                     System.err.println("Error in Soil Sensor request streaming: " + t.getMessage());
                 }
 
@@ -148,11 +150,6 @@ public class Server {
                             .setAverageSoilTemperature(averageSoilTemperature).setAveragePHLevel(averagePHLevel)
                             .setAverageMoistureLevel(averageMoistureLevel).build());
                     responseObserver.onCompleted();
-
-                    System.out.println("SoilInfo Summary: " + "\nNumber of SoilInfo received: " + requestCount
-                            + " Average Moisture Level: "+ averageMoistureLevel
-                            + " Average PH Level: " + averagePHLevel
-                            + " Average Soil Temperature: " + averageSoilTemperature);
                 }
             };
         }
@@ -174,7 +171,8 @@ public class Server {
                 public void onNext(IrrigationSystemProto.IrrigationStatus irrigationStatus) {
                     String status = irrigationStatus.getCurrentStatus(); // get the current status of the irrigation system
                     int flowRate = irrigationStatus.getFlowRate(); // get the current flow rate of the irrigtation system
-                    System.out.println("The current status of Irrigation System is: " + status + " and the current flow rate is: " + flowRate);
+                    System.out.println("The current status of Irrigation System is: " + status
+                                    + "\nThe current flow rate is: " + flowRate +"\n");
 
                     // create response message
                     int adjustedFlowedRate = flowRate - 1; // decrease the flow rate by 1 each time
@@ -223,10 +221,17 @@ public class Server {
         public void setUserID(MobilePhoneProto.UserID request, StreamObserver<MobilePhoneProto.UserIDConfirmation> responseObserver) {
             // get the user ID from the request
             String userID = request.getUserID();
-            // log the User ID
-            System.out.println("Received User ID: " + userID + " from the Mobile Phone");
-            // create a response message representing successful login
-            String confirmation = "User ID: " + userID + " has been successfully logged in.";
+            String confirmation = " ";
+
+            if(userID.equals("")){ // if the user enter an empty ID
+                System.out.println("Received an empty user ID \n");
+                confirmation = "Please enter a valid user ID to log in";
+            } else {
+                // log the User ID
+                System.out.println("Received User ID: " + userID + " from the Mobile Phone. \n" );
+                // create a response message representing successful login
+                confirmation = "User ID: " + userID + " has been successfully logged in.";
+            }
             // build the response object
             MobilePhoneProto.UserIDConfirmation response = MobilePhoneProto.UserIDConfirmation.newBuilder().setConfirmation(confirmation).build();
             // send the response to the Mobile Phone
@@ -240,19 +245,27 @@ public class Server {
             // get the request from the MobilePhone
             String requestFromMobilePhone = request.getInfoRequestMessage();
             // log the InfoRequest
-            System.out.println("Received from the Mobile Phone: " + requestFromMobilePhone);
-            System.out.println("Health check would run 3 times.");
+            System.out.println("****** Server ******");
+            System.out.println("Received from the Mobile Phone: " + requestFromMobilePhone + "\n");
+            System.out.println("****** Server ******");
+            System.out.println("Health check would run 3 times.\n");
+
+            try{
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
             // generate three health check results
             // send each result back to the mobile phone separately, with a 2-second interval between each response
             for (int i = 0; i<3; i++){
 
                 MobilePhoneProto.InfoResponse infoResponse = MobilePhoneProto.InfoResponse.newBuilder()
-                        .setInfoResponseMessage("Health Check test " + i +" is completed. No issue found.").build();
+                        .setInfoResponseMessage("Health Check test " + (i+1) +" is completed. No issue found.").build();
                 responseObserver.onNext(infoResponse);
 
                 try{
-                    Thread.sleep(2000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

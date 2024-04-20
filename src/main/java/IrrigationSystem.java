@@ -5,6 +5,7 @@ import com.project.IrrigationSystemServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+import javafx.scene.control.TextArea;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,25 +14,28 @@ import java.util.concurrent.TimeUnit;
 
 public class IrrigationSystem {
 
+    private TextArea irrigationTextArea; // for message display in GUI
     private ConsulClient consulClient;
     private String consulServiceName;
     private static ManagedChannel channel;
     private IrrigationSystemServiceGrpc.IrrigationSystemServiceStub stub;
 
     // constructor
-    public IrrigationSystem(String consulHost, int consulPort, int consulServicePort, String consulServiceName) {
+    public IrrigationSystem(String consulHost, int consulPort, int consulServicePort, String consulServiceName, TextArea irrigationTextArea) {
         this.consulClient = new ConsulClient(consulHost, consulPort);
         this.consulServiceName = consulServiceName;
         this.channel = ManagedChannelBuilder.forAddress(consulHost, consulServicePort).usePlaintext().build();
         this.stub = IrrigationSystemServiceGrpc.newStub(channel);
+        this.irrigationTextArea = irrigationTextArea;
     }
 
-    // method to perform the bidirectional RPC
+    // Bidirectional RPC
     public void InstructIrrigationSystem(ArrayList<IrrigationStatus> irrigationStatusData){
         // Lookup service details from Consul
         List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
         if (healthServices.isEmpty()) {
             System.err.println("No healthy instances of " + consulServiceName + " found in Consul.");
+            irrigationTextArea.appendText("No healthy instances of " + consulServiceName + " found in Consul.");
             return;
         }
 
@@ -54,20 +58,27 @@ public class IrrigationSystem {
                 @Override
                 public void onNext(IrrigationSystemProto.ServerInstruction serverInstruction) {
                     // print the response from the server
-                    System.out.println("Instruction received from the Server: "
+                    System.out.println("Instruction from the Server: "
                             + "\nset Irrigation System status to: " + serverInstruction.getInstruction()
-                            + "\nset flow rate to: " + serverInstruction.getFlowRate());
+                            + "\nset flow rate to: " + serverInstruction.getFlowRate() + "\n");
+                    // append the response to GUI TextArea
+                    irrigationTextArea.appendText("Instruction from the Server: "
+                            + "\nset Irrigation System status to: " + serverInstruction.getInstruction()
+                            + "\nset flow rate to: " + serverInstruction.getFlowRate() + "\n\n");
                 }
 
                 @Override
                 public void onError(Throwable t) {
                     // handle errors from the server
                     System.err.println("Error occurred while receiving responses from the server: " + t.getMessage());
+                    irrigationTextArea.appendText("Error occurred while receiving responses from the server: " + t.getMessage());
+
                 }
 
                 @Override
                 public void onCompleted() {
-                    System.out.println("Server instructions received completed.");
+                    System.out.println("Server streaming instructions completed.\n");
+                    irrigationTextArea.appendText("Server streaming instructions completed.\n");
                 }
             });
 
@@ -80,16 +91,14 @@ public class IrrigationSystem {
                         .build();
 
                 irrigationStatusStreamObserver.onNext(irrigationStatusInfo);
-                Thread.sleep(2000); // Pause for 2 second between sending each request
+                Thread.sleep(5000); // Pause for a few second between sending each request
             }
-
             irrigationStatusStreamObserver.onCompleted();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     // create an IrrigationStatus object to store data
     public static class IrrigationStatus{
@@ -103,43 +112,45 @@ public class IrrigationSystem {
         }
     }
 
+    /* ***** for testing purpose ***** */
 
-    public static void main(String[] args){
+      // for testing purpose
+//    public static void main(String[] args){
+//
+//        // create 5 pieces of IrrigationStatus to send to Server
+//        ArrayList<IrrigationStatus> irrigationStatusData = new ArrayList<>();
+//        irrigationStatusData.add(new IrrigationStatus("on",5));
+//        irrigationStatusData.add(new IrrigationStatus("on",4));
+//        irrigationStatusData.add(new IrrigationStatus("on",3));
+//        irrigationStatusData.add(new IrrigationStatus("on",2));
+//        irrigationStatusData.add(new IrrigationStatus("on",1));
+//
+//        // create a MobilePhone instance
+//        IrrigationSystem irrigationSystem = new IrrigationSystem("localhost", 8500,9192,"irrigation.system.service", null);
+//
+//        //invoke the bidirectional RPC
+//        irrigationSystem.InstructIrrigationSystem(irrigationStatusData);
+//
+//
+//        // read input from the user to quit
+//        Scanner scanner = new Scanner(System.in);
+//        while(true){
+//            System.out.println("Press 'Q' to quit" );
+//            String input = scanner.nextLine();
+//            if(input.equalsIgnoreCase("Q")){
+//                irrigationSystem.shutdown();
+//                break;
+//            }
+//        }
+//    }
 
-        // create 5 pieces of IrrigationStatus to send to Server
-        ArrayList<IrrigationStatus> irrigationStatusData = new ArrayList<>();
-        irrigationStatusData.add(new IrrigationStatus("on",5));
-        irrigationStatusData.add(new IrrigationStatus("on",4));
-        irrigationStatusData.add(new IrrigationStatus("on",3));
-        irrigationStatusData.add(new IrrigationStatus("on",2));
-        irrigationStatusData.add(new IrrigationStatus("on",1));
-
-        // create a MobilePhone instance
-        IrrigationSystem irrigationSystem = new IrrigationSystem("localhost", 8500,9192,"irrigation.system.service");
-
-        //invoke the bidirectional RPC
-        irrigationSystem.InstructIrrigationSystem(irrigationStatusData);
-
-
-        // read input from the user to quit
-        Scanner scanner = new Scanner(System.in);
-        while(true){
-            System.out.println("Press 'Q' to quit" );
-            String input = scanner.nextLine();
-            if(input.equalsIgnoreCase("Q")){
-                irrigationSystem.shutdown();
-                break;
-            }
-        }
-    }
-
-    public void shutdown (){
-        try{
-            channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-        } catch (InterruptedException e){
-            System.err.println("Error while shutting down Mobile Phone: " + e.getMessage());
-        }
-
-    }
+//    public void shutdown (){
+//        try{
+//            channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+//        } catch (InterruptedException e){
+//            System.err.println("Error while shutting down Mobile Phone: " + e.getMessage());
+//        }
+//
+//    }
 
 }

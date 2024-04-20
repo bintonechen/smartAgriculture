@@ -5,6 +5,10 @@ import com.project.MobilePhoneServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+import javafx.application.Application;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.sql.SQLOutput;
 import java.util.List;
@@ -13,29 +17,31 @@ import java.util.concurrent.TimeUnit;
 
 public class MobilePhone {
 
+    private TextArea serverTextArea; // for message display in GUI
+
     private ConsulClient consulClient;
     private String consulServiceName;
     private static ManagedChannel channel;
     private MobilePhoneServiceGrpc.MobilePhoneServiceStub stub; // for the server-to-client streaming RPC
-
     private MobilePhoneServiceGrpc.MobilePhoneServiceBlockingStub blockingStub; // for the unary RPC
 
     // constructor
-    public MobilePhone(String consulHost, int consulPort, int consulServicePort, String consulServiceName) {
+    public MobilePhone(String consulHost, int consulPort, int consulServicePort, String consulServiceName, TextArea serverTextArea) {
         this.consulClient = new ConsulClient(consulHost, consulPort);
         this.consulServiceName = consulServiceName;
         this.channel = ManagedChannelBuilder.forAddress(consulHost, consulServicePort).usePlaintext().build();
         this.stub = MobilePhoneServiceGrpc.newStub(channel);
         this.blockingStub = MobilePhoneServiceGrpc.newBlockingStub(channel);
+        this.serverTextArea = serverTextArea;
     }
 
     // Unary RPC
-    public void SetUserID(String userID){
+    public String SetUserID(String userID){
         // Lookup service details from Consul
         List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
         if (healthServices.isEmpty()) {
             System.err.println("No healthy instances of " + consulServiceName + " found in Consul.");
-            return;
+            return "No healthy instances of \" + consulServiceName + \" found in Consul.";
         }
 
         // Pick the first healthy instance (you can implement a load balancing strategy here)
@@ -63,8 +69,11 @@ public class MobilePhone {
 
             System.out.println(response);
 
+            return response.toString();
+
         } catch (Exception e){
             System.err.println("An error occurred in SetUserID service: " + e.getMessage());
+            serverTextArea.appendText("An error occurred in SetUserID service: " + e.getMessage() + "\n");
             throw new RuntimeException();
         }
     }
@@ -75,6 +84,8 @@ public class MobilePhone {
         // Lookup service details from Consul
         List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
         if (healthServices.isEmpty()) {
+            serverTextArea.appendText("No healthy instances of " + consulServiceName + " found in Consul.");
+            System.err.println("****** Mobile Phone ******");
             System.err.println("No healthy instances of " + consulServiceName + " found in Consul.");
             return;
         }
@@ -83,6 +94,7 @@ public class MobilePhone {
         HealthService healthService = healthServices.get(0);
 
         // Debug output for service details
+        System.out.println("****** Mobile Phone ******");
         System.out.println("Service details from Consul:");
         System.out.println("Service ID: " + healthService.getService().getId());
         System.out.println("Service Name: " + healthService.getService().getService());
@@ -93,7 +105,10 @@ public class MobilePhone {
         String serverHost = healthService.getService().getAddress();
         int serverPort = healthService.getService().getPort();
 
-        String requestMessage = "Request for health check for the Smart Agriculture System.";
+        System.out.println("****** Mobile Phone ******");
+        String requestMessage = "Request for health check for the Smart Agriculture System.\n";
+        serverTextArea.appendText("Request for health check for the Smart Agriculture System.\n\n");
+
 
         // create a request message
         MobilePhoneProto.InfoRequest request = MobilePhoneProto.InfoRequest
@@ -105,6 +120,7 @@ public class MobilePhone {
             @Override
             public void onNext(MobilePhoneProto.InfoResponse infoResponse) {
                 System.out.println(infoResponse);
+                serverTextArea.appendText(infoResponse.toString()+"\n");
             }
 
             @Override
@@ -114,7 +130,9 @@ public class MobilePhone {
 
             @Override
             public void onCompleted() {
-                System.out.println("Health check for the Soil Sensor and the Irrigation System completed.");
+                System.out.println("****** Mobile Phone ******");
+                System.out.println("Three Health check tests are completed.\n");
+                serverTextArea.appendText("Three Health check tests are completed.\n");
             }
         };
 
@@ -122,33 +140,33 @@ public class MobilePhone {
         stub.mobilePhoneRequest(request, infoResponseStreamObserver);
     }
 
+    /* ***** for testing purpose ***** */
 
-    public static void main(String[] args){
-        // create a MobilePhone instance
-        MobilePhone mobilePhone = new MobilePhone("localhost", 8500,9193,"mobile.phone.service");
+//    public static void main(String[] args){
+//        // create a MobilePhone instance
+//        MobilePhone mobilePhone = new MobilePhone("localhost", 8500,9193,"mobile.phone.service", null);
+//
+//        mobilePhone.SetUserID("A0001");
+//        mobilePhone.MobilePhoneRequest();
+//
+//        // read input from the user to quit
+//        Scanner scanner = new Scanner(System.in);
+//        while(true){
+//            System.out.println("Press 'Q' to quit" );
+//            String input = scanner.nextLine();
+//            if(input.equalsIgnoreCase("Q")){
+//                mobilePhone.shutdown();
+//                break;
+//            }
+//        }
+//    }
 
-        mobilePhone.SetUserID("A0001");
-        mobilePhone.MobilePhoneRequest();
-
-        // read input from the user to quit
-        Scanner scanner = new Scanner(System.in);
-        while(true){
-            System.out.println("Press 'Q' to quit" );
-            String input = scanner.nextLine();
-            if(input.equalsIgnoreCase("Q")){
-                mobilePhone.shutdown();
-                break;
-            }
-        }
-    }
-
-    public void shutdown (){
-        try{
-            channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-        } catch (InterruptedException e){
-            System.err.println("Error while shutting down Mobile Phone: " + e.getMessage());
-        }
-
-    }
+//    public void shutdown (){
+//        try{
+//            channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+//        } catch (InterruptedException e){
+//            System.err.println("Error while shutting down Mobile Phone: " + e.getMessage());
+//        }
+//    }
 
 }
