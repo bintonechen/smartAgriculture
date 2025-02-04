@@ -25,6 +25,7 @@ The JavaFX GUI allows users to:
 - Request system health checks.
 
 *Smart Agriculture application GUI*
+
 <img width="379" alt="image" src="https://github.com/user-attachments/assets/be1affb0-6593-4b2b-99cf-80e4567b52bd" />
 
 
